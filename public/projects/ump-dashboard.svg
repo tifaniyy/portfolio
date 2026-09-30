@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-label="Dashboard UMP Indonesia">
+  <title>Dashboard UMP Indonesia</title>
+
+  <rect width="1280" height="800" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1280" height="72" fill="#0F172A"/>
+  <circle cx="40" cy="36" r="7" fill="#334155"/>
+  <circle cx="64" cy="36" r="7" fill="#334155"/>
+  <circle cx="88" cy="36" r="7" fill="#334155"/>
+  <rect x="120" y="22" width="520" height="28" rx="8" fill="#1E293B"/>
+  <text x="136" y="42" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" fill="#94A3B8">Dashboard UMP Indonesia</text>
+  <text x="1240" y="42" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="600"
+        fill="#60A5FA" text-anchor="end">PLACEHOLDER — tren &amp;amp; filter</text>
+  <rect x="0" y="72" width="1280" height="728" fill="#FFFFFF"/>
+<rect x="40" y="104" width="1200" height="96" rx="16" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="72" y="152" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="700" fill="#0F172A" text-anchor="start">Rata-rata UMP Indonesia (1997–2026)</text>
+  <text x="72" y="180" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" font-weight="500" fill="#64748B" text-anchor="start">Filter tahun · Provinsi · Kategori upah</text>
+  <rect x="1016" y="128" width="192" height="48" rx="12" fill="#2563EB" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="1112" y="158" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">Terapkan Filter</text>
+  <rect x="40" y="224" width="800" height="300" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="72" y="264" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="18" font-weight="700" fill="#0F172A" text-anchor="start">Tren UMP per Tahun</text>
+  <polygon points="88,490 88.0,452.0 153.5,440.6 218.9,444.4 284.4,427.3 349.8,417.8 415.3,410.2 480.7,400.7 546.2,391.2 611.6,379.8 677.1,370.3 742.5,355.1 808.0,330.4 808,490" fill="#2563EB" opacity="0.10"/><polyline points="88.0,452.0 153.5,440.6 218.9,444.4 284.4,427.3 349.8,417.8 415.3,410.2 480.7,400.7 546.2,391.2 611.6,379.8 677.1,370.3 742.5,355.1 808.0,330.4" fill="none" stroke="#2563EB" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="864" y="224" width="376" height="300" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="896" y="264" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="18" font-weight="700" fill="#0F172A" text-anchor="start">Top 10 Provinsi</text>
+  <rect x="888" y="288" width="328" height="208" rx="12" fill="#EFF6FF"/>
+  <rect x="912.0" y="320.0" width="22.8" height="152.0" rx="6" fill="#2563EB" opacity="0.98"/>
+  <rect x="948.8" y="331.2" width="22.8" height="140.8" rx="6" fill="#2563EB" opacity="0.95"/>
+  <rect x="985.5" y="344.0" width="22.8" height="128.0" rx="6" fill="#2563EB" opacity="0.91"/>
+  <rect x="1022.2" y="356.8" width="22.8" height="115.2" rx="6" fill="#2563EB" opacity="0.87"/>
+  <rect x="1059.0" y="366.4" width="22.8" height="105.6" rx="6" fill="#2563EB" opacity="0.85"/>
+  <rect x="1095.8" y="379.2" width="22.8" height="92.8" rx="6" fill="#2563EB" opacity="0.81"/>
+  <rect x="1132.5" y="392.0" width="22.8" height="80.0" rx="6" fill="#2563EB" opacity="0.78"/>
+  <rect x="1169.2" y="401.6" width="22.8" height="70.4" rx="6" fill="#2563EB" opacity="0.75"/>
+  <rect x="40" y="548" width="592" height="220" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="72" y="588" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="18" font-weight="700" fill="#0F172A" text-anchor="start">Distribusi Kategori Upah</text>
+  <rect x="72" y="612" width="528" height="132" rx="12" fill="#EFF6FF"/>
+  <rect x="96.0" y="684.7" width="109.5" height="35.3" rx="6" fill="#1E293B" opacity="0.74"/>
+  <rect x="219.5" y="662.9" width="109.5" height="57.1" rx="6" fill="#1E293B" opacity="0.86"/>
+  <rect x="343.0" y="647.8" width="109.5" height="72.2" rx="6" fill="#1E293B" opacity="0.94"/>
+  <rect x="466.5" y="674.6" width="109.5" height="45.4" rx="6" fill="#1E293B" opacity="0.79"/>
+  <text x="72" y="748" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500" fill="#64748B" text-anchor="start">Rendah · Sedang · Tinggi · Sangat Tinggi</text>
+  <rect x="656" y="548" width="584" height="220" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="688" y="588" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="18" font-weight="700" fill="#0F172A" text-anchor="start">Ringkasan Statistik</text>
+  <text x="688" y="636" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" font-weight="500" fill="#64748B" text-anchor="start">Provinsi dianalisis</text>
+  <text x="1208" y="636" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="20" font-weight="700" fill="#0F172A" text-anchor="end">38</text>
+  <text x="688" y="682" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" font-weight="500" fill="#64748B" text-anchor="start">Rentang data</text>
+  <text x="1208" y="682" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="20" font-weight="700" fill="#0F172A" text-anchor="end">1997 – 2026</text>
+  <text x="688" y="728" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" font-weight="500" fill="#64748B" text-anchor="start">Metode</text>
+  <text x="1208" y="728" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="20" font-weight="700" fill="#2563EB" text-anchor="end">K-Means (k=4)</text>
+</svg>
