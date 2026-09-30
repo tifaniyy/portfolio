@@ -1,8 +1,9 @@
 /**
- * Skills data — grouped by category.
+ * Skills data — taken from the "Training, Skills, & Tools" section of the CV.
  * ---------------------------------------------------------------
  * EDIT THIS FILE to add/remove skills.
  * `icon` values are Lucide React icon names (see src/components/Skills.tsx).
+ * `accent` can be: blue | violet | emerald | amber
  * ---------------------------------------------------------------
  */
 
@@ -10,53 +11,53 @@ export type SkillCategory = {
   title: string;
   description: string;
   icon: string;
-  /** Tailwind-friendly accent tint key used by the skill card. */
   accent: "blue" | "violet" | "emerald" | "amber";
   skills: string[];
 };
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Programming & Data",
-    description: "Mengolah dan menganalisis data dengan Python dan SQL.",
+    title: "Data Analysis & Programming",
+    description:
+      "Memproses, membersihkan, dan menganalisis data dengan Python, SQL, dan Excel.",
     icon: "Terminal",
     accent: "blue",
-    skills: ["Python", "SQL", "Pandas", "NumPy", "Matplotlib", "Scikit-learn"],
+    skills: [
+      "Python",
+      "SQL",
+      "Pandas",
+      "NumPy",
+      "Excel",
+      "Data Cleaning",
+      "Data Processing",
+    ],
   },
   {
     title: "Data Visualization",
     description:
-      "Menyajikan data menjadi grafik dan dashboard yang mudah dipahami.",
+      "Mengubah hasil analisis menjadi grafik dan dashboard yang mudah dibaca.",
     icon: "BarChart3",
     accent: "violet",
-    skills: ["Power BI", "Matplotlib", "Data Visualization"],
+    skills: [
+      "Matplotlib",
+      "GeoPandas",
+      "Streamlit",
+      "Dashboard",
+      "Data Storytelling",
+    ],
+  },
+  {
+    title: "Machine Learning",
+    description: "Menerapkan algoritma klasifikasi dan clustering pada data nyata.",
+    icon: "BrainCircuit",
+    accent: "emerald",
+    skills: ["Scikit-learn", "K-Means Clustering", "Classification", "Model Evaluation"],
   },
   {
     title: "Web Development",
-    description: "Membangun antarmuka web yang responsif dan rapi.",
+    description: "Membangun antarmuka web yang responsif dan mudah digunakan.",
     icon: "Code2",
-    accent: "emerald",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Python Flask",
-      "Next.js",
-      "Tailwind CSS",
-    ],
-  },
-  {
-    title: "Tools",
-    description: "Perangkat kerja harian untuk dokumentasi dan kolaborasi.",
-    icon: "Wrench",
     accent: "amber",
-    skills: [
-      "Git",
-      "GitHub",
-      "Figma",
-      "Microsoft Excel",
-      "Microsoft PowerPoint",
-      "Microsoft Word",
-    ],
+    skills: ["Flask", "HTML", "CSS", "Bootstrap", "PHP", "Responsive Design"],
   },
 ];

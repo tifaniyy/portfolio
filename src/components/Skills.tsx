@@ -1,5 +1,6 @@
 import {
   BarChart3,
+  BrainCircuit,
   Code2,
   Terminal,
   Wrench,
@@ -14,6 +15,7 @@ const iconMap: Record<string, LucideIcon> = {
   BarChart3,
   Code2,
   Wrench,
+  BrainCircuit,
 };
 
 /** Accent tints keep the cards distinct without adding more colours. */

@@ -35,12 +35,20 @@ export function Education() {
                       <p className="mt-1 text-sm font-medium text-accent">
                         {item.school}
                       </p>
+                      <p className="mt-1 text-xs text-muted">
+                        {item.location} · {item.period}
+                      </p>
                     </div>
                   </div>
 
-                  <span className="inline-flex items-center rounded-lg border border-border bg-white px-3 py-1.5 text-xs font-semibold text-muted">
-                    {item.status}
-                  </span>
+                  <div className="flex flex-col items-end gap-2">
+                    <span className="inline-flex items-center rounded-lg border border-border bg-white px-3 py-1.5 text-xs font-semibold text-muted">
+                      {item.status}
+                    </span>
+                    <span className="inline-flex items-center rounded-lg bg-accent-soft px-3 py-1.5 text-xs font-semibold text-accent">
+                      GPA {item.grade}
+                    </span>
+                  </div>
                 </div>
 
                 <p className="mt-5 text-sm leading-relaxed text-muted">

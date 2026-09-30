@@ -5,7 +5,7 @@ import {
   LineChart,
   type LucideIcon,
 } from "lucide-react";
-import { interests, profile, stats } from "@/data/profile";
+import { interests, organizations, profile, stats } from "@/data/profile";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
@@ -90,6 +90,54 @@ export function About() {
               })}
             </div>
           </Reveal>
+        </div>
+
+        {/* Organizational experience — from the CV */}
+        <div className="mt-16">
+          <Reveal>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-muted">
+              Organizational Experience
+            </h3>
+          </Reveal>
+
+          <div className="mt-6 grid gap-5 md:grid-cols-2">
+            {organizations.map((item, index) => (
+              <Reveal key={item.organization} delay={index * 0.06}>
+                <article className="flex h-full flex-col rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-lift">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <h4 className="text-sm font-semibold leading-snug text-primary">
+                        {item.organization}
+                      </h4>
+                      <p className="mt-1 text-xs font-medium text-accent">
+                        {item.role}
+                      </p>
+                    </div>
+                    <span className="inline-flex shrink-0 items-center rounded-lg border border-border bg-white px-2.5 py-1 text-[11px] font-semibold text-muted">
+                      {item.period}
+                    </span>
+                  </div>
+
+                  <p className="mt-2 text-xs text-muted">{item.location}</p>
+
+                  <ul className="mt-4 space-y-2">
+                    {item.points.map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-start gap-2 text-xs leading-relaxed text-muted"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                        />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

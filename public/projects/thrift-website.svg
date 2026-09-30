@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-label="Oldmarketjkt Thrift Shop Website">
+  <title>Oldmarketjkt Thrift Shop Website</title>
+
+  <rect width="1280" height="800" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1280" height="72" fill="#0F172A"/>
+  <circle cx="40" cy="36" r="7" fill="#334155"/>
+  <circle cx="64" cy="36" r="7" fill="#334155"/>
+  <circle cx="88" cy="36" r="7" fill="#334155"/>
+  <rect x="120" y="22" width="520" height="28" rx="8" fill="#1E293B"/>
+  <text x="136" y="42" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" fill="#94A3B8">Oldmarketjkt Thrift Shop Website</text>
+  <text x="1240" y="42" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="13" font-weight="600"
+        fill="#60A5FA" text-anchor="end">PLACEHOLDER — software design</text>
+  <rect x="0" y="72" width="1280" height="728" fill="#FFFFFF"/>
+<rect x="40" y="104" width="1200" height="96" rx="16" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="72" y="152" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="700" fill="#0F172A" text-anchor="start">E-commerce Thrift Shop — Oldmarketjkt</text>
+  <text x="72" y="180" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="15" font-weight="500" fill="#64748B" text-anchor="start">Rancangan software requirements, struktur sistem, dan antarmuka pengguna.</text>
+  <rect x="40" y="224" width="584" height="128" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="72" y="270" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0F172A" text-anchor="start">Software Requirements</text>
+  <text x="72" y="302" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500" fill="#64748B" text-anchor="start">Kebutuhan fungsional dan non-fungsional sistem</text>
+  <rect x="656" y="224" width="584" height="128" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="688" y="270" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0F172A" text-anchor="start">System Structure</text>
+  <text x="688" y="302" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500" fill="#64748B" text-anchor="start">Struktur modul dan alur aplikasi</text>
+  <rect x="40" y="374" width="584" height="128" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="72" y="420" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0F172A" text-anchor="start">User Interface</text>
+  <text x="72" y="452" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500" fill="#64748B" text-anchor="start">Desain tampilan dan komponen antarmuka</text>
+  <rect x="656" y="374" width="584" height="128" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="688" y="420" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="17" font-weight="700" fill="#0F172A" text-anchor="start">User Flow</text>
+  <text x="688" y="452" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="14" font-weight="500" fill="#64748B" text-anchor="start">Alur pengguna dari katalog hingga transaksi</text>
+</svg>

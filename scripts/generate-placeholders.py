@@ -253,226 +253,95 @@ for i, (k, v) in enumerate(detail):
 files["ump-map.svg"] = scroller("Peta UMP Indonesia", "peta choropleth", "\n  ".join(body))
 
 
-# ------------------------------------------------------------------ carbon dash
-body = [
-    card(40, 104, 1200, 96, PAPER),
-    label(72, 152, "Estimasi Emisi Karbon Penerbangan", 22, 700),
-    label(72, 180, "Ringkasan bulanan berdasarkan data rute dan bandara", 15, 500, MUTED),
-]
-for i, (title, value) in enumerate(
-    [("Total emisi terhitung", "placeholder"), ("Rute aktif", "placeholder"),
-     ("Bandara terdaftar", "placeholder")]
-):
-    x = 40 + i * 408
-    body += [
-        card(x, 224, 384, 128),
-        label(x + 32, 268, title, 14, 500, MUTED),
-        label(x + 32, 316, value, 26, 700, INK),
-    ]
-body += [
-    card(40, 372, 1200, 396),
-    label(72, 412, "Emisi per Bulan (estimasi)", 18, 700),
-    line_chart(72, 448, 1136, 280,
-               [0.30, 0.36, 0.33, 0.44, 0.50, 0.47, 0.56, 0.62, 0.58, 0.66, 0.74, 0.80]),
-    label(72, 744, "Data pada grafik adalah contoh tampilan — angka sebenarnya belum tersedia.", 13, 500, MUTED),
-]
-files["carbon-dashboard.svg"] = scroller(
-    "Carbon Emission Dashboard", "statistik emisi", "\n  ".join(body)
-)
-
-
-# ---------------------------------------------------------------- carbon route
-body = [
-    card(40, 104, 1200, 96, PAPER),
-    label(72, 152, "Peta Rute Penerbangan &amp; Bandara", 22, 700),
-    label(72, 180, "Visualisasi rute dan estimasi emisi per penerbangan", 15, 500, MUTED),
-    card(40, 224, 880, 544),
-    label(72, 264, "Route Map", 18, 700),
-    '<rect x="88" y="292" width="800" height="448" rx="12" fill="#0F172A"/>',
-]
-body += [
-    '<path d="M150,640 q120,-180 250,-140 q140,44 230,-60 q110,-130 240,-90" '
-    f'fill="none" stroke="{ACCENT}" stroke-width="4" stroke-dasharray="10 8"/>',
-    '<path d="M170,420 q180,90 300,40 q160,-70 300,120" fill="none" '
-    'stroke="#60A5FA" stroke-width="3" stroke-dasharray="8 8" opacity="0.8"/>',
-]
-for name, px, py in [
-    ("CGK", 200, 610), ("DPS", 430, 470), ("SUB", 360, 520),
-    ("UPG", 620, 420), ("BPN", 560, 350), ("DJJ", 830, 380),
-]:
-    body += [
-        f'<circle cx="{px}" cy="{py}" r="8" fill="#FFFFFF"/>',
-        f'<circle cx="{px}" cy="{py}" r="16" fill="none" stroke="{ACCENT}" stroke-width="2" opacity="0.6"/>',
-        label(px, py + 30, name, 13, 700, "#E2E8F0", "middle"),
-    ]
-body += [
-    card(952, 224, 288, 544),
-    label(984, 264, "Detail Rute", 18, 700),
-]
-route_detail = [
-    ("Rute", "CGK → DPS"),
-    ("Jarak", "placeholder"),
-    ("Estimasi emisi", "placeholder"),
-    ("Jumlah penerbangan", "placeholder"),
-    ("Status data", "concept"),
-]
-for i, (k, v) in enumerate(route_detail):
-    y = 300 + i * 88
-    body += [
-        card(976, y, 240, 70, PAPER, BORDER, 12),
-        label(996, y + 30, k, 13, 500, MUTED),
-        label(1196, y + 54, v, 15, 700, INK, "end"),
-    ]
-files["carbon-route-map.svg"] = scroller(
-    "Peta Rute Penerbangan", "route &amp; bandara", "\n  ".join(body)
-)
-
-
-# --------------------------------------------------------------------- wifi7
-body = [
-    card(40, 104, 1200, 180, PAPER),
-    label(72, 152, "Wi-Fi 7 Development Analysis in Indonesia", 26, 700),
-    label(72, 190, "PT Telkom Indonesia — Independent Internship, Digital Connectivity Service", 15, 500, MUTED),
-    label(72, 250, "Komparasi generasi Wi-Fi", 15, 600, ACCENT),
-    card(1020, 132, 188, 44, INK, INK, 10),
-    label(1114, 160, "Riset 2025", 14, 600, "#FFFFFF", "middle"),
-
-    card(40, 308, 1200, 212),
-    label(72, 348, "Perbandingan Wi-Fi 6 / 6E / 7", 18, 700),
-]
-gens = [("Wi-Fi 6", 0.45), ("Wi-Fi 6E", 0.68), ("Wi-Fi 7", 0.92)]
-for i, (name, v) in enumerate(gens):
-    x = 72 + i * 384
-    body += [
-        card(x, 372, 344, 116, PAPER, BORDER, 12),
-        label(x + 24, 410, name, 17, 700),
-        f'<rect x="{x + 24}" y="{444}" width="296" height="14" rx="7" fill="#E2E8F0"/>',
-        f'<rect x="{x + 24}" y="{444}" width="{296 * v:.0f}" height="14" rx="7" fill="{ACCENT}"/>',
-        label(x + 24, 480, "Kapasitas &amp; latensi (ilustrasi kualitatif)", 12, 500, MUTED),
-    ]
-body += [
-    card(40, 544, 592, 224),
-    label(72, 584, "Fokus Riset", 18, 700),
-]
-for i, txt in enumerate(
-    ["Karakteristik teknis Wi-Fi 7 (MLO, 320 MHz, 4K-QAM)",
-     "Kebutuhan jaringan nirkabel enterprise",
-     "Eksplorasi teknologi IoT",
-     "Kesiapan infrastruktur di Indonesia"]
-):
-    body += [
-        f'<circle cx="80" cy="{622 + i * 40}" r="4" fill="{ACCENT}"/>',
-        label(96, 627 + i * 40, txt, 14, 500, SLATE),
-    ]
-body += [
-    card(656, 544, 584, 224),
-    label(688, 584, "Kesiapan Implementasi", 18, 700),
-    label(688, 636, "Perangkat &amp; klien", 15, 500, MUTED),
-    label(1208, 636, "Analisis", 15, 700, INK, "end"),
-    label(688, 686, "Infrastruktur operator", 15, 500, MUTED),
-    label(1208, 686, "Analisis", 15, 700, INK, "end"),
-    label(688, 736, "Tantangan adopsi", 15, 500, MUTED),
-    label(1208, 736, "Analisis", 15, 700, INK, "end"),
-]
-files["wifi7-research.svg"] = scroller(
-    "Riset Wi-Fi 7", "ringkasan penelitian", "\n  ".join(body)
-)
-
-
-# ---------------------------------------------------------------- telkom web
-body = [
-    '<rect x="0" y="72" width="248" height="728" fill="#1E293B"/>',
-    f'<rect x="28" y="112" width="36" height="36" rx="10" fill="{ACCENT}"/>',
-    label(80, 138, "Work Progress", 15, 700, "#FFFFFF"),
-]
-for i, item in enumerate(["Dashboard", "Daftar Pekerjaan", "Progress", "Laporan", "Pengguna"]):
-    y = 200 + i * 56
-    active = i == 1
-    if active:
-        body.append(f'<rect x="20" y="{y - 20}" width="208" height="40" rx="10" fill="{ACCENT}"/>')
-    body.append(
-        label(44, y + 6, item, 14, 600 if active else 500,
-              "#FFFFFF" if active else "#94A3B8")
-    )
-body += [
-    label(288, 140, "Daftar Pekerjaan", 24, 700),
-    label(288, 170, "Ringkasan progres pekerjaan per unit", 14, 500, MUTED),
-    card(288, 196, 400, 44, "#FFFFFF", BORDER, 10),
-    label(308, 224, "Cari pekerjaan…", 14, 500, MUTED),
-    card(1104, 196, 136, 44, ACCENT, ACCENT, 10),
-    label(1172, 224, "+ Tambah", 14, 600, "#FFFFFF", "middle"),
-]
-rows = [
-    ("Penyusunan laporan bulanan", "Selesai", "#10B981", "Admin TI"),
-    ("Pemeliharaan basis data", "Berjalan", "#2563EB", "Operator"),
-    ("Dokumentasi prosedur kerja", "Berjalan", "#2563EB", "Admin TI"),
-    ("Pembaruan dashboard operasi", "Review", "#F59E0B", "Tim Data"),
-    ("Verifikasi data bandara", "Selesai", "#10B981", "Operator"),
-]
-for i, (task, status, color, owner) in enumerate(rows):
-    y = 272 + i * 84
-    body += [
-        card(288, y, 952, 68, "#FFFFFF", BORDER, 12),
-        label(312, y + 42, task, 15, 600, INK),
-        label(860, y + 42, owner, 14, 500, MUTED, "end"),
-        f'<rect x="916" y="{y + 20}" width="118" height="30" rx="15" fill="{color}" opacity="0.14"/>',
-        label(975, y + 40, status, 13, 700, color, "middle"),
-    ]
-body += [
-    card(288, 700, 952, 68, PAPER, BORDER, 12),
-    label(312, 742, "Catatan: nama pekerjaan dan status adalah contoh tampilan.", 13, 500, MUTED),
-]
-files["telkom-web.svg"] = scroller(
-    "Website Work Progress Telkom", "daftar progres", "\n  ".join(body)
-)
-
-
-# ---------------------------------------------------------------- telkom figma
-body = [
-    '<rect x="0" y="72" width="1200" height="60" fill="#EFF6FF"/>',
-    label(40, 112, "Figma — Website Work Progress", 16, 700, INK),
-    label(1160, 112, "Wireframe / UI Design", 14, 600, ACCENT, "end"),
-    card(40, 156, 1160, 604, "#F1F5F9", BORDER, 16),
-    f'<text x="620" y="196" font-family="{FONT}" font-size="14" font-weight="600" fill="{MUTED}" text-anchor="middle">Frame: Desktop 1440 — Work Progress Website</text>',
-]
-# wireframe artboards
-body += [
-    card(88, 224, 1064, 64, "#FFFFFF", "#CBD5E1", 10),
-    label(112, 262, "Navbar — logo · menu · user", 13, 500, MUTED),
-    f'<rect x="1088" y="240" width="44" height="32" rx="8" fill="{ACCENT}" opacity="0.2"/>',
-    card(88, 304, 296, 264, "#FFFFFF", "#CBD5E1", 10),
-    label(112, 340, "Sidebar", 13, 600, SLATE),
-]
-for i in range(4):
-    body.append(
-        f'<rect x="112" y="{360 + i * 42}" width="248" height="24" rx="6" fill="#E2E8F0"/>'
-    )
-body += [card(400, 304, 752, 264, "#FFFFFF", "#CBD5E1", 10), label(424, 340, "Dashboard", 13, 600, SLATE)]
-for i, h in enumerate([0.45, 0.62, 0.5]):
-    body.append(
-        f'<rect x="{448 + i * 232}" y="{440 - 100 * h:.0f}" width="184" '
-        f'height="{100 * h:.0f}" rx="8" fill="{ACCENT}" opacity="{0.18 + i * 0.16:.2f}"/>'
-    )
-body += [
-    card(88, 588, 1064, 148, "#FFFFFF", "#CBD5E1", 10),
-    label(112, 624, "Tabel Pekerjaan — kolom: pekerjaan · PIC · status · deadline", 13, 600, SLATE),
-]
-for i in range(3):
-    body.append(
-        f'<rect x="112" y="{642 + i * 28}" width="1016" height="16" rx="6" fill="#E2E8F0"/>'
-    )
-body += [
-    f'<text x="620" y="780" font-family="{FONT}" font-size="13" font-weight="500" fill="{MUTED}" text-anchor="middle">Placeholder wireframe — ganti dengan ekspor PNG/JPG dari Figma.</text>',
-]
-files["telkom-figma.svg"] = scroller(
-    "Wireframe Figma Telkom", "UI/UX design", "\n  ".join(body)
-)
-
-
 # --------------------------------------------------------------------------- write
 out_dir = os.path.join(os.path.dirname(OUT), "public", "projects")
 out_dir = os.path.normpath(out_dir)
 os.makedirs(out_dir, exist_ok=True)
+
+# --------------------------------------------------------------- generic shot
+def generic_placeholder(
+    filename: str,
+    page_title: str,
+    subtitle: str,
+    heading: str,
+    note: str,
+    cards: list[tuple[str, str]],
+) -> str:
+    """Neutral wireframe placeholder for projects without a bespoke mockup."""
+    body = [
+        card(40, 104, 1200, 96, PAPER),
+        label(72, 152, heading, 22, 700),
+        label(72, 180, note, 15, 500, MUTED),
+    ]
+    per_row = 2 if len(cards) > 2 else 1
+    width = 1200 if per_row == 1 else 584
+    for i, (title, desc) in enumerate(cards):
+        row, col = divmod(i, per_row)
+        x = 40 + col * 616
+        y = 224 + row * 150
+        body += [
+            card(x, y, width, 128, PAPER if i % 2 else "#FFFFFF", BORDER, 12),
+            label(x + 32, y + 46, title, 17, 700),
+            label(x + 32, y + 78, desc, 14, 500, MUTED),
+        ]
+    return scroller(page_title, subtitle, "\n  ".join(body))
+
+
+files["thrift-website.svg"] = generic_placeholder(
+    "thrift-website.svg",
+    "Oldmarketjkt Thrift Shop Website",
+    "software design",
+    "E-commerce Thrift Shop — Oldmarketjkt",
+    "Rancangan software requirements, struktur sistem, dan antarmuka pengguna.",
+    [
+        ("Software Requirements", "Kebutuhan fungsional dan non-fungsional sistem"),
+        ("System Structure", "Struktur modul dan alur aplikasi"),
+        ("User Interface", "Desain tampilan dan komponen antarmuka"),
+        ("User Flow", "Alur pengguna dari katalog hingga transaksi"),
+    ],
+)
+
+files["streamlit-ump.svg"] = generic_placeholder(
+    "streamlit-ump.svg",
+    "Streamlit UMP Dashboard",
+    "dashboard streamlit",
+    "Dashboard UMP Indonesia — Streamlit",
+    "Visualisasi tren upah minimum provinsi 1997–2025.",
+    [
+        ("Trend Line Chart", "Tren UMP per provinsi dari tahun ke tahun"),
+        ("Bar Chart Comparison", "Perbandingan UMP antar provinsi"),
+        ("Data Preprocessing", "Pembersihan dan penyiapan data dengan Pandas"),
+        ("Interactive Filter", "Pemilihan provinsi dan rentang tahun"),
+    ],
+)
+
+files["shoes-store-web.svg"] = generic_placeholder(
+    "shoes-store-web.svg",
+    "Online Shoes Store Website",
+    "php + bootstrap",
+    "E-commerce Online Shoes Store",
+    "Website toko sepatu online berbasis PHP, SQL, dan Bootstrap.",
+    [
+        ("Navigation Structure", "Struktur navigasi untuk user flow dan aksesibilitas"),
+        ("Responsive Navbar", "Navigation bar responsif dengan Bootstrap"),
+        ("Wireframe", "Acuan tata letak dan struktur antarmuka"),
+        ("Interactive Prototype", "Demonstrasi alur dan interaksi antarmuka"),
+    ],
+)
+
+files["hand-gesture-ml.svg"] = generic_placeholder(
+    "hand-gesture-ml.svg",
+    "Hand Gesture Classification (ML)",
+    "machine learning",
+    "Klasifikasi Gestur Tangan — Rock, Paper, Scissors",
+    "Alur machine learning dari gambar input hingga prediksi kelas.",
+    [
+        ("Image Preprocessing", "Persiapan dan pembersihan data gambar gestur"),
+        ("Model Training", "Pelatihan model klasifikasi tiga kelas"),
+        ("Model Evaluation", "Penilaian performa klasifikasi dan akurasi"),
+        ("Prediction Workflow", "Alur prediksi dari gambar input"),
+    ],
+)
 
 for name, svg in files.items():
     path = os.path.join(out_dir, name)

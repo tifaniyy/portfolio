@@ -1,15 +1,16 @@
 /**
- * Projects data.
+ * Projects data — taken from the CV "Experiences" section (every entry marked
+ * "Project" / "Software Designer Project"). The Telkom internship lives in
+ * `experience.ts`, so it is not duplicated here.
  * ---------------------------------------------------------------
  * EDIT THIS FILE to update projects, links and screenshots.
  *
- *  - `demo`      : null  -> button renders as "Demo (Segera)" placeholder
+ *  - `demo`      : null  -> button renders as "Live Demo (segera)"
  *                  "https://..." -> real link, button becomes clickable
  *  - `github`    : repository URL, or null if there is none yet
  *  - `screenshots`: files placed in /public/projects. Replace the generated
- *                  SVG placeholders with real PNG/JPG captures of the same
- *                  aspect ratio (16:10) and keep the file names or update
- *                  the paths here.
+ *                  SVG placeholders with real PNG/JPG captures and keep the
+ *                  file names, or update the paths here.
  * ---------------------------------------------------------------
  */
 
@@ -25,6 +26,7 @@ export type Project = {
   subtitle?: string;
   organization?: string;
   year: string;
+  period: string;
   category: "Data & Web" | "Data Visualization" | "Research" | "Web Development";
   summary: string;
   description: string;
@@ -42,36 +44,39 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "ump-indonesia-dashboard",
+    slug: "ump-kmeans-flask",
     title:
-      "Visualisasi Data Upah Minimum Provinsi (UMP) di Indonesia Tahun 1997–2026",
-    subtitle: "Dashboard interaktif tren UMP 38 provinsi",
+      "Visualisation of Provincial Minimum Wage Data in Indonesia for 1997–2026 Using a Web Based K-Means Algorithm",
+    subtitle: "Dashboard Flask dengan clustering K-Means",
     year: "2026",
+    period: "May 2026 – Aug 2026",
     category: "Data & Web",
     summary:
-      "Web-based dashboard for visualizing Indonesian provincial minimum wage trends from 1997–2026 using K-Means clustering.",
+      "Web-based dashboard for visualising Indonesian provincial minimum wage trends from 1997–2026 using K-Means clustering.",
     description:
-      "Dashboard berbasis web untuk memvisualisasikan tren Upah Minimum Provinsi (UMP) di Indonesia dari tahun 1997 hingga 2026. Data diolah dengan Pandas dan NumPy, dianalisis menggunakan K-Means clustering untuk mengelompokkan provinsi berdasarkan pola upah, lalu disajikan dalam grafik interaktif dan peta.",
+      "Preprocessed and analyzed Provincial Minimum Wage (UMP) data in Indonesia covering 1997–2026. Implemented K-Means clustering using Scikit-learn to group provinces based on minimum wage characteristics. Created data visualizations using Pandas, Matplotlib, and GeoPandas to illustrate wage trends and clustering results. Developed a web based data visualization application using Flask to present analytical results through an interactive interface, and deployed it on Railway so the project is accessible online.",
     problem:
-      "Data UMP Indonesia tersedia dalam bentuk berkas dan tabel yang panjang (1997–2026 untuk seluruh provinsi). Bentuk ini sulit dibaca secara cepat, sehingga tren kenaikan upah, provinsi dengan upah tertinggi, dan pola pengelompokan provinsi tidak terlihat secara langsung.",
+      "Data UMP Indonesia mencakup 1997–2026 untuk seluruh provinsi dalam bentuk tabel panjang. Bentuk ini sulit dibaca cepat, sehingga tren kenaikan upah, provinsi dengan upah tertinggi, dan pengelompokan provinsi berdasarkan karakteristik upah tidak terlihat langsung.",
     solution:
-      "Membangun dashboard Flask yang memproses data UMP secara otomatis dengan Pandas, menghitung statistik dan klaster K-Means, kemudian menampilkan hasilnya sebagai grafik interaktif, tabel Top 10 provinsi, kategori distribusi upah, dan visualisasi peta sehingga pola data dapat dibaca dalam hitungan detik.",
+      "Membangun aplikasi visualisasi berbasis Flask: data UMP diproses dengan Pandas, dikelompokkan memakai K-Means (Scikit-learn), lalu divisualisasikan dengan Matplotlib dan GeoPandas menjadi grafik tren, hasil clustering, serta peta. Aplikasi di-deploy ke Railway agar bisa diakses online.",
     tech: [
       "Python",
       "Flask",
       "Pandas",
       "NumPy",
       "Matplotlib",
+      "GeoPandas",
       "Scikit-learn",
-      "K-Means",
+      "K-Means Clustering",
+      "Railway",
     ],
     features: [
-      "Trend visualization",
-      "Top 10 provinces",
-      "Distribution categories",
-      "K-Means clustering",
-      "Interactive data visualization",
-      "Map visualization",
+      "Preprocessing data UMP 1997–2026",
+      "K-Means clustering provinsi",
+      "Visualisasi tren upah (line & bar chart)",
+      "Peta sebaran UMP dengan GeoPandas",
+      "Antarmuka web interaktif",
+      "Deployed on Railway",
     ],
     github: "https://github.com/tifaniyy/ump-flask",
     demo: null,
@@ -89,126 +94,146 @@ export const projects: Project[] = [
       {
         src: "/projects/ump-map.svg",
         alt: "Placeholder peta visualisasi UMP Indonesia",
-        caption: "Visualisasi peta sebaran UMP",
+        caption: "Visualisasi peta sebaran UMP (GeoPandas)",
       },
     ],
     featured: true,
   },
   {
-    slug: "carbon-emission-airplane-dashboard",
-    title: "Carbon Emission Airplane Dashboard — Indonesia",
-    subtitle: "Estimasi emisi karbon dan rute penerbangan",
-    organization: "Perum LPPNPI (AirNav Indonesia)",
+    slug: "oldmarketjkt-thrift-website",
+    title: "E-commerce Thrift Shop (Oldmarketjkt) Website",
+    subtitle: "Software Designer untuk website e-commerce",
     year: "2026",
-    category: "Data Visualization",
+    period: "Oct 2025 – Jan 2026",
+    category: "Web Development",
     summary:
-      "Web-based dashboard concept for visualizing estimated aircraft carbon emissions and flight routes in Indonesia.",
+      "Served as a Software Designer for the Oldmarketjkt web based e-commerce project.",
     description:
-      "Konsep dashboard berbasis web untuk memvisualisasikan estimasi emisi karbon pesawat dan rute penerbangan di Indonesia. Dashboard menggabungkan data bandara, rute, dan estimasi emisi ke dalam satu tampilan yang dilengkapi statistik ringkas serta manajemen data.",
+      "Served as a Software Designer for the Oldmarketjkt web based e-commerce project. Designed software requirements, system structure, and user interfaces to support application development.",
     problem:
-      "Informasi mengenai emisi karbon penerbangan di Indonesia masih tersebar dan belum tersaji dalam satu tampilan visual. Data rute dan bandara sulit dihubungkan ke estimasi emisi tanpa pengolahan manual.",
+      "Project e-commerce thrift shop membutuhkan fondasi rancangan yang jelas sebelum masuk ke tahap pengembangan: kebutuhan sistem, struktur aplikasi, dan tampilan antarmuka belum terdefinisi, sehingga berisiko menimbulkan perubahan besar di tengah pengerjaan.",
     solution:
-      "Mengembangkan konsep dashboard dengan Flask dan PostgreSQL yang menyimpan data bandara dan rute, menghitung estimasi emisi karbon per rute, lalu menampilkan hasilnya melalui peta rute, grafik statistik, dan panel manajemen data dengan autentikasi pengguna.",
-    tech: [
-      "Python",
-      "Flask",
-      "PostgreSQL",
-      "Data Visualization",
-      "Map Visualization",
-    ],
+      "Berperan sebagai Software Designer: menyusun kebutuhan software, merancang struktur sistem, dan mendesain antarmuka pengguna sebagai acuan tim pengembang.",
+    tech: ["Software Design", "UI/UX Design", "Figma", "System Design"],
     features: [
-      "Aircraft route visualization",
-      "Airport data",
-      "Carbon emission estimation",
-      "Dashboard statistics",
-      "Data management",
-      "User authentication",
-    ],
-    github: "https://github.com/tifaniyy/dashboard-emisi-karbon",
-    demo: null,
-    screenshots: [
-      {
-        src: "/projects/carbon-dashboard.svg",
-        alt: "Placeholder dashboard statistik emisi karbon pesawat",
-        caption: "Panel statistik emisi karbon",
-      },
-      {
-        src: "/projects/carbon-route-map.svg",
-        alt: "Placeholder peta rute penerbangan Indonesia",
-        caption: "Peta rute penerbangan dan bandara",
-      },
-    ],
-    featured: true,
-  },
-  {
-    slug: "wifi-7-development-analysis",
-    title: "Wi-Fi 7 Development Analysis in Indonesia",
-    subtitle: "Riset teknologi dan kesiapan implementasi",
-    organization: "PT Telkom Indonesia",
-    year: "2025",
-    category: "Research",
-    summary:
-      "Research project exploring Wi-Fi 7 technology, enterprise wireless networking, and its potential implementation in Indonesia.",
-    description:
-      "Project riset yang mengeksplorasi teknologi Wi-Fi 7, jaringan nirkabel enterprise, serta potensi implementasinya di Indonesia. Hasil riset dirangkum dalam analisis komparatif dan materi presentasi yang didukung oleh desain UI/UX untuk penyampaian temuannya.",
-    problem:
-      "Teknologi Wi-Fi 7 belum banyak dibahas dalam konteks kesiapan infrastruktur dan kebutuhan industri di Indonesia, sehingga belum ada gambaran yang jelas mengenai peluang, tantangan, dan tahapan adopsinya.",
-    solution:
-      "Melakukan studi literatur dan komparasi spesifikasi Wi-Fi 7 terhadap generasi sebelumnya, memetakan kebutuhan jaringan nirkabel enterprise, lalu menyusun analisis kesiapan implementasi di Indonesia beserta materi presentasi yang mudah dipahami.",
-    tech: ["Research", "Data Analysis", "UI/UX", "Figma"],
-    features: [
-      "Studi literatur Wi-Fi 7",
-      "Komparasi Wi-Fi 6 / 6E / 7",
-      "Analisis kebutuhan jaringan enterprise",
-      "Eksplorasi teknologi IoT",
-      "Materi presentasi dan visual pendukung",
+      "Perancangan software requirements",
+      "Perancangan struktur sistem",
+      "Desain antarmuka pengguna (UI)",
+      "Dokumentasi acuan pengembangan",
     ],
     github: null,
     demo: null,
     screenshots: [
       {
-        src: "/projects/wifi7-research.svg",
-        alt: "Placeholder ringkasan hasil riset Wi-Fi 7",
-        caption: "Ringkasan temuan riset Wi-Fi 7",
+        src: "/projects/thrift-website.svg",
+        alt: "Placeholder rancangan antarmuka website thrift shop Oldmarketjkt",
+        caption: "Rancangan antarmuka website e-commerce",
+      },
+    ],
+    featured: true,
+  },
+  {
+    slug: "ump-streamlit-dashboard",
+    title: "Dashboard to Display UMP (Provincial Minimum Wage) Data in Indonesia",
+    subtitle: "Dashboard interaktif dengan Streamlit",
+    year: "2025",
+    period: "Jun 2025 – Aug 2025",
+    category: "Data Visualization",
+    summary:
+      "Web-based Streamlit dashboard presenting Indonesian provincial minimum wage insights in an interactive, user-friendly format.",
+    description:
+      "Performed data preprocessing and analysis of Indonesian Provincial Minimum Wage (UMP) data using Python and Pandas. Created line and bar chart visualizations using Matplotlib to analyze UMP trends across provinces from 1997–2025. Developed a web based dashboard using Streamlit to present data insights in an interactive and user friendly format.",
+    problem:
+      "Analisis tren UMP 1997–2025 hanya tersedia dalam bentuk hasil olahan yang tidak interaktif, sehingga pengguna non-teknis sulit menelusuri tren per provinsi secara mandiri.",
+    solution:
+      "Membangun dashboard Streamlit: data dibersihkan dan dianalisis dengan Pandas, divisualisasikan sebagai line chart dan bar chart dengan Matplotlib, lalu disajikan melalui antarmuka web yang interaktif dan mudah dipakai.",
+    tech: ["Python", "Pandas", "Matplotlib", "Streamlit", "Data Cleaning"],
+    features: [
+      "Data preprocessing & cleaning dengan Pandas",
+      "Line chart tren UMP per provinsi (1997–2025)",
+      "Bar chart perbandingan antar provinsi",
+      "Dashboard web interaktif dengan Streamlit",
+    ],
+    github: null,
+    demo: null,
+    screenshots: [
+      {
+        src: "/projects/streamlit-ump.svg",
+        alt: "Placeholder dashboard Streamlit data UMP Indonesia",
+        caption: "Dashboard Streamlit — tren UMP antar provinsi",
       },
     ],
     featured: false,
   },
   {
-    slug: "website-telkom-work-progress",
-    title: "Website Telkom — Work Progress",
-    subtitle: "Konsep website internal pelaporan progres kerja",
-    organization: "PT Telkom Indonesia",
+    slug: "online-shoes-store-website",
+    title: "E-commerce (Online Shoes Store) Website",
+    subtitle: "Dikembangkan secara lokal dengan PHP, SQL & Bootstrap",
     year: "2025",
+    period: "Dec 2024 – Jan 2025",
     category: "Web Development",
     summary:
-      "Web-based internal work progress website concept developed to improve information presentation and navigation.",
+      "Web-based online shoes store developed locally using PHP, SQL and Bootstrap, focused on navigation flow and accessibility.",
     description:
-      "Konsep website internal untuk menampilkan progres pekerjaan. Dibuat dengan PHP dan MySQL, dirancang lebih dulu di Figma agar penyajian informasi lebih rapi dan navigasinya lebih mudah bagi pengguna internal.",
+      "Designed the website navigation structure to improve user flow and accessibility. Designed and implemented a responsive navigation bar using Bootstrap. Created wireframes to define the website layout and user interface structure. Built an interactive prototype to demonstrate user flows and interface interactions.",
     problem:
-      "Penyampaian progres pekerjaan masih menggunakan media yang kurang terstruktur, sehingga status tiap pekerjaan sulit dipantau dan informasi sering terlewat.",
+      "Navigasi website toko sepatu online perlu dibuat lebih mudah dipahami: alur pengguna belum jelas, dan tampilan belum responsif saat dibuka di berbagai ukuran layar.",
     solution:
-      "Merancang ulang struktur informasi dan navigasi lewat wireframe Figma, kemudian mengimplementasikannya sebagai website internal dengan PHP dan MySQL yang menampilkan daftar pekerjaan, status, dan detail progres secara terpusat.",
-    tech: ["PHP", "Bootstrap", "MySQL", "Figma"],
+      "Merancang struktur navigasi untuk memperbaiki user flow dan aksesibilitas, membuat wireframe sebagai acuan tata letak, membangun navigation bar responsif dengan Bootstrap, serta membuat prototipe interaktif untuk mendemonstrasikan alur dan interaksi antarmuka.",
+    tech: ["PHP", "SQL", "Bootstrap", "HTML", "CSS", "Figma"],
     features: [
-      "Perancangan wireframe di Figma",
-      "Halaman daftar pekerjaan",
-      "Status dan detail progres",
-      "Pencarian dan navigasi data",
-      "Tampilan responsif",
+      "Perancangan struktur navigasi website",
+      "Navigation bar responsif dengan Bootstrap",
+      "Wireframe tata letak & struktur antarmuka",
+      "Prototipe interaktif alur pengguna",
+      "Pengembangan lokal dengan PHP dan SQL",
     ],
     github: null,
     demo: null,
     screenshots: [
       {
-        src: "/projects/telkom-web.svg",
-        alt: "Placeholder tampilan website work progress Telkom",
-        caption: "Tampilan halaman daftar progres pekerjaan",
+        src: "/projects/shoes-store-web.svg",
+        alt: "Placeholder tampilan website toko sepatu online",
+        caption: "Tampilan halaman website toko sepatu online",
       },
+    ],
+    featured: false,
+  },
+  {
+    slug: "hand-gesture-classification",
+    title: "Machine Learning-Based Classification of Hand Gestures: Rock, Paper, and Scissors",
+    subtitle: "Klasifikasi gambar dengan machine learning",
+    year: "2024",
+    period: "Sep 2024 – Oct 2024",
+    category: "Data Visualization",
+    summary:
+      "Machine learning project classifying hand gesture images into three categories: Rock, Paper, and Scissors.",
+    description:
+      "Prepared and preprocessed hand gesture image data for machine learning classification. Trained a machine learning model to classify hand gestures into three categories: Rock, Paper, and Scissors. Performed model evaluation to assess classification performance and prediction accuracy. Developed a classification workflow for predicting hand gestures from input images.",
+    problem:
+      "Gambar gestur tangan perlu dikenali secara otomatis ke dalam tiga kelas (Rock, Paper, Scissors), dan model yang dilatih harus bisa diukur seberapa akurat prediksinya.",
+    solution:
+      "Menyiapkan dan memproses data gambar gestur tangan, melatih model machine learning untuk tiga kelas, lalu melakukan evaluasi model guna menilai performa klasifikasi dan akurasi prediksi. Alur klasifikasi disusun agar gambar input dapat langsung diprediksi.",
+    tech: [
+      "Python",
+      "Machine Learning",
+      "Image Preprocessing",
+      "Model Evaluation",
+      "Classification",
+    ],
+    features: [
+      "Persiapan & preprocessing data gambar",
+      "Pelatihan model klasifikasi 3 kelas",
+      "Evaluasi performa & akurasi prediksi",
+      "Alur prediksi dari gambar input",
+    ],
+    github: null,
+    demo: null,
+    screenshots: [
       {
-        src: "/projects/telkom-figma.svg",
-        alt: "Placeholder rancangan wireframe Figma",
-        caption: "Wireframe dan struktur navigasi (Figma)",
+        src: "/projects/hand-gesture-ml.svg",
+        alt: "Placeholder alur klasifikasi gestur tangan Rock Paper Scissors",
+        caption: "Alur klasifikasi gestur tangan",
       },
     ],
     featured: false,

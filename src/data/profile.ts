@@ -1,8 +1,8 @@
 /**
  * Central profile data.
  * ---------------------------------------------------------------
- * EDIT THIS FILE to replace placeholder personal information.
- * Every value marked "TODO" is a placeholder — replace it with your own.
+ * EDIT THIS FILE to replace personal information.
+ * Content below mirrors `public/cv.pdf` (Tifani Yunitami — resume).
  * ---------------------------------------------------------------
  */
 
@@ -15,65 +15,68 @@ export const profile = {
   summary:
     "Fresh graduate in Informatics with an interest in data analysis, data processing, visualization, and web development.",
   about: [
-    "Saya adalah fresh graduate S1 Informatika Universitas Gunadarma dengan minat pada data processing, data analysis, visualization, dan web development.",
-    "Saya memiliki pengalaman mengembangkan project berbasis Python, SQL, data visualization, machine learning, serta pengembangan aplikasi web. Fokus saya adalah mengubah data mentah menjadi informasi yang rapi, mudah dibaca, dan bisa dipakai untuk mengambil keputusan.",
+    "I am a fresh graduate with a Bachelor's degree in Informatics from Gunadarma University, with an interest in data processing and analysis.",
+    "During my studies, I learnt and used Python and SQL to process and analyse data, utilising libraries such as Pandas and NumPy. I also have experience in creating data visualisations and applying machine learning algorithms, particularly K-Means clustering, through various academic and personal projects.",
+    "I am keen to continue learning and developing my skills in the field of data, and to gain experience in applying these skills in the workplace.",
   ],
 
-  /** TODO: replace with your real email address (placeholder, not a real account). */
-  email: "your.email@example.com",
-  /** TODO: replace with your real LinkedIn profile URL (placeholder, not a real profile). */
-  linkedin: "https://www.linkedin.com/in/your-linkedin-profile",
-  /** TODO: replace with your real GitHub URL if it changes. */
+  email: "tifaniyunitami1@gmail.com",
+  phoneDisplay: "085817250054",
+  phoneHref: "+6285817250054",
+  linkedin: "https://www.linkedin.com/in/tifaniyunitami/",
   github: "https://github.com/tifaniyy",
+  location: "Kota Tangerang, Indonesia",
 
-  /** TODO: replace /public/cv.pdf with your real CV, keep the same file name. */
+  /** Replace public/cv.pdf whenever the CV is updated (keep the file name). */
   cvUrl: "/cv.pdf",
-  location: "Indonesia",
 };
 
 export const education = [
   {
-    degree: "Bachelor's Degree in Informatics",
+    degree: "Bachelor of Informatics",
     school: "Universitas Gunadarma",
+    location: "Jakarta, Indonesia",
+    period: "Sep 2022 – Aug 2026",
     level: "S1 Informatika",
+    /** GPA as stated on the CV. */
+    grade: "3.86 / 4.00",
     status: "Fresh Graduate",
     description:
-      "Menempuh studi S1 Informatika dengan fokus pada pemrograman, basis data, analisis data, visualisasi data, machine learning dasar, serta pengembangan aplikasi web.",
+      "Actively involved in major student organizations, developing leadership and teamwork skills. Contributed to several application and website development projects.",
     highlights: [
+      "GPA 3.86 / 4.00",
       "Data Analysis & Data Processing",
       "Database (SQL) & Basis Data",
-      "Web Development",
-      "Machine Learning Dasar",
+      "Web Development & Machine Learning",
     ],
   },
 ];
 
 /**
  * About-section statistics.
- * No numbers are invented here: each card shows a label plus a short,
- * verifiable descriptor. Add a value only if you have the real figure
- * (e.g. value: "4" for four data projects) — otherwise keep it text-only.
+ * Counts below are derived from the CV only — 6 projects and 1 internship
+ * are listed there. Update them if the CV changes.
  */
 export const stats = [
   {
     icon: "GraduationCap",
-    label: "Informatics Graduate",
-    description: "S1 Informatika, Universitas Gunadarma",
+    label: "Bachelor of Informatics",
+    description: "Universitas Gunadarma · GPA 3.86 / 4.00",
   },
   {
     icon: "LineChart",
-    label: "Data Projects",
-    description: "Python, SQL, visualisasi & clustering",
+    label: "Data & Analysis Projects",
+    description: "UMP dashboard, K-Means clustering, Streamlit",
   },
   {
     icon: "Code2",
-    label: "Web Projects",
-    description: "Flask, Next.js, Tailwind CSS",
+    label: "Web Design & Development",
+    description: "Flask, PHP, Bootstrap, Figma, UI/UX",
   },
   {
     icon: "Briefcase",
     label: "Internship Experience",
-    description: "PT Telkom Indonesia — Digital Connectivity Service",
+    description: "PT Telekomunikasi Indonesia (Telkom Witel)",
   },
 ] as const;
 
@@ -83,9 +86,40 @@ export const interests = [
   "Python",
   "SQL",
   "Data Visualization",
+  "Machine Learning",
   "Web Development",
-  "UI/UX",
-  "Machine Learning Dasar",
+  "UI/UX Design",
+];
+
+/** Organizational experience — shown inside the About section. */
+export const organizations = [
+  {
+    organization: "Himpunan Mahasiswa Teknik Informatika Universitas Gunadarma",
+    role: "Member of Public Relations",
+    location: "Depok, Indonesia",
+    period: "Sep 2023 – Jul 2024",
+    points: [
+      "Social media admin responsible for creating, uploading, and managing content posting schedules.",
+      "Building interactions with the public.",
+      "Conveying the aspirations of the major community.",
+    ],
+  },
+  {
+    organization: "PEMIRA BEM FTI",
+    role: "Head of Public Relations Division",
+    location: "Depok, Indonesia",
+    period: "Aug 2023 – Sep 2023",
+    points: ["Developing a communication strategy.", "Managing media and information."],
+  },
+];
+
+/** Extra soft skills listed on the CV. */
+export const softSkills = [
+  "Responsibility",
+  "Communication",
+  "Team Work",
+  "Problem Solving",
+  "Discipline",
 ];
 
 export const navLinks = [

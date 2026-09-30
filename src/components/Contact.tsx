@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Mail, MapPin } from "lucide-react";
+import { Check, Copy, Mail, MapPin, Phone } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { profile } from "@/data/profile";
 import { SectionHeading } from "./SectionHeading";
@@ -28,6 +28,13 @@ export function Contact() {
       href: `mailto:${profile.email}`,
       icon: Mail,
       external: false,
+    },
+    {
+      label: "WhatsApp",
+      value: profile.phoneDisplay,
+      href: `https://wa.me/${profile.phoneHref.replace(/^\+/, "")}`,
+      icon: Phone,
+      external: true,
     },
     {
       label: "LinkedIn",
@@ -139,10 +146,11 @@ export function Contact() {
               })}
 
               <p className="rounded-xl border border-dashed border-border bg-white/70 px-4 py-3 text-xs leading-relaxed text-muted">
-                Catatan: alamat <strong>email</strong> dan <strong>LinkedIn</strong>{" "}
-                di atas masih berupa placeholder. Ganti keduanya di{" "}
-                <code className="text-secondary">src/data/profile.ts</code> sebelum
-                website dipublikasikan.
+                Data kontak di atas diambil dari CV. Untuk mengubahnya, edit{" "}
+                <code className="text-secondary">src/data/profile.ts</code> →{" "}
+                <code className="text-secondary">profile.email</code>,{" "}
+                <code className="text-secondary">profile.phoneDisplay</code>,{" "}
+                <code className="text-secondary">profile.linkedin</code>.
               </p>
             </div>
           </Reveal>
