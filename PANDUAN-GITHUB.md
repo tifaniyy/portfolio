@@ -117,12 +117,15 @@ menampilkan data palsu:
 
 | Yang masih placeholder | File |
 | --- | --- |
-| Email (`your.email@example.com`) | `src/data/profile.ts` → `profile.email` |
-| LinkedIn (`.../your-linkedin-profile`) | `src/data/profile.ts` → `profile.linkedin` |
-| CV (PDF placeholder) | ganti file `public/cv.pdf` |
+| CV (PDF asli sudah terpasang) | `public/cv.pdf` — ganti bila CV diperbarui |
 | URL Live Demo semua project (masih `null`) | `src/data/projects.ts` → `demo` |
-| 8 screenshot placeholder | ganti file di `public/projects/` |
+| 7 screenshot placeholder | ganti file di `public/projects/` |
 | Judul & meta description (kalau perlu) | `src/app/layout.tsx` |
+
+Catatan: project UMP pernah di-deploy di Railway, tapi instance gratisnya sudah
+berakhir. Di modal detail sudah ada penjelasan otomatis
+(`src/data/projects.ts` → `deploymentNote`). Kalau nanti di-deploy lagi (Railway,
+Render, Fly.io, dsb.), cukup isi URL-nya di `demo` dan hapus `deploymentNote`-nya.
 
 Setelah mengedit data:
 

@@ -1,7 +1,8 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Play } from "lucide-react";
+import { ArrowUpRight, Check, Code2, Copy, Play } from "lucide-react";
 import { GithubIcon } from "./icons";
 import type { Project } from "@/data/projects";
 
@@ -12,6 +13,18 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project, onOpen }: ProjectCardProps) {
   const cover = project.screenshots[0];
+  const [copied, setCopied] = useState(false);
+
+  const copyRepoUrl = useCallback(async () => {
+    if (!project.github) return;
+    try {
+      await navigator.clipboard.writeText(project.github);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* Clipboard unavailable — the GitHub link next to it still works. */
+    }
+  }, [project.github]);
 
   return (
     <article
@@ -85,45 +98,78 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
           </button>
 
           <div className="mt-4 flex flex-wrap gap-2 border-t border-border pt-4">
+            {/*
+             * Only render buttons that lead somewhere real: a project with no
+             * deployment URL gets a "View Source" action instead of a dead
+             * "Live Demo (segera)" button — no dead controls on the page.
+             */}
             {project.demo ? (
               <a
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(event) => event.stopPropagation()}
+                aria-label={`Live demo project ${project.title} (buka di tab baru)`}
                 className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
               >
                 <Play className="h-3.5 w-3.5" aria-hidden="true" />
                 Live Demo
               </a>
-            ) : (
-              <span
-                title="URL deployment belum tersedia"
-                className="inline-flex cursor-not-allowed items-center gap-1.5 rounded-lg border border-dashed border-border bg-background px-3 py-2 text-xs font-semibold text-muted"
-              >
-                <Play className="h-3.5 w-3.5" aria-hidden="true" />
-                Live Demo (segera)
-              </span>
-            )}
-
-            {project.github ? (
+            ) : project.github ? (
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(event) => event.stopPropagation()}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-2 text-xs font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
+                aria-label={`Lihat source code project ${project.title} di GitHub (buka di tab baru)`}
+                className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
               >
-                <GithubIcon className="h-3.5 w-3.5" aria-hidden="true" />
-                GitHub
+                <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
+                View Source
               </a>
+            ) : null}
+
+            {project.github ? (
+              <>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(event) => event.stopPropagation()}
+                  aria-label={`Repository GitHub project ${project.title} (buka di tab baru)`}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-2 text-xs font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
+                >
+                  <GithubIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                  GitHub
+                </a>
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    void copyRepoUrl();
+                  }}
+                  aria-label={
+                    copied
+                      ? "URL repository tersalin"
+                      : `Salin URL repository project ${project.title}`
+                  }
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-2 text-xs font-semibold text-muted transition-colors hover:border-accent/40 hover:text-accent"
+                >
+                  {copied ? (
+                    <Check className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                  ) : (
+                    <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+                  )}
+                  {copied ? "Tersalin" : "Salin URL"}
+                </button>
+              </>
             ) : (
               <span
                 title="Repository belum tersedia"
                 className="inline-flex cursor-not-allowed items-center gap-1.5 rounded-lg border border-dashed border-border bg-background px-3 py-2 text-xs font-semibold text-muted"
               >
                 <GithubIcon className="h-3.5 w-3.5" aria-hidden="true" />
-                GitHub
+                Repo belum tersedia
               </span>
             )}
           </div>

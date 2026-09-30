@@ -104,8 +104,11 @@ portfolio/
 - `profile.email` → `your.email@example.com`
 - `profile.linkedin` → `https://www.linkedin.com/in/your-linkedin-profile`
 - `public/cv.pdf` → the shipped file is a placeholder PDF
-- `project.demo` → every project is `null`, so the buttons render as
-  "Live Demo (segera)". Set a real URL to turn a button into a working link.
+- `project.demo` → every project is `null`, so the cards show a **View Source**
+  button pointing at GitHub instead of a dead "Live Demo" button. Set a real URL
+  in `src/data/projects.ts` to turn a button into a working Live Demo.
+- `project.deploymentNote` → optional note shown in the detail modal. Currently
+  used on the UMP project to explain that its free Railway instance expired.
 - Screenshots in `public/projects/` → generated wireframe placeholders.
 
 ## 6. Placeholder generators

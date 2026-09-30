@@ -3,7 +3,7 @@
 import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "motion/react";
-import { Play, X } from "lucide-react";
+import { Code2, Play, X } from "lucide-react";
 import { GithubIcon } from "./icons";
 import type { Project } from "@/data/projects";
 
@@ -65,6 +65,7 @@ export function ProjectModal({
                 </div>
 
                 <div className="mt-5 flex flex-wrap gap-2">
+                  {/* Same rule as the card: only real, working actions. */}
                   {project.demo ? (
                     <a
                       href={project.demo}
@@ -75,12 +76,17 @@ export function ProjectModal({
                       <Play className="h-3.5 w-3.5" aria-hidden="true" />
                       Live Demo
                     </a>
-                  ) : (
-                    <span className="inline-flex cursor-not-allowed items-center gap-1.5 rounded-lg border border-dashed border-border bg-background px-3.5 py-2 text-xs font-semibold text-muted">
-                      <Play className="h-3.5 w-3.5" aria-hidden="true" />
-                      Live Demo (URL menyusul)
-                    </span>
-                  )}
+                  ) : project.github ? (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
+                    >
+                      <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
+                      View Source di GitHub
+                    </a>
+                  ) : null}
 
                   {project.github ? (
                     <a
@@ -119,6 +125,15 @@ export function ProjectModal({
                       </p>
                     </Block>
                   </div>
+
+                  {project.deploymentNote ? (
+                    <p className="rounded-xl border border-dashed border-border bg-background px-4 py-3 text-xs leading-relaxed text-muted">
+                      <strong className="font-semibold text-secondary">
+                        Catatan deploy:
+                      </strong>{" "}
+                      {project.deploymentNote}
+                    </p>
+                  ) : null}
 
                   <Block title="Technologies">
                     <ul className="flex flex-wrap gap-2">

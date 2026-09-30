@@ -5,8 +5,12 @@
  * ---------------------------------------------------------------
  * EDIT THIS FILE to update projects, links and screenshots.
  *
- *  - `demo`      : null  -> button renders as "Live Demo (segera)"
- *                  "https://..." -> real link, button becomes clickable
+ *  - `demo`      : null  -> no deployment. The card then shows a "View Source"
+ *                  button instead of a dead "Live Demo" placeholder.
+ *                  Set "https://..." to turn it into a real Live Demo button.
+ *  - `deploymentNote`: shown in the detail modal. Use it to explain a demo
+ *                  that is temporarily offline (e.g. a free Railway instance
+ *                  that expired) so the missing link is no longer a mystery.
  *  - `github`    : repository URL, or null if there is none yet
  *  - `screenshots`: files placed in /public/projects. Replace the generated
  *                  SVG placeholders with real PNG/JPG captures and keep the
@@ -38,6 +42,11 @@ export type Project = {
   github: string | null;
   /** Real deployment URL, or null while it is still a placeholder. */
   demo: string | null;
+  /**
+   * Optional note shown in the detail modal, e.g. explaining that a demo was
+   * taken down. Omit when the demo link works normally.
+   */
+  deploymentNote?: string;
   screenshots: Screenshot[];
   featured: boolean;
 };
@@ -54,11 +63,11 @@ export const projects: Project[] = [
     summary:
       "Web-based dashboard for visualising Indonesian provincial minimum wage trends from 1997–2026 using K-Means clustering.",
     description:
-      "Preprocessed and analyzed Provincial Minimum Wage (UMP) data in Indonesia covering 1997–2026. Implemented K-Means clustering using Scikit-learn to group provinces based on minimum wage characteristics. Created data visualizations using Pandas, Matplotlib, and GeoPandas to illustrate wage trends and clustering results. Developed a web based data visualization application using Flask to present analytical results through an interactive interface, and deployed it on Railway so the project is accessible online.",
+      "Preprocessed and analyzed Provincial Minimum Wage (UMP) data in Indonesia covering 1997–2026. Implemented K-Means clustering using Scikit-learn to group provinces based on minimum wage characteristics. Created data visualizations using Pandas, Matplotlib, and GeoPandas to illustrate wage trends and clustering results. Developed a web based data visualization application using Flask to present analytical results through an interactive interface.",
     problem:
       "Data UMP Indonesia mencakup 1997–2026 untuk seluruh provinsi dalam bentuk tabel panjang. Bentuk ini sulit dibaca cepat, sehingga tren kenaikan upah, provinsi dengan upah tertinggi, dan pengelompokan provinsi berdasarkan karakteristik upah tidak terlihat langsung.",
     solution:
-      "Membangun aplikasi visualisasi berbasis Flask: data UMP diproses dengan Pandas, dikelompokkan memakai K-Means (Scikit-learn), lalu divisualisasikan dengan Matplotlib dan GeoPandas menjadi grafik tren, hasil clustering, serta peta. Aplikasi di-deploy ke Railway agar bisa diakses online.",
+      "Membangun aplikasi visualisasi berbasis Flask: data UMP diproses dengan Pandas, dikelompokkan memakai K-Means (Scikit-learn), lalu divisualisasikan dengan Matplotlib dan GeoPandas menjadi grafik tren, hasil clustering, serta peta. Aplikasi kemudian di-deploy agar bisa diakses online.",
     tech: [
       "Python",
       "Flask",
@@ -76,10 +85,12 @@ export const projects: Project[] = [
       "Visualisasi tren upah (line & bar chart)",
       "Peta sebaran UMP dengan GeoPandas",
       "Antarmuka web interaktif",
-      "Deployed on Railway",
+      "Kode sumber lengkap + dataset di GitHub",
     ],
     github: "https://github.com/tifaniyy/ump-flask",
     demo: null,
+    deploymentNote:
+      "Versi online sebelumnya di-deploy di Railway, namun instance gratisnya sudah berakhir (expired). Seluruh kode sumber dan dataset tersedia di repository GitHub di atas dan dapat dijalankan secara lokal.",
     screenshots: [
       {
         src: "/projects/ump-dashboard.svg",
