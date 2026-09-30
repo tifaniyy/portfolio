@@ -93,6 +93,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Navbar />
         <main>{children}</main>
         <Footer />
+        {/*
+          The scroll-reveal wrappers ship `opacity: 0` inline (that is what
+          Motion animates from), so without JavaScript the whole page would
+          render blank. This restores the fully-visible state for no-JS
+          visitors and for crawlers that do not execute scripts.
+        */}
+        <noscript>
+          <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
       </body>
     </html>
   );
