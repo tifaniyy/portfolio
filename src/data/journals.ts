@@ -61,18 +61,18 @@ export function sortedJournals(entries: Journal[]): Journal[] {
 }
 
 const MONTHS_ID = [
-  "Januari",
-  "Februari",
-  "Maret",
+  "January",
+  "February",
+  "March",
   "April",
-  "Mei",
-  "Juni",
-  "Juli",
-  "Agustus",
+  "May",
+  "June",
+  "July",
+  "August",
   "September",
-  "Oktober",
+  "October",
   "November",
-  "Desember",
+  "December",
 ];
 
 /**
@@ -105,7 +105,10 @@ export function wordCount(content?: string): number {
  * Ringkasan untuk daftar: pakai `abstract` kalau ada, kalau tidak ambil
  * potongan awal `content` supaya kartu tidak pernah kosong.
  */
-export function journalExcerpt(journal: Journal, maxLength = 220): string | null {
+export function journalExcerpt(
+  journal: Journal,
+  maxLength = 220,
+): string | null {
   const source = journal.abstract ?? stripMarkdown(journal.content);
   if (!source) return null;
   const clean = source.replace(/\s+/g, " ").trim();
@@ -122,38 +125,6 @@ function stripMarkdown(content?: string): string | null {
     .replace(/^\s*\d+\.\s+/gm, "")
     .replace(/\*\*([^*]+)\*\*/g, "$1")
     .replace(/`([^`]+)`/g, "$1");
-}
-
-export type ArchiveGroup = { label: string; items: Journal[] };
-
-/** Kelompokkan tulisan per bulan — untuk widget "Arsip" ala Blogger. */
-export function archives(entries: Journal[]): ArchiveGroup[] {
-  const groups = new Map<string, Journal[]>();
-
-  for (const journal of sortedJournals(entries)) {
-    const [yearPart, monthPart] = (journal.date ?? "").split("-");
-    const monthName =
-      Number(monthPart) >= 1 && Number(monthPart) <= 12
-        ? MONTHS_ID[Number(monthPart) - 1]
-        : null;
-    const label =
-      monthName && yearPart ? `${monthName} ${yearPart}` : journal.year;
-
-    const bucket = groups.get(label);
-    if (bucket) bucket.push(journal);
-    else groups.set(label, [journal]);
-  }
-
-  return [...groups.entries()].map(([label, items]) => ({ label, items }));
-}
-
-/** Semua label unik, terurut alfabetis. */
-export function allTags(entries: Journal[]): string[] {
-  const set = new Set<string>();
-  for (const journal of entries) {
-    for (const tag of journal.tags ?? []) set.add(tag);
-  }
-  return [...set].sort((a, b) => a.localeCompare(b, "id"));
 }
 
 export type JournalPage = {
@@ -183,7 +154,9 @@ export function paginate(
 
 /** Filter berdasarkan label. */
 export function filterByTag(entries: Journal[], tag: string): Journal[] {
-  return sortedJournals(entries).filter((journal) => journal.tags?.includes(tag));
+  return sortedJournals(entries).filter((journal) =>
+    journal.tags?.includes(tag),
+  );
 }
 
 /** Label arsip untuk satu tulisan, mis. "Maret 2026" (atau tahun saja). */
@@ -233,7 +206,8 @@ export function browseHref(options: {
   if (options.q) params.set("q", options.q);
   if (options.tag) params.set("tag", options.tag);
   if (options.archive) params.set("arsip", options.archive);
-  if (options.page && options.page > 1) params.set("page", String(options.page));
+  if (options.page && options.page > 1)
+    params.set("page", String(options.page));
   const query = params.toString();
   return query ? `/journals/browse?${query}` : "/journals/browse";
 }

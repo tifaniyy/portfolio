@@ -40,7 +40,7 @@ export default function JournalsLayout({
               Journal Blog {profile.shortName}
             </p>
             <p className="mt-3 text-sm leading-relaxed text-slate-300">
-              Research notes, data analysis, visualization, and web development — written in journal format.
+              Research notes, data analysis, visualization, and web development
             </p>
           </div>
         </div>

@@ -70,7 +70,7 @@ export default async function JournalDetailPage({
           className="inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-accent"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Semua tulisan
+          All Articles
         </Link>
 
         <div className="mt-8 flex flex-wrap items-center gap-2">
@@ -86,7 +86,7 @@ export default async function JournalDetailPage({
             </span>
           ) : null}
           {minutes ? (
-            <span className="text-xs text-muted">· {minutes} menit baca</span>
+            <span className="text-xs text-muted">· {minutes} min read</span>
           ) : null}
         </div>
 
@@ -106,7 +106,7 @@ export default async function JournalDetailPage({
                 className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5"
               >
                 <FileText className="h-4 w-4" aria-hidden="true" />
-                Baca PDF
+                Read PDF
               </a>
             ) : null}
             {journal.doi ? (
@@ -128,7 +128,7 @@ export default async function JournalDetailPage({
                 className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
               >
                 <Link2 className="h-4 w-4" aria-hidden="true" />
-                Sumber
+                Source
               </a>
             ) : null}
           </div>

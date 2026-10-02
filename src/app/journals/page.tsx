@@ -17,9 +17,9 @@ import {
 import { getPublishedJournals } from "@/data/journals.server";
 
 export const metadata: Metadata = {
-  title: "Daftar Tulisan",
+  title: "List of Articles",
   description:
-    "Semua tulisan blog jurnal Tifani Yunitami — penelitian, analisis data, visualisasi, dan pengembangan web.",
+    "All journal articles and blog posts by Tifani Yunitami — research, data analysis, visualization, and web development.",
   alternates: { canonical: "/journals" },
 };
 
@@ -40,11 +40,11 @@ export default async function JournalsIndexPage() {
               id="journals-list-heading"
               className="text-lg font-bold tracking-tight text-primary"
             >
-              Postingan terbaru
+              Latest Articles
             </h1>
             <p className="mt-1 text-xs text-muted">
-              {total} tulisan
-              {totalPages > 1 ? ` · ${totalPages} halaman` : ""}
+              {total} articles
+              {totalPages > 1 ? ` · ${totalPages} pages` : ""}
             </p>
           </div>
 
@@ -54,15 +54,15 @@ export default async function JournalsIndexPage() {
                 <BookOpen className="h-6 w-6" aria-hidden="true" />
               </span>
               <h3 className="mt-4 text-base font-semibold text-primary">
-                Belum ada tulisan
+                No posts yet
               </h3>
               <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
-                Tulisan dibuat dan diterbitkan dari halaman{" "}
+                Articles are created and published from the{" "}
                 <Link
                   href="/journals/kelola"
                   className="font-semibold text-accent underline-offset-4 hover:underline"
                 >
-                  Kelola Tulisan
+                  Manage Articles
                 </Link>
                 .
               </p>
@@ -125,7 +125,7 @@ export default async function JournalsIndexPage() {
                           </span>
                           {minutes ? (
                             <span className="text-xs text-muted">
-                              · {minutes} menit baca
+                              · {minutes} min read
                             </span>
                           ) : null}
                         </div>
@@ -172,11 +172,11 @@ export default async function JournalsIndexPage() {
                             href={`/journals/${journal.slug}`}
                             className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
                           >
-                            Baca selengkapnya →
+                            Read more →
                           </Link>
                           {words > 0 ? (
                             <span className="text-xs text-muted">
-                              {words.toLocaleString("id-ID")} kata
+                              {words.toLocaleString("id-ID")} words
                             </span>
                           ) : null}
                           {journal.pdf ? (
@@ -223,29 +223,31 @@ export default async function JournalsIndexPage() {
               className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6"
             >
               <span className="text-sm font-semibold text-muted opacity-50">
-                ← Postingan baru
+                ← New post
               </span>
               <div className="flex flex-wrap items-center gap-2">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                  <Link
-                    key={p}
-                    href={browseHref({ page: p })}
-                    aria-current={p === 1 ? "page" : undefined}
-                    className={
-                      p === 1
-                        ? "inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-semibold text-white"
-                        : "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-white text-sm font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
-                    }
-                  >
-                    {p}
-                  </Link>
-                ))}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (p) => (
+                    <Link
+                      key={p}
+                      href={browseHref({ page: p })}
+                      aria-current={p === 1 ? "page" : undefined}
+                      className={
+                        p === 1
+                          ? "inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-semibold text-white"
+                          : "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-white text-sm font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
+                      }
+                    >
+                      {p}
+                    </Link>
+                  ),
+                )}
               </div>
               <Link
                 href={browseHref({ page: 2 })}
                 className="text-sm font-semibold text-primary transition-colors hover:text-accent"
               >
-                Postingan lama →
+                Older posts →
               </Link>
             </nav>
           ) : null}

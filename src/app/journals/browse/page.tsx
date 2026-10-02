@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { BookOpen, ChevronLeft, ChevronRight, FileText, Search } from "lucide-react";
+import {
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+  Search,
+} from "lucide-react";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";
 import {
   archiveLabelOf,
@@ -19,9 +25,8 @@ import {
 import { getPublishedJournals } from "@/data/journals.server";
 
 export const metadata: Metadata = {
-  title: "Cari & Arsip Tulisan",
-  description:
-    "Cari tulisan blog jurnal berdasarkan kata kunci, label, atau arsip bulan.",
+  title: "Search & Archive Articles",
+  description: "Search blog posts by keyword, tag, or month.",
   alternates: { canonical: "/journals/browse" },
 };
 
@@ -55,7 +60,9 @@ export default async function JournalsBrowsePage({
   /* Filter berurutan: kata kunci -> label -> arsip. */
   let results = searchJournals(published, query);
   if (activeTag) {
-    results = filterByTag(published, activeTag).filter((j) => results.includes(j));
+    results = filterByTag(published, activeTag).filter((j) =>
+      results.includes(j),
+    );
   }
   if (activeArchive) {
     results = filterByArchive(published, activeArchive).filter((j) =>
@@ -63,11 +70,12 @@ export default async function JournalsBrowsePage({
     );
   }
 
-  const { journals: items, page, totalPages, total } = paginate(
-    results,
-    requestedPage,
-    PER_PAGE,
-  );
+  const {
+    journals: items,
+    page,
+    totalPages,
+    total,
+  } = paginate(results, requestedPage, PER_PAGE);
 
   const hasFilter = Boolean(query || activeTag || activeArchive);
   const filterLabel = [
@@ -85,18 +93,18 @@ export default async function JournalsBrowsePage({
           <div className="flex flex-wrap items-end justify-between gap-3 border-b border-border pb-4">
             <div>
               <h1 className="text-lg font-bold tracking-tight text-primary">
-                Cari &amp; arsip
+                Search & Archive
               </h1>
               <p className="mt-1 text-xs text-muted">
-                {total} tulisan
-                {hasFilter ? ` untuk ${filterLabel}` : ""}
+                {total} articles
+                {hasFilter ? ` for ${filterLabel}` : ""}
               </p>
             </div>
             <Link
               href="/journals"
               className="text-sm font-semibold text-accent hover:underline"
             >
-              ← Daftar terbaru
+              ← List Latest
             </Link>
           </div>
 
@@ -106,19 +114,19 @@ export default async function JournalsBrowsePage({
                 <Search className="h-6 w-6" aria-hidden="true" />
               </span>
               <h3 className="mt-4 text-base font-semibold text-primary">
-                Tidak ada tulisan yang cocok
+                No articles found
               </h3>
               <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
                 {hasFilter
-                  ? `Tidak ada hasil untuk ${filterLabel}. Coba kata kunci lain atau hapus filternya.`
-                  : "Belum ada tulisan yang diterbitkan."}
+                  ? `No results for ${filterLabel}. Try different keywords or remove the filters.`
+                  : "No articles published yet."}
               </p>
               {hasFilter ? (
                 <Link
                   href="/journals/browse"
                   className="mt-5 inline-flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
                 >
-                  Hapus semua filter
+                  Clear all filters
                 </Link>
               ) : null}
             </div>
@@ -200,7 +208,7 @@ export default async function JournalsBrowsePage({
                               href={`/journals/${journal.slug}`}
                               className="text-sm font-semibold text-accent hover:underline"
                             >
-                              Baca →
+                              Read →
                             </Link>
                             {journal.tags?.map((tag) => (
                               <Link
@@ -251,35 +259,37 @@ export default async function JournalsBrowsePage({
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-accent"
                 >
                   <ChevronLeft className="h-4 w-4" aria-hidden="true" />
-                  Postingan baru
+                  Newer posts
                 </Link>
               ) : (
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted opacity-50">
                   <ChevronLeft className="h-4 w-4" aria-hidden="true" />
-                  Postingan baru
+                  Newer posts
                 </span>
               )}
 
               <div className="flex flex-wrap items-center gap-2">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                  <Link
-                    key={p}
-                    href={browseHref({
-                      q: query,
-                      tag: activeTag,
-                      archive: activeArchive,
-                      page: p,
-                    })}
-                    aria-current={p === page ? "page" : undefined}
-                    className={
-                      p === page
-                        ? "inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-semibold text-white"
-                        : "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-white text-sm font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
-                    }
-                  >
-                    {p}
-                  </Link>
-                ))}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (p) => (
+                    <Link
+                      key={p}
+                      href={browseHref({
+                        q: query,
+                        tag: activeTag,
+                        archive: activeArchive,
+                        page: p,
+                      })}
+                      aria-current={p === page ? "page" : undefined}
+                      className={
+                        p === page
+                          ? "inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-sm font-semibold text-white"
+                          : "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-white text-sm font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
+                      }
+                    >
+                      {p}
+                    </Link>
+                  ),
+                )}
               </div>
 
               {page < totalPages ? (
@@ -292,12 +302,12 @@ export default async function JournalsBrowsePage({
                   })}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-accent"
                 >
-                  Postingan lama
+                  Older posts
                   <ChevronRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               ) : (
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted opacity-50">
-                  Postingan lama
+                  Older posts
                   <ChevronRight className="h-4 w-4" aria-hidden="true" />
                 </span>
               )}
