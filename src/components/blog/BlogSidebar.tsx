@@ -19,8 +19,7 @@ type BlogSidebarProps = {
  * Isinya sengaja tinggal dua widget: "Latest Articles" dan "Pages".
  * Widget "Cari tulisan", "Label", dan "Arsip" dihapus karena menumpuk
  * navigasi — filter label tetap bisa dipakai dari tombol #tag di tiap kartu
- * tulisan (URL /journals/browse?tag=…), dan pencarian sudah ada di navbar
- * ("Cari & arsip").
+ * tulisan (URL /journals/browse?tag=…).
  *
  * Semuanya berupa <Link> biasa (tanpa state klien) supaya tetap berfungsi
  * sebelum JavaScript termuat.

@@ -131,13 +131,5 @@ export const navLinks = [
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  /*
-   * Dua entri di bawah ini adalah ROUTE, bukan anchor halaman:
-   *  - "Cari & arsip" -> /journals/browse (halaman cari + arsip blog).
-   *  - "Journals" sengaja TIDAK ada di daftar ini: route /journals dirender
-   *    satu kali oleh Navbar sebagai tombol kanan atas (JOURNALS_LABEL).
-   *    Kalau dimasukkan ke sini juga, tombolnya jadi dobel.
-   */
-  { label: "Cari & arsip", href: "/journals/browse" },
   { label: "Contact", href: "#contact" },
 ] as const;

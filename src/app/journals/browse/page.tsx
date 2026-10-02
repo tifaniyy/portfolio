@@ -25,8 +25,8 @@ import {
 import { getPublishedJournals } from "@/data/journals.server";
 
 export const metadata: Metadata = {
-  title: "Search & Archive Articles",
-  description: "Search blog posts by keyword, tag, or month.",
+  title: "All Articles",
+  description: "All journal articles by Tifani Yunitami, filterable by tag.",
   alternates: { canonical: "/journals/browse" },
 };
 
@@ -93,7 +93,7 @@ export default async function JournalsBrowsePage({
           <div className="flex flex-wrap items-end justify-between gap-3 border-b border-border pb-4">
             <div>
               <h1 className="text-lg font-bold tracking-tight text-primary">
-                Search & Archive
+                All Articles
               </h1>
               <p className="mt-1 text-xs text-muted">
                 {total} articles
