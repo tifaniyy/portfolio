@@ -4,9 +4,9 @@ import { BookOpen } from "lucide-react";
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
-  title: "Jurnal & Tulisan",
+  title: "Journal & Article",
   description:
-    "Blog jurnal Tifani Yunitami — catatan penelitian, analisis data, visualisasi, dan pengembangan web.",
+    "Journal blog Tifani Yunitami — Research notes, data analysis, visualization, and web development.",
   alternates: { canonical: "/journals" },
 };
 
@@ -29,7 +29,7 @@ export default function JournalsLayout({
           <div className="max-w-2xl">
             <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-300">
               <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
-              Jurnal &amp; Tulisan
+              Journal &amp; Article
             </p>
             {/* Nama blog: teks identitas, bukan judul halaman — supaya setiap
                 halaman di bawah /journals hanya punya satu <h1>. */}
@@ -37,11 +37,10 @@ export default function JournalsLayout({
               id="blog-title"
               className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl"
             >
-              Blog Jurnal {profile.shortName}
+              Journal Blog {profile.shortName}
             </p>
             <p className="mt-3 text-sm leading-relaxed text-slate-300">
-              Catatan penelitian, analisis data, visualisasi, dan pengembangan
-              web — ditulis dengan format jurnal.
+              Research notes, data analysis, visualization, and web development — written in journal format.
             </p>
           </div>
         </div>
