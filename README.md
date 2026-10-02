@@ -102,9 +102,7 @@ portfolio/
 
 ### Placeholders that still need your input
 
-- `profile.email` → `your.email@example.com`
-- `profile.linkedin` → `https://www.linkedin.com/in/your-linkedin-profile`
-- `public/cv.pdf` → the shipped file is a placeholder PDF
+- `public/cv.pdf` → replace whenever the CV is updated (keep the file name).
 - `project.demo` → every project is `null`, so the cards show a **View Source**
   button pointing at GitHub instead of a dead "Live Demo" button. Set a real URL
   in `src/data/projects.ts` to turn a button into a working Live Demo.
