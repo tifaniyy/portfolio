@@ -31,7 +31,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
       onClick={() => onOpen(project)}
       className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/30 hover:shadow-lift"
     >
-      {/* Cover / screenshot placeholder */}
+      {/* Cover / screenshot */}
       <div className="relative aspect-16/10 w-full overflow-hidden border-b border-border bg-slate-100">
         {cover ? (
           <Image
@@ -93,7 +93,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent underline-offset-4 transition-colors hover:text-blue-700 hover:underline"
             aria-label={`Lihat detail project ${project.title}`}
           >
-            Lihat Detail
+            View Details
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </button>
 

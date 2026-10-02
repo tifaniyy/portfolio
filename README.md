@@ -93,6 +93,7 @@ portfolio/
 | Navbar / footer menu items | `src/data/profile.ts` → `navLinks` |
 | Skills per category | `src/data/skills.ts` |
 | Experience timeline | `src/data/experience.ts` |
+| Tulisan jurnal | halaman **`/journals/kelola`** di komputer → `data/journals.json` di-commit & push — lihat `PANDUAN-JURNAL.md` |
 | Projects (all fields + links + screenshots) | `src/data/projects.ts` |
 | Your real CV | replace `public/cv.pdf` |
 | Real screenshots | replace the files in `public/projects/` |

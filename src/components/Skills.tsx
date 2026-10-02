@@ -49,7 +49,7 @@ export function Skills() {
         <SectionHeading
           eyebrow="02 — Skills"
           title="Skills & Tools"
-          description="Kemampuan yang saya gunakan sehari-hari untuk mengolah data, membangun visualisasi, dan mengembangkan web."
+          description="The skills I use on a daily basis to process data, create visualisations and develop websites."
         />
 
         <RevealStagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

@@ -24,6 +24,14 @@
 .DS_Store
 *.pem
 
+# tulisan jurnal IKUT di-commit (data/journals.json) supaya ikut ter-deploy.
+# Alurnya: tulis lewat /journals/kelola di komputer -> commit & push.
+# Jadi server hosting tidak perlu izin menulis file sama sekali.
+/data/journals.json.tmp
+
+# kata sandi pengelola tulisan (hash) — JANGAN di-commit
+/data/admin-auth.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*

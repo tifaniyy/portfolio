@@ -12,9 +12,9 @@
  *                  that is temporarily offline (e.g. a free Railway instance
  *                  that expired) so the missing link is no longer a mystery.
  *  - `github`    : repository URL, or null if there is none yet
- *  - `screenshots`: files placed in /public/projects. Replace the generated
- *                  SVG placeholders with real PNG/JPG captures and keep the
- *                  file names, or update the paths here.
+ *  - `screenshots`: files placed in /public/projects. Keep each `src` exactly
+ *                  in sync with the real file name — a typo here renders as a
+ *                  broken image, not a build error.
  * ---------------------------------------------------------------
  */
 
@@ -31,7 +31,11 @@ export type Project = {
   organization?: string;
   year: string;
   period: string;
-  category: "Data & Web" | "Data Visualization" | "Research" | "Web Development";
+  category:
+    | "Data & Web"
+    | "Data Visualization"
+    | "Research"
+    | "Web Development";
   summary: string;
   description: string;
   problem: string;
@@ -65,9 +69,9 @@ export const projects: Project[] = [
     description:
       "Preprocessed and analyzed Provincial Minimum Wage (UMP) data in Indonesia covering 1997–2026. Implemented K-Means clustering using Scikit-learn to group provinces based on minimum wage characteristics. Created data visualizations using Pandas, Matplotlib, and GeoPandas to illustrate wage trends and clustering results. Developed a web based data visualization application using Flask to present analytical results through an interactive interface.",
     problem:
-      "Data UMP Indonesia mencakup 1997–2026 untuk seluruh provinsi dalam bentuk tabel panjang. Bentuk ini sulit dibaca cepat, sehingga tren kenaikan upah, provinsi dengan upah tertinggi, dan pengelompokan provinsi berdasarkan karakteristik upah tidak terlihat langsung.",
+      "The data on Indonesia’s minimum wage (UMP) covers the period 1997–2026 for all provinces in the form of a long table. This format is difficult to scan quickly, meaning that wage increase trends, the provinces with the highest wages, and the grouping of provinces by wage characteristics are not immediately apparent.",
     solution:
-      "Membangun aplikasi visualisasi berbasis Flask: data UMP diproses dengan Pandas, dikelompokkan memakai K-Means (Scikit-learn), lalu divisualisasikan dengan Matplotlib dan GeoPandas menjadi grafik tren, hasil clustering, serta peta. Aplikasi kemudian di-deploy agar bisa diakses online.",
+      "Building a Flask-based visualisation application: UMP data is processed using Pandas, clustered using K-Means (Scikit-learn), and then visualised using Matplotlib and GeoPandas to produce trend graphs, clustering results and maps. The application is then deployed so that it can be accessed online.",
     tech: [
       "Python",
       "Flask",
@@ -81,31 +85,32 @@ export const projects: Project[] = [
     ],
     features: [
       "Preprocessing data UMP 1997–2026",
-      "K-Means clustering provinsi",
-      "Visualisasi tren upah (line & bar chart)",
-      "Peta sebaran UMP dengan GeoPandas",
-      "Antarmuka web interaktif",
-      "Kode sumber lengkap + dataset di GitHub",
+      "K-means clustering by province",
+      "Visualisation of wage trends (line and bar charts)",
+      "Visualisation of UMP distribution (GeoPandas)",
+      "Interactive web interface",
+      "Complete source code + dataset on GitHub",
     ],
     github: "https://github.com/tifaniyy/ump-flask",
     demo: null,
     deploymentNote:
-      "Versi online sebelumnya di-deploy di Railway, namun instance gratisnya sudah berakhir (expired). Seluruh kode sumber dan dataset tersedia di repository GitHub di atas dan dapat dijalankan secara lokal.",
+      "The previous online version was deployed on Railway, but the free instance has now expired. All source code and datasets are available in the GitHub repository above and can be run locally.",
     screenshots: [
       {
-        src: "/projects/ump-dashboard.svg",
-        alt: "Placeholder tampilan dashboard tren UMP Indonesia",
-        caption: "Tampilan utama dashboard — tren UMP dan filter tahun",
+        src: "/projects/ump-beranda.png",
+        alt: "Main dashboard view for Indonesia's UMP trends and year filter",
+        caption: "Main dashboard view — UMP trends and year filter",
       },
       {
-        src: "/projects/ump-clustering.svg",
-        alt: "Placeholder visualisasi hasil K-Means clustering UMP",
-        caption: "Hasil K-Means clustering provinsi",
+        src: "/projects/ump-cluster.png",
+        alt: "Visualisation of K-Means clustering results for UMP by province",
+        caption:
+          "Visualisation of K-Means clustering results for UMP by province",
       },
       {
-        src: "/projects/ump-map.svg",
-        alt: "Placeholder peta visualisasi UMP Indonesia",
-        caption: "Visualisasi peta sebaran UMP (GeoPandas)",
+        src: "/projects/ump-map.png",
+        alt: "Visualisation of UMP distribution across Indonesia",
+        caption: "Visualisation of UMP distribution (GeoPandas)",
       },
     ],
     featured: true,
@@ -113,7 +118,7 @@ export const projects: Project[] = [
   {
     slug: "oldmarketjkt-thrift-website",
     title: "E-commerce Thrift Shop (Oldmarketjkt) Website",
-    subtitle: "Software Designer untuk website e-commerce",
+    subtitle: "Software Designer for e-commerce website",
     year: "2026",
     period: "Oct 2025 – Jan 2026",
     category: "Web Development",
@@ -122,31 +127,32 @@ export const projects: Project[] = [
     description:
       "Served as a Software Designer for the Oldmarketjkt web based e-commerce project. Designed software requirements, system structure, and user interfaces to support application development.",
     problem:
-      "Project e-commerce thrift shop membutuhkan fondasi rancangan yang jelas sebelum masuk ke tahap pengembangan: kebutuhan sistem, struktur aplikasi, dan tampilan antarmuka belum terdefinisi, sehingga berisiko menimbulkan perubahan besar di tengah pengerjaan.",
+      "The e-commerce second-hand shop project requires a clear design framework before moving on to the development stage: the system requirements, application structure and user interface have not yet been defined, which risks major changes having to be made whilst the project is in progress.",
     solution:
-      "Berperan sebagai Software Designer: menyusun kebutuhan software, merancang struktur sistem, dan mendesain antarmuka pengguna sebagai acuan tim pengembang.",
+      "Acting as a Software Designer: defining software requirements, designing the system architecture, and designing the user interface to serve as a guide for the development team.",
     tech: ["Software Design", "UI/UX Design", "Figma", "System Design"],
     features: [
-      "Perancangan software requirements",
-      "Perancangan struktur sistem",
-      "Desain antarmuka pengguna (UI)",
-      "Dokumentasi acuan pengembangan",
+      "Software requirements specification",
+      "System structure design",
+      "User interface design",
+      "Development reference documentation",
     ],
     github: null,
     demo: null,
     screenshots: [
       {
-        src: "/projects/thrift-website.svg",
-        alt: "Placeholder rancangan antarmuka website thrift shop Oldmarketjkt",
-        caption: "Rancangan antarmuka website e-commerce",
+        src: "/projects/design-oldmarket.png",
+        alt: "Software design for the Oldmarketjkt e-commerce website",
+        caption: "User interface design for the e-commerce website",
       },
     ],
     featured: true,
   },
   {
     slug: "ump-streamlit-dashboard",
-    title: "Dashboard to Display UMP (Provincial Minimum Wage) Data in Indonesia",
-    subtitle: "Dashboard interaktif dengan Streamlit",
+    title:
+      "Dashboard to Display UMP (Provincial Minimum Wage) Data in Indonesia",
+    subtitle: "Interactive dashboard with Streamlit",
     year: "2025",
     period: "Jun 2025 – Aug 2025",
     category: "Data Visualization",
@@ -155,23 +161,23 @@ export const projects: Project[] = [
     description:
       "Performed data preprocessing and analysis of Indonesian Provincial Minimum Wage (UMP) data using Python and Pandas. Created line and bar chart visualizations using Matplotlib to analyze UMP trends across provinces from 1997–2025. Developed a web based dashboard using Streamlit to present data insights in an interactive and user friendly format.",
     problem:
-      "Analisis tren UMP 1997–2025 hanya tersedia dalam bentuk hasil olahan yang tidak interaktif, sehingga pengguna non-teknis sulit menelusuri tren per provinsi secara mandiri.",
+      "The analysis of the UMP trend for 1997–2025 is only available in the form of non-interactive processed data, making it difficult for non-technical users to explore the trends by province independently.",
     solution:
-      "Membangun dashboard Streamlit: data dibersihkan dan dianalisis dengan Pandas, divisualisasikan sebagai line chart dan bar chart dengan Matplotlib, lalu disajikan melalui antarmuka web yang interaktif dan mudah dipakai.",
+      "Building a Streamlit dashboard: data is cleaned and analysed using Pandas, visualised as line charts and bar charts using Matplotlib, and then presented via an interactive and user-friendly web interface.",
     tech: ["Python", "Pandas", "Matplotlib", "Streamlit", "Data Cleaning"],
     features: [
-      "Data preprocessing & cleaning dengan Pandas",
-      "Line chart tren UMP per provinsi (1997–2025)",
-      "Bar chart perbandingan antar provinsi",
-      "Dashboard web interaktif dengan Streamlit",
+      "Data pre-processing and cleaning with Pandas",
+      "Line chart of UMP trends per province (1997–2025)",
+      "Bar chart of comparisons between provinces",
+      "Interactive web dashboard with Streamlit",
     ],
-    github: null,
-    demo: null,
+    github: "https://github.com/tifaniyy/ump-dashboard",
+    demo: "https://ump-dashboard.streamlit.app/",
     screenshots: [
       {
-        src: "/projects/streamlit-ump.svg",
-        alt: "Placeholder dashboard Streamlit data UMP Indonesia",
-        caption: "Dashboard Streamlit — tren UMP antar provinsi",
+        src: "/projects/streamlit-ump.png",
+        alt: "Streamlit dashboard for Indonesia's UMP data",
+        caption: "Streamlit dashboard — UMP trends across provinces",
       },
     ],
     featured: false,
@@ -179,7 +185,7 @@ export const projects: Project[] = [
   {
     slug: "online-shoes-store-website",
     title: "E-commerce (Online Shoes Store) Website",
-    subtitle: "Dikembangkan secara lokal dengan PHP, SQL & Bootstrap",
+    subtitle: "Developed locally with PHP, SQL & Bootstrap",
     year: "2025",
     period: "Dec 2024 – Jan 2025",
     category: "Web Development",
@@ -188,32 +194,33 @@ export const projects: Project[] = [
     description:
       "Designed the website navigation structure to improve user flow and accessibility. Designed and implemented a responsive navigation bar using Bootstrap. Created wireframes to define the website layout and user interface structure. Built an interactive prototype to demonstrate user flows and interface interactions.",
     problem:
-      "Navigasi website toko sepatu online perlu dibuat lebih mudah dipahami: alur pengguna belum jelas, dan tampilan belum responsif saat dibuka di berbagai ukuran layar.",
+      "Website navigation for the online shoe store needs to be easier to understand: user flow is unclear, and the design is not responsive across different screen sizes.",
     solution:
-      "Merancang struktur navigasi untuk memperbaiki user flow dan aksesibilitas, membuat wireframe sebagai acuan tata letak, membangun navigation bar responsif dengan Bootstrap, serta membuat prototipe interaktif untuk mendemonstrasikan alur dan interaksi antarmuka.",
+      "Designing the navigation structure to improve user flow and accessibility, creating wireframes as layout references, building a responsive navigation bar with Bootstrap, and developing an interactive prototype to demonstrate user journeys and interface interactions.",
     tech: ["PHP", "SQL", "Bootstrap", "HTML", "CSS", "Figma"],
     features: [
-      "Perancangan struktur navigasi website",
-      "Navigation bar responsif dengan Bootstrap",
-      "Wireframe tata letak & struktur antarmuka",
-      "Prototipe interaktif alur pengguna",
-      "Pengembangan lokal dengan PHP dan SQL",
+      "Designing a website navigation structure",
+      "Responsive navigation bar with Bootstrap",
+      "Layout and interface structure wireframes",
+      "Interactive user flow prototype",
+      "Local development with PHP and SQL",
     ],
-    github: null,
+    github: "https://github.com/tifaniyy/website_tokosepatu",
     demo: null,
     screenshots: [
       {
-        src: "/projects/shoes-store-web.svg",
-        alt: "Placeholder tampilan website toko sepatu online",
-        caption: "Tampilan halaman website toko sepatu online",
+        src: "/projects/web-shoes-store.png",
+        alt: "Online shoe shop website layout",
+        caption: "Online shoe shop website layout",
       },
     ],
     featured: false,
   },
   {
     slug: "hand-gesture-classification",
-    title: "Machine Learning-Based Classification of Hand Gestures: Rock, Paper, and Scissors",
-    subtitle: "Klasifikasi gambar dengan machine learning",
+    title:
+      "Machine Learning-Based Classification of Hand Gestures: Rock, Paper, and Scissors",
+    subtitle: "Classification of images with machine learning",
     year: "2024",
     period: "Sep 2024 – Oct 2024",
     category: "Data Visualization",
@@ -222,9 +229,9 @@ export const projects: Project[] = [
     description:
       "Prepared and preprocessed hand gesture image data for machine learning classification. Trained a machine learning model to classify hand gestures into three categories: Rock, Paper, and Scissors. Performed model evaluation to assess classification performance and prediction accuracy. Developed a classification workflow for predicting hand gestures from input images.",
     problem:
-      "Gambar gestur tangan perlu dikenali secara otomatis ke dalam tiga kelas (Rock, Paper, Scissors), dan model yang dilatih harus bisa diukur seberapa akurat prediksinya.",
+      "Hand gesture images need to be automatically recognized into three classes (Rock, Paper, Scissors), and the trained model must be measurable in terms of prediction accuracy.",
     solution:
-      "Menyiapkan dan memproses data gambar gestur tangan, melatih model machine learning untuk tiga kelas, lalu melakukan evaluasi model guna menilai performa klasifikasi dan akurasi prediksi. Alur klasifikasi disusun agar gambar input dapat langsung diprediksi.",
+      "Preparing and preprocessing hand gesture image data for machine learning classification. Training a machine learning model to classify hand gestures into three categories: Rock, Paper, and Scissors. Performing model evaluation to assess classification performance and prediction accuracy. Developing a classification workflow for predicting hand gestures from input images.",
     tech: [
       "Python",
       "Machine Learning",
@@ -233,18 +240,18 @@ export const projects: Project[] = [
       "Classification",
     ],
     features: [
-      "Persiapan & preprocessing data gambar",
-      "Pelatihan model klasifikasi 3 kelas",
-      "Evaluasi performa & akurasi prediksi",
-      "Alur prediksi dari gambar input",
+      "Preparation & preprocessing of image data",
+      "Training of 3-class classification model",
+      "Performance & prediction accuracy evaluation",
+      "Prediction workflow from input images",
     ],
     github: null,
     demo: null,
     screenshots: [
       {
-        src: "/projects/hand-gesture-ml.svg",
-        alt: "Placeholder alur klasifikasi gestur tangan Rock Paper Scissors",
-        caption: "Alur klasifikasi gestur tangan",
+        src: "/projects/ml-hand-gesture.png",
+        alt: "Hand gesture classification workflow",
+        caption: "Hand gesture classification workflow",
       },
     ],
     featured: false,

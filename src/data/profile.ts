@@ -21,8 +21,6 @@ export const profile = {
   ],
 
   email: "tifaniyunitami1@gmail.com",
-  phoneDisplay: "085817250054",
-  phoneHref: "+6285817250054",
   linkedin: "https://www.linkedin.com/in/tifaniyunitami/",
   github: "https://github.com/tifaniyy",
   location: "Kota Tangerang, Indonesia",
@@ -34,7 +32,7 @@ export const profile = {
 export const education = [
   {
     degree: "Bachelor of Informatics",
-    school: "Universitas Gunadarma",
+    school: "Gunadarma University",
     location: "Jakarta, Indonesia",
     period: "Sep 2022 – Aug 2026",
     level: "S1 Informatika",
@@ -54,14 +52,15 @@ export const education = [
 
 /**
  * About-section statistics.
- * Counts below are derived from the CV only — 6 projects and 1 internship
- * are listed there. Update them if the CV changes.
+ * Counts below come from the CV — 6 projects and 1 internship (Telkom) are
+ * listed there. The AirNav Indonesia internship was added on request and is
+ * not in the CV yet, so that card now names both places.
  */
 export const stats = [
   {
     icon: "GraduationCap",
     label: "Bachelor of Informatics",
-    description: "Universitas Gunadarma · GPA 3.86 / 4.00",
+    description: "Gunadarma University · GPA 3.86 / 4.00",
   },
   {
     icon: "LineChart",
@@ -76,7 +75,8 @@ export const stats = [
   {
     icon: "Briefcase",
     label: "Internship Experience",
-    description: "PT Telekomunikasi Indonesia (Telkom Witel)",
+    description:
+      "AirNav Indonesia (Information Technology) · PT Telekomunikasi Indonesia (Telkom Witel)",
   },
 ] as const;
 
@@ -109,7 +109,10 @@ export const organizations = [
     role: "Head of Public Relations Division",
     location: "Depok, Indonesia",
     period: "Aug 2023 – Sep 2023",
-    points: ["Developing a communication strategy.", "Managing media and information."],
+    points: [
+      "Developing a communication strategy.",
+      "Managing media and information.",
+    ],
   },
 ];
 
@@ -128,5 +131,10 @@ export const navLinks = [
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  /*
+   * "Journals" is deliberately NOT in this list: it is a real route
+   * (/journals), and Navbar renders it as the top-right action button.
+   * Listing it here as well would show it twice in the navbar.
+   */
   { label: "Contact", href: "#contact" },
 ] as const;

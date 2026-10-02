@@ -28,7 +28,7 @@ export function About() {
           <SectionHeading
             eyebrow="01 — About"
             title="About Me"
-            description="Background, minat, dan cara saya bekerja dengan data maupun kode."
+            description="My background, interests, and approach to working with data and code."
           />
         </Reveal>
 

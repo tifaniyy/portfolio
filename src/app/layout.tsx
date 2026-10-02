@@ -85,13 +85,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="id" className={`${jakarta.variable} scroll-smooth`}>
       <body className="min-h-dvh bg-background font-sans text-foreground antialiased">
         <a
-          href="#home"
+          href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
         >
           Lewati ke konten utama
         </a>
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         {/*
           The scroll-reveal wrappers ship `opacity: 0` inline (that is what

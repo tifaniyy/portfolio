@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Mail, MapPin, Phone } from "lucide-react";
+import { Check, Copy, Mail, MapPin } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { profile } from "@/data/profile";
 import { SectionHeading } from "./SectionHeading";
@@ -30,13 +30,6 @@ export function Contact() {
       external: false,
     },
     {
-      label: "WhatsApp",
-      value: profile.phoneDisplay,
-      href: `https://wa.me/${profile.phoneHref.replace(/^\+/, "")}`,
-      icon: Phone,
-      external: true,
-    },
-    {
       label: "LinkedIn",
       value: profile.linkedin.replace(/^https?:\/\/(www\.)?/, ""),
       href: profile.linkedin,
@@ -61,9 +54,9 @@ export function Contact() {
       <div className="section-shell">
         <Reveal>
           <SectionHeading
-            eyebrow="06 — Contact"
-            title="Let's Connect"
-            description="Terbuka untuk peluang internship, posisi junior di bidang data/teknologi, maupun kolaborasi project."
+            eyebrow="07 — Contact"
+            title="Get in Touch"
+            description="Open to opportunities, collaborations, and conversations. Feel free to reach out!"
           />
         </Reveal>
 
@@ -72,11 +65,10 @@ export function Contact() {
           <Reveal>
             <div className="flex h-full flex-col rounded-2xl border border-border bg-primary p-6 text-white shadow-soft sm:p-8">
               <h3 id="contact-heading" className="text-xl font-semibold">
-                Punya posisi atau project yang cocok?
+                Have a position or project in mind?
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-300">
-                Kirimkan pesan singkat berisi posisi, kebutuhan, dan linimasa.
-                Saya akan membalas secepatnya.
+                Let&apos;s connect and discuss how I can help.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -85,7 +77,7 @@ export function Contact() {
                   className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-primary transition-transform duration-200 hover:-translate-y-0.5"
                 >
                   <Mail className="h-4 w-4" aria-hidden="true" />
-                  Kirim Email
+                  Send Email
                 </a>
                 <button
                   type="button"
@@ -139,19 +131,11 @@ export function Contact() {
                       aria-hidden="true"
                       className="text-xs font-semibold text-muted opacity-0 transition-opacity group-hover:opacity-100"
                     >
-                      Buka →
+                      Open →
                     </span>
                   </a>
                 );
               })}
-
-              <p className="rounded-xl border border-dashed border-border bg-white/70 px-4 py-3 text-xs leading-relaxed text-muted">
-                Data kontak di atas diambil dari CV. Untuk mengubahnya, edit{" "}
-                <code className="text-secondary">src/data/profile.ts</code> →{" "}
-                <code className="text-secondary">profile.email</code>,{" "}
-                <code className="text-secondary">profile.phoneDisplay</code>,{" "}
-                <code className="text-secondary">profile.linkedin</code>.
-              </p>
             </div>
           </Reveal>
         </div>

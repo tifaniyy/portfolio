@@ -29,7 +29,7 @@ export function Projects() {
         <SectionHeading
           eyebrow="04 — Projects"
           title="Projects"
-          description="Kumpulan project data dan web yang saya kerjakan — mulai dari dashboard visualisasi hingga riset teknologi. Klik salah satu kartu untuk melihat detailnya."
+          description="A collection of data and web projects I’ve worked on. Ranging from visualisation dashboards to technology research. Click on any card to view the details."
         />
 
         {/* Featured projects — 2 per row on desktop */}
@@ -58,7 +58,7 @@ export function Projects() {
         ) : null}
 
         <p className="mt-10 text-sm text-muted">
-          Repository lainnya tersedia di{" "}
+          Other repositories are available at{" "}
           <a
             href="https://github.com/tifaniyy"
             target="_blank"

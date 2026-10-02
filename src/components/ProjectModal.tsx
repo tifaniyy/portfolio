@@ -57,7 +57,7 @@ export function ProjectModal({
                   </div>
 
                   <Dialog.Close
-                    aria-label="Tutup detail project"
+                    aria-label="Close project details"
                     className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-white text-muted transition-colors hover:border-accent/40 hover:text-accent"
                   >
                     <X className="h-4.5 w-4.5" aria-hidden="true" />
@@ -101,7 +101,7 @@ export function ProjectModal({
                   ) : (
                     <span className="inline-flex cursor-not-allowed items-center gap-1.5 rounded-lg border border-dashed border-border bg-background px-3.5 py-2 text-xs font-semibold text-muted">
                       <GithubIcon className="h-3.5 w-3.5" aria-hidden="true" />
-                      Repository belum tersedia
+                      The repository is not yet available
                     </span>
                   )}
                 </div>
@@ -129,7 +129,7 @@ export function ProjectModal({
                   {project.deploymentNote ? (
                     <p className="rounded-xl border border-dashed border-border bg-background px-4 py-3 text-xs leading-relaxed text-muted">
                       <strong className="font-semibold text-secondary">
-                        Catatan deploy:
+                        Deployment Note:
                       </strong>{" "}
                       {project.deploymentNote}
                     </p>
@@ -186,10 +186,6 @@ export function ProjectModal({
                         </figure>
                       ))}
                     </div>
-                    <p className="mt-3 text-xs text-muted">
-                      Gambar di atas adalah placeholder. Ganti dengan screenshot
-                      asli di <code className="text-secondary">public/projects/</code>.
-                    </p>
                   </Block>
                 </div>
               </motion.div>

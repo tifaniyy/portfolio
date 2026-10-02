@@ -16,7 +16,7 @@ export function Experience() {
           <SectionHeading
             eyebrow="03 — Experience"
             title="Experience"
-            description="Pengalaman kerja dan internship di bidang teknologi informasi, data, dan pengembangan web."
+            description="Work experience and internships in the fields of information technology, data and web development."
           />
         </Reveal>
 
@@ -45,7 +45,10 @@ export function Experience() {
                     </div>
 
                     <span className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-1.5 text-xs font-semibold text-muted">
-                      <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
+                      <CalendarDays
+                        className="h-3.5 w-3.5"
+                        aria-hidden="true"
+                      />
                       {item.period}
                     </span>
                   </div>

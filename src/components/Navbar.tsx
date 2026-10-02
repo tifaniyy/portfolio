@@ -1,15 +1,92 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { MouseEvent as ReactMouseEvent, ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Download, Menu, X } from "lucide-react";
+import { BookOpen, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks, profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
+type NavLink = { label: string; href: string };
+
+/** The nav entry that owns the standalone /journals blog route. */
+const JOURNALS_LABEL = "Journals";
+
+/**
+ * A nav entry that renders as next/link when it targets a real route
+ * (prefetched, instant transition) and as a plain <a> when it is a bare
+ * "#section" anchor — the browser's own jump-to-anchor must keep working,
+ * and a detached link inside the collapsing mobile menu does not complete
+ * fragment navigation.
+ */
+function NavItemLink({
+  link,
+  active,
+  className,
+  onClick,
+  children,
+}: {
+  link: NavLink;
+  active: boolean;
+  className: string;
+  onClick?: (event: ReactMouseEvent<HTMLAnchorElement>) => void;
+  children: ReactNode;
+}) {
+  const shared = {
+    href: link.href,
+    "aria-current": active ? ("true" as const) : undefined,
+    className,
+    onClick,
+  };
+
+  return link.href.startsWith("/") ? (
+    <Link {...shared}>{children}</Link>
+  ) : (
+    <a {...shared}>{children}</a>
+  );
+}
+
+/**
+ * `navLinks` holds in-page section anchors only (#home, #about, …, #contact).
+ * Those work as-is on the home page, but from a sub-page such as /journals a
+ * bare "#about" resolves against the current URL and does nothing — so on a
+ * sub-page they become "/#about".
+ *
+ * "Journals" is intentionally absent from `navLinks`: it is a real route
+ * (/journals) rendered as the top-right action button, so listing it here too
+ * would show it twice.
+ */
+function buildNavLinks(pathname: string): NavLink[] {
+  const isHome = pathname === "/";
+
+  if (isHome) return navLinks.map(({ label, href }) => ({ label, href }));
+
+  return navLinks.map(({ label, href }) => ({
+    label,
+    href: href.startsWith("#") ? `/${href}` : href,
+  }));
+}
+
 export function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const links = buildNavLinks(pathname);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [active, setActive] = useState("#home");
+  const [active, setActive] = useState(isHome ? "#home" : "");
+
+  /* Journals owns the /journals route, so it is lit there and nowhere else. */
+  const journalsActive =
+    pathname === "/journals" || pathname.startsWith("/journals/");
+
+  /*
+   * Every entry in `navLinks` is an in-page anchor, so the highlighted one is
+   * simply the section currently in view. The Journals button is not part of
+   * this list and carries its own `journalsActive` state.
+   */
+  const isLinkActive = (link: NavLink) => active === link.href;
 
   /* Blur / background kicks in after a short scroll. */
   useEffect(() => {
@@ -19,8 +96,11 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* Highlight the section currently in view. */
+  /* Highlight the section currently in view (home page only — the sections
+     that the observer watches only exist there). */
   useEffect(() => {
+    if (!isHome) return;
+
     const ids = navLinks.map((link) => link.href.slice(1));
     const sections = ids
       .map((id) => document.getElementById(id))
@@ -40,7 +120,7 @@ export function Navbar() {
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, []);
+  }, [isHome]);
 
   /* Close the mobile menu with Escape. */
   useEffect(() => {
@@ -73,6 +153,12 @@ export function Navbar() {
     event: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
+    /* Real routes (e.g. /journals) must keep their normal navigation. */
+    if (!href.startsWith("#")) {
+      setMobileOpen(false);
+      return;
+    }
+
     event.preventDefault();
     setMobileOpen(false);
 
@@ -106,8 +192,9 @@ export function Navbar() {
         className="section-shell flex h-16 items-center justify-between gap-4 md:h-18"
       >
         {/* Brand */}
-        <a
-          href="#home"
+        <NavItemLink
+          link={{ label: profile.name, href: isHome ? "#home" : "/" }}
+          active={false}
           className="flex items-center gap-2.5 text-sm font-bold tracking-tight text-primary"
         >
           <span
@@ -117,24 +204,24 @@ export function Navbar() {
             TY
           </span>
           <span className="hidden sm:inline">{profile.name}</span>
-        </a>
+        </NavItemLink>
 
         {/* Desktop links */}
         <ul className="hidden items-center gap-1 md:flex">
-          {navLinks.map((link) => (
+          {links.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                aria-current={active === link.href ? "true" : undefined}
+              <NavItemLink
+                link={link}
+                active={isLinkActive(link)}
                 className={cn(
                   "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                  active === link.href
+                  isLinkActive(link)
                     ? "text-accent"
                     : "text-muted hover:text-primary",
                 )}
               >
                 {link.label}
-                {active === link.href ? (
+                {isLinkActive(link) ? (
                   <motion.span
                     layoutId="nav-active"
                     aria-hidden="true"
@@ -142,19 +229,29 @@ export function Navbar() {
                     transition={{ duration: 0.25, ease: "easeOut" }}
                   />
                 ) : null}
-              </a>
+              </NavItemLink>
             </li>
           ))}
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
-            href={profile.cvUrl}
-            className="hidden items-center gap-1.5 rounded-lg border border-border bg-white/80 px-3 py-2 text-xs font-semibold text-primary shadow-soft transition-colors hover:border-accent/40 hover:text-accent sm:inline-flex"
+          {/*
+            The top-right action is the Journals route, not the CV download.
+            It is driven by the same `JOURNALS_LABEL` entry that owns the
+            route in `buildNavLinks`, so the two can never drift apart.
+            (The CV download still lives in the hero — `profile.cvUrl`.)
+          */}
+          <NavItemLink
+            link={{ label: JOURNALS_LABEL, href: "/journals" }}
+            active={journalsActive}
+            className={cn(
+              "hidden items-center gap-1.5 rounded-lg border border-border bg-white/80 px-3 py-2 text-xs font-semibold shadow-soft transition-colors hover:border-accent/40 hover:text-accent sm:inline-flex",
+              journalsActive ? "text-accent" : "text-primary",
+            )}
           >
-            <Download className="h-3.5 w-3.5" aria-hidden="true" />
-            Download CV
-          </a>
+            <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+            {JOURNALS_LABEL}
+          </NavItemLink>
 
           <button
             type="button"
@@ -186,31 +283,33 @@ export function Navbar() {
             className="overflow-hidden border-b border-border bg-background/95 backdrop-blur-md md:hidden"
           >
             <ul className="section-shell flex flex-col gap-1 py-4">
-              {navLinks.map((link) => (
+              {links.map((link) => (
                 <li key={link.href}>
-                  <a
-                    href={link.href}
+                  <NavItemLink
+                    link={link}
+                    active={isLinkActive(link)}
                     onClick={(event) => handleMobileNavigate(event, link.href)}
                     className={cn(
                       "block rounded-lg px-3 py-3 text-base font-medium transition-colors",
-                      active === link.href
+                      isLinkActive(link)
                         ? "bg-accent-soft text-accent"
                         : "text-secondary hover:bg-slate-100",
                     )}
                   >
                     {link.label}
-                  </a>
+                  </NavItemLink>
                 </li>
               ))}
               <li className="pt-2">
-                <a
-                  href={profile.cvUrl}
+                <NavItemLink
+                  link={{ label: JOURNALS_LABEL, href: "/journals" }}
+                  active={journalsActive}
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
                 >
-                  <Download className="h-4 w-4" aria-hidden="true" />
-                  Download CV
-                </a>
+                  <BookOpen className="h-4 w-4" aria-hidden="true" />
+                  {JOURNALS_LABEL}
+                </NavItemLink>
               </li>
             </ul>
           </motion.div>

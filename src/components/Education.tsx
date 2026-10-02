@@ -15,7 +15,7 @@ export function Education() {
           <SectionHeading
             eyebrow="05 — Education"
             title="Education"
-            description="Latar belakang pendidikan formal dan fokus studi."
+            description="Education & Academic Focus"
           />
         </Reveal>
 
@@ -26,7 +26,10 @@ export function Education() {
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div className="flex items-start gap-4">
                     <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-white">
-                      <GraduationCap className="h-5.5 w-5.5" aria-hidden="true" />
+                      <GraduationCap
+                        className="h-5.5 w-5.5"
+                        aria-hidden="true"
+                      />
                     </span>
                     <div>
                       <h3 className="text-lg font-semibold leading-snug text-primary">
@@ -76,22 +79,22 @@ export function Education() {
           <Reveal delay={0.08}>
             <aside className="h-full rounded-2xl border border-border bg-primary p-6 text-white shadow-soft sm:p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-300">
-                Fokus Studi
+                Academic Focus
               </p>
               <h3 className="mt-3 text-lg font-semibold leading-snug">
-                Dari data mentah menjadi keputusan
+                Turning raw data into insights
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-300">
-                Selama kuliah saya mengerjakan tugas dan project yang menekankan
-                pengolahan data, perancangan basis data, visualisasi, dan
-                pengembangan aplikasi web — keterampilan yang saya lanjutkan di
-                project pribadi maupun di tempat kerja.
+                Throughout my studies, I worked on projects focused on data
+                processing, database design, visualization, and web application
+                development. These are skills I continue to develop through
+                personal projects and professional experience.
               </p>
               <ul className="mt-5 space-y-2 text-sm text-slate-200">
-                <li>• Basis data &amp; SQL</li>
-                <li>• Analisis dan visualisasi data</li>
-                <li>• Machine learning dasar</li>
-                <li>• Pengembangan web</li>
+                <li>• Database &amp; SQL</li>
+                <li>• Data Analysis &amp; Visualization</li>
+                <li>• Fundamentals of Machine Learning</li>
+                <li>• Web Development</li>
               </ul>
             </aside>
           </Reveal>

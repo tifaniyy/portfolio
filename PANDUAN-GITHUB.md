@@ -106,7 +106,8 @@ vercel --prod   # deployment production
 2. Buka **Vercel → Project → Settings → Environment Variables**, set
    `NEXT_PUBLIC_SITE_URL` ke URL itu → **Save** → **Deployments → Redeploy**
    supaya canonical URL dan Open Graph memakai alamat yang benar.
-3. Buka websitenya, cek: navbar, tombol Download CV, menu mobile, klik kartu project.
+3. Buka websitenya, cek: navbar, tombol Download CV di hero, tombol Journals di
+   kanan atas, menu mobile, klik kartu project.
 
 ---
 

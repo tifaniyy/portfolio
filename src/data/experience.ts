@@ -3,8 +3,10 @@
  * section, plus the certifications listed under "Training, Skills, & Tools".
  * ---------------------------------------------------------------
  * EDIT THIS FILE to update roles, dates, descriptions and activities.
- * The CV has no employment history besides the Telkom internship, so the
- * entries below are internships / projects / trainings from the CV.
+ * The CV lists the Telkom internship, so that entry comes straight from it.
+ * The AirNav Indonesia internship (Sep 2026 – Mar 2027) was added on request
+ * and is not in the CV yet — keep the CV in sync when it is updated.
+ * Newest entries are listed first.
  * ---------------------------------------------------------------
  */
 
@@ -29,14 +31,25 @@ export type ExperienceItem = {
 
 export const experiences: ExperienceItem[] = [
   {
+    company: "AirNav Indonesia",
+    fullCompany: "AirNav Indonesia (Perum LPPNPI)",
+    role: "Internship — Information Technology Division",
+    period: "Sep 2026 – Mar 2027",
+    type: "Internship",
+    location: "Kota Tangerang, Indonesia",
+    description:
+      "Internship at AirNav Indonesia, the state-owned air navigation service provider, in the Information Technology division.",
+    activities: [],
+  },
+  {
     company: "PT Telekomunikasi Indonesia (Persero) Tbk",
     fullCompany: "PT Telekomunikasi Indonesia (Persero) Tbk — Telkom Witel",
-    role: "Internship",
+    role: "Internship - Digital Connectivity Services Division",
     period: "May 2025 – Aug 2025",
     type: "Internship",
     location: "Jakarta Pusat, Indonesia",
     description:
-      "Independent internship at Telkom Witel Jakarta Pusat covering network technology research, IoT exploration, and internal website UI/UX design.",
+      "Internship at Telkom Witel Jakarta Pusat covering network technology research, IoT exploration, and internal website UI/UX design.",
     activities: [
       {
         title: "Network Technology Research — Wi-Fi 7",
@@ -76,12 +89,14 @@ export const experiences: ExperienceItem[] = [
           "Data visualisation, data preparation, and data storytelling using Google Sheets.",
       },
       {
-        title: "Study Case Bootcamp Data Analyst with SQL & Python — DQLab (2024)",
+        title:
+          "Study Case Bootcamp Data Analyst with SQL & Python — DQLab (2024)",
         description:
           "Data analysis, SQL querying, Python programming, data processing, and visualisation.",
       },
       {
-        title: "Study Case Bootcamp Machine Learning & AI for Beginner — DQLab (2024)",
+        title:
+          "Study Case Bootcamp Machine Learning & AI for Beginner — DQLab (2024)",
         description:
           "Machine learning fundamentals, data preparation, ML techniques, and practical AI applications.",
       },
@@ -101,7 +116,8 @@ export const experiences: ExperienceItem[] = [
           "Python fundamentals: data handling, control flow, OOP, testing, coding standards, and popular Python libraries.",
       },
       {
-        title: "Belajar Dasar Structured Query Language (SQL) — Dicoding (2024)",
+        title:
+          "Belajar Dasar Structured Query Language (SQL) — Dicoding (2024)",
         description:
           "Database fundamentals, DBMS, database structures, and basic SQL queries for data manipulation and retrieval.",
       },
