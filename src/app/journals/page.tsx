@@ -35,25 +35,17 @@ export default async function JournalsIndexPage() {
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
         {/* Kolom utama — daftar postingan */}
         <div className="min-w-0">
-          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-border pb-4">
-            <div>
-              <h1
-                id="journals-list-heading"
-                className="text-lg font-bold tracking-tight text-primary"
-              >
-                Postingan terbaru
-              </h1>
-              <p className="mt-1 text-xs text-muted">
-                {total} tulisan
-                {totalPages > 1 ? ` · ${totalPages} halaman` : ""}
-              </p>
-            </div>
-            <Link
-              href="/journals/browse"
-              className="text-sm font-semibold text-accent hover:underline"
+          <div className="border-b border-border pb-4">
+            <h1
+              id="journals-list-heading"
+              className="text-lg font-bold tracking-tight text-primary"
             >
-              Cari &amp; arsip →
-            </Link>
+              Postingan terbaru
+            </h1>
+            <p className="mt-1 text-xs text-muted">
+              {total} tulisan
+              {totalPages > 1 ? ` · ${totalPages} halaman` : ""}
+            </p>
           </div>
 
           {items.length === 0 ? (
@@ -258,18 +250,7 @@ export default async function JournalsIndexPage() {
             </nav>
           ) : null}
 
-          {published.length > 0 ? (
-            <p className="mt-8 text-sm text-muted">
-              Semua tulisan juga bisa disaring di{" "}
-              <Link
-                href="/journals/browse"
-                className="font-semibold text-accent underline-offset-4 hover:underline"
-              >
-                halaman cari &amp; arsip
-              </Link>
-              .
-            </p>
-          ) : null}
+          {/* Tautan cari & arsip tidak diulang di sini — sudah ada di navbar. */}
         </div>
 
         {/* Sidebar */}

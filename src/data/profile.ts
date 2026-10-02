@@ -132,9 +132,12 @@ export const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   /*
-   * "Journals" is deliberately NOT in this list: it is a real route
-   * (/journals), and Navbar renders it as the top-right action button.
-   * Listing it here as well would show it twice in the navbar.
+   * Dua entri di bawah ini adalah ROUTE, bukan anchor halaman:
+   *  - "Cari & arsip" -> /journals/browse (halaman cari + arsip blog).
+   *  - "Journals" sengaja TIDAK ada di daftar ini: route /journals dirender
+   *    satu kali oleh Navbar sebagai tombol kanan atas (JOURNALS_LABEL).
+   *    Kalau dimasukkan ke sini juga, tombolnya jadi dobel.
    */
+  { label: "Cari & arsip", href: "/journals/browse" },
   { label: "Contact", href: "#contact" },
 ] as const;

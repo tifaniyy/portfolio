@@ -82,11 +82,19 @@ export function Navbar() {
     pathname === "/journals" || pathname.startsWith("/journals/");
 
   /*
-   * Every entry in `navLinks` is an in-page anchor, so the highlighted one is
-   * simply the section currently in view. The Journals button is not part of
-   * this list and carries its own `journalsActive` state.
+   * "Cari & arsip" (/journals/browse) adalah entri route di `navLinks`, jadi
+   * sorotannya diambil dari `pathname`, bukan dari scroll-spy.
    */
-  const isLinkActive = (link: NavLink) => active === link.href;
+  const browseActive = pathname.startsWith("/journals/browse");
+
+  /*
+   * Every entry in `navLinks` is an in-page anchor, so the highlighted one is
+   * simply the section currently in view. Dua entri route (Journals button dan
+   * "Cari & arsip") tidak ikut scroll-spy: keduanya punya sorotan sendiri dari
+   * `pathname`.
+   */
+  const isLinkActive = (link: NavLink) =>
+    link.href.startsWith("/") ? browseActive : active === link.href;
 
   /* Blur / background kicks in after a short scroll. */
   useEffect(() => {
