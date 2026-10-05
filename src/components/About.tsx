@@ -50,7 +50,7 @@ export function About() {
 
               <div className="rounded-2xl border border-border bg-background p-5">
                 <p className="text-sm font-semibold text-primary">
-                  Area yang saya kerjakan
+                  My Focus Areas
                 </p>
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {interests.map((interest) => (
