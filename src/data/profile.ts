@@ -53,8 +53,9 @@ export const education = [
 /**
  * About-section statistics.
  * Counts below come from the CV — 6 projects and 1 internship (Telkom) are
- * listed there. The AirNav Indonesia internship was added on request and is
- * not in the CV yet, so that card now names both places.
+ * listed there. The AirNav Indonesia internship (Sep 2026 – Mar 2027) and the
+ * carbon-emission dashboard built during it were added on request and are not
+ * in the CV yet, so the cards below name both places and both dashboards.
  */
 export const stats = [
   {
@@ -65,7 +66,8 @@ export const stats = [
   {
     icon: "LineChart",
     label: "Data & Analysis Projects",
-    description: "UMP dashboard, K-Means clustering, Streamlit",
+    description:
+      "Carbon-emission dashboard (AirNav), UMP dashboard, K-Means clustering, Streamlit",
   },
   {
     icon: "Code2",

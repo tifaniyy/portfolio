@@ -2,7 +2,7 @@
 
 Semua perintah di bawah dijalankan di **Git Bash** (atau PowerShell — perintahnya sama).
 
-Folder proyek: `C:\Users\Tifani\portfolio`
+Folder proyek: `T:\FOLDER TIFANI\portfolio`
 
 > Repo lokal sudah siap: branch `main`, 5 commit, working tree bersih, 46 file ter-track.
 > Yang belum ada cuma **repo di GitHub** dan **remote**-nya.
@@ -30,7 +30,7 @@ https://github.com/tifaniyy/portfolio.git
 ## Langkah 2 — Hubungkan folder lokal ke repo itu, lalu push
 
 ```bash
-cd "C:/Users/Tifani/portfolio"
+cd "T:/FOLDER TIFANI/portfolio"
 
 # daftarkan remote (sekali saja)
 git remote add origin https://github.com/tifaniyy/portfolio.git
@@ -93,7 +93,7 @@ Setiap `git push` ke branch `main` berikutnya akan **otomatis redeploy**.
 
 ```bash
 npm i -g vercel
-cd "C:/Users/Tifani/portfolio"
+cd "T:/FOLDER TIFANI/portfolio"
 vercel          # preview deployment, ikuti prompt login
 vercel --prod   # deployment production
 ```
@@ -120,18 +120,23 @@ menampilkan data palsu:
 | --- | --- |
 | CV (PDF asli sudah terpasang) | `public/cv.pdf` — ganti bila CV diperbarui |
 | URL Live Demo semua project (masih `null`) | `src/data/projects.ts` → `demo` |
-| 7 screenshot placeholder | ganti file di `public/projects/` |
 | Judul & meta description (kalau perlu) | `src/app/layout.tsx` |
+
+Screenshot di `public/projects/` sudah memakai tangkapan asli tiap project (9
+berkas PNG), jadi daftar placeholder di atas tidak lagi menyertakannya.
 
 Catatan: project UMP pernah di-deploy di Railway, tapi instance gratisnya sudah
 berakhir. Di modal detail sudah ada penjelasan otomatis
-(`src/data/projects.ts` → `deploymentNote`). Kalau nanti di-deploy lagi (Railway,
-Render, Fly.io, dsb.), cukup isi URL-nya di `demo` dan hapus `deploymentNote`-nya.
+(`src/data/projects.ts` → `deploymentNote`). Hal yang sama berlaku untuk dashboard
+emisi karbon AirNav: itu project magang, dijalankan lokal/internal, dan
+`deploymentNote`-nya menjelaskan hal itu. Kalau nanti ada yang di-deploy lagi
+(Railway, Render, Fly.io, dsb.), cukup isi URL-nya di `demo` dan hapus
+`deploymentNote`-nya.
 
 Setelah mengedit data:
 
 ```bash
-cd "C:/Users/Tifani/portfolio"
+cd "T:/FOLDER TIFANI/portfolio"
 npm run dev      # cek di http://localhost:3000
 npm run build    # pastikan tetap "Compiled successfully"
 git add -A
@@ -144,7 +149,7 @@ git push
 ## Ringkasan perintah (kalau sudah paham)
 
 ```bash
-cd "C:/Users/Tifani/portfolio"
+cd "T:/FOLDER TIFANI/portfolio"
 git remote add origin https://github.com/tifaniyy/portfolio.git
 git push -u origin main
 ```

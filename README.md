@@ -41,17 +41,17 @@ portfolio/
 │  ├─ cv.pdf                     ← replace with your real CV (same file name)
 │  ├─ favicon.svg                ← favicon placeholder
 │  ├─ og-image.svg               ← Open Graph image (1200×630)
-│  └─ projects/                  ← screenshot placeholders (replace with real PNG/JPG)
-│     ├─ ump-dashboard.svg
-│     ├─ ump-clustering.svg
-│     ├─ ump-map.svg
-│     ├─ carbon-dashboard.svg
-│     ├─ carbon-route-map.svg
-│     ├─ wifi7-research.svg
-│     ├─ telkom-web.svg
-│     └─ telkom-figma.svg
+│  └─ projects/                  ← real screenshots (PNG)
+│     ├─ emisi-beranda.png
+│     ├─ emisi-admin.png
+│     ├─ ump-beranda.png
+│     ├─ ump-cluster.png
+│     ├─ ump-map.png
+│     ├─ streamlit-ump.png
+│     ├─ web-shoes-store.png
+│     ├─ design-oldmarket.png
+│     └─ ml-hand-gesture.png
 ├─ scripts/
-│  ├─ generate-placeholders.py   ← regenerates the SVG placeholders above
 │  └─ generate-cv-placeholder.py ← regenerates public/cv.pdf
 └─ src/
    ├─ app/
@@ -87,9 +87,8 @@ portfolio/
 | What | File |
 | --- | --- |
 | Name, title, hero text, about paragraphs, summary | `src/data/profile.ts` |
-| **Email + LinkedIn (currently placeholders)** | `src/data/profile.ts` → `profile.email`, `profile.linkedin` |
-| Education entries | `src/data/profile.ts` → `education` |
 | About stat cards | `src/data/profile.ts` → `stats` |
+| Education entries | `src/data/profile.ts` → `education` |
 | Navbar / footer menu items | `src/data/profile.ts` → `navLinks` |
 | Skills per category | `src/data/skills.ts` |
 | Experience timeline | `src/data/experience.ts` |
@@ -107,15 +106,15 @@ portfolio/
   button pointing at GitHub instead of a dead "Live Demo" button. Set a real URL
   in `src/data/projects.ts` to turn a button into a working Live Demo.
 - `project.deploymentNote` → optional note shown in the detail modal. Currently
-  used on the UMP project to explain that its free Railway instance expired.
-- Screenshots in `public/projects/` → generated wireframe placeholders.
+  used on the UMP project (free Railway instance expired) and on the AirNav
+  carbon-emission dashboard (internship project, run locally/internal).
+- Screenshots in `public/projects/` → real captures of each project (PNG).
 
-## 6. Placeholder generators
+## 6. Placeholder generator
 
-Both scripts are dependency-free (standard library only):
+`scripts/generate-cv-placeholder.py` is dependency-free (standard library only):
 
 ```bash
-python scripts/generate-placeholders.py   # rewrites public/projects/*.svg
 python scripts/generate-cv-placeholder.py # rewrites public/cv.pdf
 ```
 

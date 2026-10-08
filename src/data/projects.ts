@@ -1,7 +1,8 @@
 /**
  * Projects data — taken from the CV "Experiences" section (every entry marked
- * "Project" / "Software Designer Project"). The Telkom internship lives in
- * `experience.ts`, so it is not duplicated here.
+ * "Project" / "Software Designer Project"), plus one entry added on request:
+ * the AirNav Indonesia carbon-emission dashboard, which is not in the CV yet.
+ * The Telkom internship lives in `experience.ts`, so it is not duplicated here.
  * ---------------------------------------------------------------
  * EDIT THIS FILE to update projects, links and screenshots.
  *
@@ -11,10 +12,13 @@
  *  - `deploymentNote`: shown in the detail modal. Use it to explain a demo
  *                  that is temporarily offline (e.g. a free Railway instance
  *                  that expired) so the missing link is no longer a mystery.
+ *  - `organization`: shown as the small label above the title on the card.
  *  - `github`    : repository URL, or null if there is none yet
  *  - `screenshots`: files placed in /public/projects. Keep each `src` exactly
  *                  in sync with the real file name — a typo here renders as a
  *                  broken image, not a build error.
+ *  - Newest entries first: the project with the most recent `period` goes at
+ *    the top of the array. All entries render in one grid, in this order.
  * ---------------------------------------------------------------
  */
 
@@ -52,10 +56,71 @@ export type Project = {
    */
   deploymentNote?: string;
   screenshots: Screenshot[];
-  featured: boolean;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "airnav-dashboard-emisi",
+    title: "Air Traffic Carbon Emission Dashboard",
+    subtitle: "Flask dashboard for Aviation CO₂ savings",
+    organization: "AirNav Indonesia (Perum LPPNPI)",
+    year: "2026",
+    period: "Sep 2026 – now",
+    category: "Data & Web",
+    summary:
+      "Web-based dashboard that calculates and visualises the CO₂ emissions saved by shortening flight routes across Indonesia, built for the Information Technology Division of AirNav Indonesia.",
+    description:
+      "Built during the internship at AirNav Indonesia (Perum LPPNPI), the state-owned air navigation service provider, in the Information Technology division. The application stores Indonesian airports, route savings and daily flight counts in a database, then computes the reduced CO₂ emissions and fuel cost from those inputs. Airports, routes and uploads are maintained through an admin area with Excel/CSV import.",
+    problem:
+      "Shorter flight routes cut fuel burn and CO₂ emissions, but the saving is not visible: the airport, route and daily-flight tables are separate, and the emission figure for a given period has to be worked out by hand.",
+    solution:
+      "Building a Flask web application: a relational database holds airports (241 Indonesian airports seeded from an OurAirports extract), route savings and daily flights, the CO₂ and cost calculation runs on the server data, and the results are shown as an interactive dashboard — a Leaflet map of the route on top of OpenFreeMap vector tiles plus a per-month bar chart. Data entry is handled through an admin area that accepts Excel/CSV uploads and manages airport and route records.",
+    tech: [
+      "Python",
+      "Flask",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "SQLite",
+      "Leaflet",
+      "MapLibre GL JS",
+      "OpenFreeMap",
+      "JavaScript",
+      "HTML/CSS",
+      "Vercel",
+    ],
+    features: [
+      "Airport, route and daily-flight data in a relational database",
+      "CO₂ saved and cost calculation per route and period",
+      "Interactive route map (Leaflet over OpenFreeMap vector tiles)",
+      "Monthly CO₂ chart (TW I–IV or full year)",
+      "Admin area: Excel/CSV upload, airport and route management",
+      "Login with admin approval for new accounts",
+      "Offline page assets — fonts, map libraries and map style kept in the repo",
+    ],
+    github: "https://github.com/tifaniyy/dashboard-emisi-web",
+    demo: null,
+    deploymentNote:
+      "This is the internship project at AirNav Indonesia, so the dashboard is run locally/internal and the repository holds the source code. Setup instructions are in the repository README.",
+    screenshots: [
+      {
+        src: "/projects/emisi-beranda.png",
+        alt: "Carbon emission dashboard: airport and route selection, CO₂ calculator and the route map",
+        caption:
+          "Main dashboard — route selection, CO₂ calculator and route map",
+      },
+      {
+        src: "/projects/emisi-analisis.png",
+        alt: "CO₂ calculation for the selected route with the monthly bar chart and saving summary",
+        caption:
+          "Calculation result — monthly CO₂ for the selected route and period",
+      },
+      {
+        src: "/projects/emisi-admin.png",
+        alt: "Admin area: new user approval table and the airport data table",
+        caption: "Admin area — user approval, Excel/CSV upload and airport data",
+      },
+    ],
+  },
   {
     slug: "ump-kmeans-flask",
     title:
@@ -113,7 +178,6 @@ export const projects: Project[] = [
         caption: "Visualisation of UMP distribution (GeoPandas)",
       },
     ],
-    featured: true,
   },
   {
     slug: "oldmarketjkt-thrift-website",
@@ -146,7 +210,6 @@ export const projects: Project[] = [
         caption: "User interface design for the e-commerce website",
       },
     ],
-    featured: true,
   },
   {
     slug: "ump-streamlit-dashboard",
@@ -180,7 +243,6 @@ export const projects: Project[] = [
         caption: "Streamlit dashboard — UMP trends across provinces",
       },
     ],
-    featured: false,
   },
   {
     slug: "online-shoes-store-website",
@@ -214,7 +276,6 @@ export const projects: Project[] = [
         caption: "Online shoe shop website layout",
       },
     ],
-    featured: false,
   },
   {
     slug: "hand-gesture-classification",
@@ -254,6 +315,5 @@ export const projects: Project[] = [
         caption: "Hand gesture classification workflow",
       },
     ],
-    featured: false,
   },
 ];
