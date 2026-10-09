@@ -1,4 +1,4 @@
-import { profile } from "@/data/profile";
+import { gmailComposeUrl, profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 import { Download, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
@@ -106,8 +106,10 @@ export function Hero({ className }: HeroProps) {
                 </li>
                 <li>
                   <a
-                    href={`mailto:${profile.email}`}
-                    aria-label="Send an email"
+                    href={gmailComposeUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Email Tifani (opens Gmail compose in a new tab)"
                     className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-white text-muted shadow-soft transition-colors hover:border-accent/40 hover:text-accent"
                   >
                     <Mail className="h-5 w-5" aria-hidden="true" />

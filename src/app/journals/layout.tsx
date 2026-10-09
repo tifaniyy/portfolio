@@ -4,7 +4,12 @@ import { BookOpen } from "lucide-react";
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
-  title: "Journal & Article",
+  /*
+   * Sengaja TANPA `title`: kalau segmen ini menetapkan judul, template judul
+   * dari root layout (`%s | Tifani Yunitami`) tidak lagi berlaku untuk semua
+   * halaman di bawahnya, sehingga `title` milik tiap page tampil polos
+   * ("All Articles"). Cukup lengkapi description-nya saja.
+   */
   description:
     "Journal blog Tifani Yunitami — Research notes, data analysis, visualization, and web development.",
   alternates: { canonical: "/journals" },

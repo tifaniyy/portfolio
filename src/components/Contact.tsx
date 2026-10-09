@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Check, Copy, Mail, MapPin } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
-import { profile } from "@/data/profile";
+import { gmailComposeUrl, profile } from "@/data/profile";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
@@ -16,18 +16,26 @@ export function Contact() {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      /* Clipboard unavailable (e.g. insecure context) — the mailto link still works. */
+      /* Clipboard unavailable (e.g. insecure context) — the email link still works. */
       setCopied(false);
     }
   };
+
+  /*
+   * Every "email" affordance on the page opens Gmail's web composer with
+   * `profile.email` already in the To: field (see `gmailComposeUrl`), so a
+   * click always lands in a compose window instead of depending on a mail
+   * client the visitor may not have configured.
+   */
+  const composeUrl = gmailComposeUrl(profile.emailSubject);
 
   const channels = [
     {
       label: "Email",
       value: profile.email,
-      href: `mailto:${profile.email}`,
+      href: composeUrl,
       icon: Mail,
-      external: false,
+      external: true,
     },
     {
       label: "LinkedIn",
@@ -73,7 +81,9 @@ export function Contact() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href={`mailto:${profile.email}?subject=Opportunity%20for%20Tifani%20Yunitami`}
+                  href={composeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-primary transition-transform duration-200 hover:-translate-y-0.5"
                 >
                   <Mail className="h-4 w-4" aria-hidden="true" />

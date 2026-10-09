@@ -40,7 +40,8 @@ portfolio/
 ├─ public/
 │  ├─ cv.pdf                     ← replace with your real CV (same file name)
 │  ├─ favicon.svg                ← favicon placeholder
-│  ├─ og-image.svg               ← Open Graph image (1200×630)
+│  ├─ og-image.png               ← Open Graph image (1200×630), dari og-image.svg
+│  ├─ og-image.svg               ← sumber desain og-image.png
 │  └─ projects/                  ← real screenshots (PNG)
 │     ├─ emisi-beranda.png
 │     ├─ emisi-admin.png
@@ -57,6 +58,9 @@ portfolio/
    ├─ app/
    │  ├─ layout.tsx              ← metadata, Open Graph, fonts, Navbar/Footer shell
    │  ├─ page.tsx                ← composes the sections + JSON-LD
+   │  ├─ not-found.tsx           ← halaman 404 kustom
+   │  ├─ sitemap.ts              ← /sitemap.xml (dari data jurnal yang terbit)
+   │  ├─ robots.ts               ← /robots.txt (larang /journals/kelola)
    │  └─ globals.css             ← design tokens, base styles, helpers
    ├─ components/
    │  ├─ Navbar.tsx              ← sticky navbar, blur on scroll, mobile menu
@@ -68,7 +72,7 @@ portfolio/
    │  ├─ ProjectCard.tsx         ← single project card (hover animation)
    │  ├─ ProjectModal.tsx        ← project detail dialog
    │  ├─ Education.tsx           ← education section
-   │  ├─ Contact.tsx             ← contact channels + copy-email button
+   │  ├─ Contact.tsx             ← contact channels + Send Email / copy
    │  ├─ Footer.tsx              ← footer navigation
    │  ├─ SectionHeading.tsx      ← shared eyebrow + title + description
    │  ├─ Reveal.tsx              ← reusable fade-in / slide-up on scroll
@@ -79,7 +83,8 @@ portfolio/
    │  ├─ experience.ts           ← timeline entries
    │  └─ projects.ts             ← projects (description, problem, solution, …)
    └─ lib/
-      └─ utils.ts                ← `cn()` class-merge helper
+      ├─ utils.ts                ← `cn()` class-merge helper
+      └─ site.ts                 ← satu sumber URL situs (sitemap, canonical, OG)
 ```
 
 ## 5. Files to edit for your own content
@@ -150,8 +155,21 @@ vercel --prod # production deployment
 
 - No secrets or API keys are used anywhere; `.env.local` is git-ignored and
   `.env.example` documents the only optional variable.
+- Contact CTA has two email actions: **Send Email** and **Copy Email**. Every
+  email link on the site points at Gmail's web composer
+  (`mail.google.com/mail/?view=cm&fs=1&to=…`, built by `gmailComposeUrl()` in
+  `src/data/profile.ts`) so a click always opens a compose window with the
+  address filled in — `mailto:` was dropped because it only works when the
+  visitor has a mail client configured, and does nothing at all when they don't.
 - No hardcoded `localhost` URLs — the site URL comes from `NEXT_PUBLIC_SITE_URL`
-  with a Vercel fallback.
+  with a fallback in `src/lib/site.ts` (used by canonical, OG, JSON-LD, sitemap
+  and robots).
+- SEO: `/sitemap.xml` and `/robots.txt` are generated (`src/app/sitemap.ts`,
+  `src/app/robots.ts`). Only unfiltered page 1 of `/journals/browse` is
+  indexable — filtered and paginated variants carry `noindex, follow`.
+- `public/cv.pdf` memuat nama, email, LinkedIn, dan GitHub saja: nomor HP dan
+  alamat rumah sudah dihapus dari berkasnya, jadi tidak ikut terunduh publik.
+  Kalau CV-nya diperbarui, pastikan berkas baru juga tanpa data itu.
 - Animations are subtle (small offsets, short durations) and are fully disabled
   under `prefers-reduced-motion: reduce`.
 - Accessibility: semantic landmarks, one `h1`, labelled icon links, visible

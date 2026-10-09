@@ -24,12 +24,6 @@ import {
 } from "@/data/journals";
 import { getPublishedJournals } from "@/data/journals.server";
 
-export const metadata: Metadata = {
-  title: "All Articles",
-  description: "All journal articles by Tifani Yunitami, filterable by tag.",
-  alternates: { canonical: "/journals/browse" },
-};
-
 const PER_PAGE = 5;
 
 type SearchParams = Promise<{
@@ -44,6 +38,38 @@ type SearchParams = Promise<{
  * klien) supaya setiap kombinasi filter punya URL sendiri, bisa di-bookmark,
  * dan tetap jalan tanpa JavaScript.
  */
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const page = Number.parseInt(params.page ?? "1", 10) || 1;
+  const hasFilter = Boolean(
+    (params.q ?? "").trim() ||
+      (params.tag ?? "").trim() ||
+      (params.arsip ?? "").trim(),
+  );
+
+  /*
+   * Hanya halaman 1 yang tanpa filter yang boleh diindeks. Kombinasi filter dan
+   * halaman 2, 3, … semuanya memakai canonical yang sama di atas, jadi tanpa
+   * `noindex` Google melihat satu konten yang sama di ratusan URL.
+   */
+  if (page > 1 || hasFilter) {
+    return {
+      title: "All Articles",
+      robots: { index: false, follow: true },
+    };
+  }
+
+  return {
+    title: "All Articles",
+    description: "All journal articles by Tifani Yunitami, filterable by tag.",
+    alternates: { canonical: "/journals/browse" },
+  };
+}
+
 export default async function JournalsBrowsePage({
   searchParams,
 }: {

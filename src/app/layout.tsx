@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -11,10 +12,6 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
 });
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "https://tifani-portfolio.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -49,9 +46,16 @@ export const metadata: Metadata = {
     locale: "id_ID",
     images: [
       {
-        url: "/og-image.svg",
+        /*
+         * PNG, bukan SVG: WhatsApp/Facebook/X tidak merender SVG sebagai
+         * og:image, sehingga tautan yang dibagikan tampil tanpa preview.
+         * Sumber desainnya tetap `og-image.svg` — regenerate PNG-nya dari situ
+         * kalau teksnya diubah.
+         */
+        url: "/og-image.png",
         width: 1200,
         height: 630,
+        type: "image/png",
         alt: "Tifani Yunitami — Informatics Graduate, Data Analyst, Web Developer",
       },
     ],
@@ -61,7 +65,7 @@ export const metadata: Metadata = {
     title: "Tifani Yunitami | Informatics Graduate & Data Analyst",
     description:
       "Portfolio of Tifani Yunitami, an Informatics graduate interested in data analysis, data visualization, Python, SQL, and web development.",
-    images: ["/og-image.svg"],
+    images: ["/og-image.png"],
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],

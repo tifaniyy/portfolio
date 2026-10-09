@@ -21,6 +21,8 @@ export const profile = {
   ],
 
   email: "tifaniyunitami1@gmail.com",
+  /** Subject pre-filled by the contact CTA. */
+  emailSubject: "Opportunity for Tifani Yunitami",
   linkedin: "https://www.linkedin.com/in/tifaniyunitami/",
   github: "https://github.com/tifaniyy",
   location: "Kota Tangerang, Indonesia",
@@ -28,6 +30,19 @@ export const profile = {
   /** Replace public/cv.pdf whenever the CV is updated (keep the file name). */
   cvUrl: "/cv.pdf",
 };
+
+/**
+ * Gmail web-composer link with `profile.email` already filled in.
+ *
+ * Every email link on the site uses this instead of `mailto:` — `mailto:` only
+ * hands the message to whatever mail client the VISITOR configured, so on a
+ * device without one the click silently does nothing. This URL always lands in
+ * Gmail's compose window (in the Gmail app on mobile, where the OS intercepts
+ * the link). Pass a subject to pre-fill it.
+ */
+export const gmailComposeUrl = (subject?: string) =>
+  `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(profile.email)}` +
+  (subject ? `&su=${encodeURIComponent(subject)}` : "");
 
 export const education = [
   {
