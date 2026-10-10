@@ -1,5 +1,16 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { House, NotebookText } from "lucide-react";
+
+/*
+ * `metadata` di sini berlaku (diuji: <title>-nya jadi "... | Tifani Yunitami"),
+ * jadi tab browser tidak lagi menampilkan judul beranda di halaman 404.
+ * Status HTTP & penanda `noindex` untuk halaman ini diurus Next sendiri.
+ */
+export const metadata: Metadata = {
+  title: "Halaman tidak ditemukan",
+  description: "Alamat yang dibuka tidak ada atau sudah dipindahkan.",
+};
 
 /**
  * Halaman 404 kustom. Tanpa ini Next memakai halaman bawaannya

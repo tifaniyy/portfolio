@@ -39,7 +39,9 @@ npm run lint      # ESLint (next/core-web-vitals + TypeScript rules)
 portfolio/
 ├─ public/
 │  ├─ cv.pdf                     ← replace with your real CV (same file name)
-│  ├─ favicon.svg                ← favicon placeholder
+│  ├─ favicon.svg                ← mark situs — sumber semua ikon di bawah
+│  ├─ favicon.ico                ← 16/24/32/48 px untuk tab browser & feed reader
+│  ├─ apple-touch-icon.png       ← 180×180 px untuk "Add to Home Screen" di iOS
 │  ├─ og-image.png               ← Open Graph image (1200×630), dari og-image.svg
 │  ├─ og-image.svg               ← sumber desain og-image.png
 │  └─ projects/                  ← real screenshots (PNG)
@@ -53,7 +55,8 @@ portfolio/
 │     ├─ design-oldmarket.png
 │     └─ ml-hand-gesture.png
 ├─ scripts/
-│  └─ generate-cv-placeholder.py ← regenerates public/cv.pdf
+│  ├─ generate-cv-placeholder.py ← regenerates public/cv.pdf
+│  └─ generate-favicon.py        ← regenerates favicon.ico + apple-touch-icon.png
 └─ src/
    ├─ app/
    │  ├─ layout.tsx              ← metadata, Open Graph, fonts, Navbar/Footer shell
@@ -115,12 +118,22 @@ portfolio/
   carbon-emission dashboard (internship project, run locally/internal).
 - Screenshots in `public/projects/` → real captures of each project (PNG).
 
-## 6. Placeholder generator
+## 6. Generator berkas biner
 
-`scripts/generate-cv-placeholder.py` is dependency-free (standard library only):
+Kedua skrip di `scripts/` bersifat opsional — hanya perlu dijalankan kalau
+sumber desainnya berubah.
+
+`scripts/generate-cv-placeholder.py` tanpa dependensi (pustaka standar saja):
 
 ```bash
 python scripts/generate-cv-placeholder.py # rewrites public/cv.pdf
+```
+
+`scripts/generate-favicon.py` membuat ulang `favicon.ico` + `apple-touch-icon.png`
+dari geometri di dalamnya, yang disalin dari `favicon.svg` (butuh Pillow):
+
+```bash
+python scripts/generate-favicon.py        # rewrites public/favicon.ico + apple-touch-icon.png
 ```
 
 ## 7. Deploy to Vercel

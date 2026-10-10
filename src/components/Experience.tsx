@@ -1,4 +1,4 @@
-import { CalendarDays, Building2, MapPin } from "lucide-react";
+import { CalendarDays, Building2, ExternalLink, MapPin } from "lucide-react";
 import { experiences } from "@/data/experience";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
@@ -82,9 +82,16 @@ export function Experience() {
                                   href={activity.href}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="underline-offset-4 hover:text-accent hover:underline"
+                                  className="group inline-flex items-start gap-1.5 underline-offset-4 hover:text-accent hover:underline"
                                 >
-                                  {activity.title}
+                                  <span>{activity.title}</span>
+                                  <ExternalLink
+                                    className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                    aria-hidden="true"
+                                  />
+                                  <span className="sr-only">
+                                    (buka sertifikat, tab baru)
+                                  </span>
                                 </a>
                               ) : (
                                 activity.title

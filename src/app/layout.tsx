@@ -68,9 +68,22 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    shortcut: ["/favicon.svg"],
-    apple: ["/favicon.svg"],
+    /*
+     * Tiga berkas, tiga peran — semuanya dihasilkan dari `favicon.svg` oleh
+     * `scripts/generate-favicon.py`:
+     *   - SVG  : mark utama untuk browser modern (tajam di semua ukuran).
+     *   - ICO  : browser & feed reader lama meminta /favicon.ico apa pun isi
+     *            metadata ini — Next tidak membuat berkas itu sendiri, jadi
+     *            `public/favicon.ico` yang menjawabnya.
+     *   - PNG  : iOS mengabaikan SVG untuk "Add to Home Screen", jadi tanpa
+     *            berkas raster ini ikonnya tampil kosong.
+     */
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: ["/apple-touch-icon.png"],
   },
   robots: {
     index: true,

@@ -139,9 +139,9 @@ export function EditorPanel({ initial }: { initial: Journal[] }) {
     <div className="section-shell py-10 sm:py-14">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
         <div>
-          <h2 className="text-lg font-bold tracking-tight text-primary">
+          <h1 className="text-lg font-bold tracking-tight text-primary">
             Kelola Tulisan
-          </h2>
+          </h1>
           <p className="mt-1 text-xs text-muted">
             {initial.length} tulisan tersimpan · tulisan tanpa tanggal = draf
           </p>

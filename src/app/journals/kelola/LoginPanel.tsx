@@ -49,9 +49,9 @@ export function LoginPanel({ configured }: { configured: boolean }) {
           <LockKeyhole className="h-5 w-5" aria-hidden="true" />
         </span>
 
-        <h2 className="mt-4 text-lg font-bold tracking-tight text-primary">
+        <h1 className="mt-4 text-lg font-bold tracking-tight text-primary">
           {configured ? "Masuk pengelola tulisan" : "Buat kata sandi pengelola"}
-        </h2>
+        </h1>
         <p className="mt-2 text-sm leading-relaxed text-muted">
           {configured
             ? "Halaman ini hanya untuk pemilik situs. Masukkan kata sandi pengelola."
