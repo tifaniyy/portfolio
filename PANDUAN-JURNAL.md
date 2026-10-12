@@ -71,31 +71,27 @@ Tidak ada tabel, gambar di dalam isi, atau HTML mentah. Untuk gambar pakai
 kolom **Gambar sampul**; untuk lampiran taruh PDF di `public/journals/` lalu isi
 **Link PDF** dengan `/journals/namafile.pdf`.
 
-## Menambahkan gambar sampul (opsional)
+## Gambar sampul tulisan (opsional)
 
-Kartu tulisan di `/journals` dan `/journals/browse` selalu punya kotak sampul di
-sebelah kiri. Isinya diambil dari kolom **Gambar sampul**. Kalau kolom itu
-dikosongkan, kartu memakai **sampul bawaan**: kotak gradasi biru–navy berisi
-huruf awal judulnya. Warna gradasinya dipilih otomatis dari slug, jadi berbeda
-antar tulisan dan tidak berubah-ubah setiap kali halaman dibuka.
+Kartu tulisan di `/journals` dan `/journals/browse` tampil **tanpa kotak gambar**:
+teksnya penuh dari tepi kiri. Kolom **Gambar sampul** tetap ada dan sekarang hanya
+dipakai di **halaman tulisan itu sendiri** — kalau diisi, gambarnya tampil lebar di
+atas isi tulisan.
 
-Kalau ingin gambar sendiri (tangkapan layar dashboard, foto kegiatan magang):
+Kalau ingin memakainya (mis. tangkapan layar dashboard saat menulis soal magang):
 
-1. Siapkan gambar rasio **16:10**, misalnya **1120 × 700 px**. Rasio lain tetap
-   bisa dipakai, tetapi pinggirnya dipotong agar memenuhi kotak — letakkan bagian
-   pentingnya di tengah. Format `.png` atau `.jpg`, sebaiknya di bawah 300 KB.
+1. Siapkan gambar, misalnya **1120 × 700 px** (rasio 16:10). Format `.png` atau
+   `.jpg`, sebaiknya di bawah 300 KB.
 2. Simpan di folder `public/journals/`, misal `public/journals/magang-bulan-1.png`.
 3. Isi kolom **Gambar sampul** di halaman `/journals/kelola` dengan alamat
    berkasnya dari folder `public`: `/journals/magang-bulan-1.png`
    (awali garis miring, tanpa menulis `public`).
 4. Kirim ke GitHub seperti biasa: `git add public/journals data/journals.json`,
-   lalu `commit` dan `push`. Gambar harus ikut di-commit, kalau tidak kartunya
-   kosong di situs online.
+   lalu `commit` dan `push`.
 
-Nama berkas bebas, tetapi usahakan sama dengan slug tulisannya supaya mudah
-dicari. Kalau gambarnya dihapus dari folder sementara kolom Gambar sampul masih
-terisi, kartunya tampil kosong — jadi kosongkan juga kolom itu saat menghapus
-gambarnya.
+Dibiarkan kosong pun tidak masalah — tidak ada gambar yang tampil dan tidak ada
+error. Kalau gambarnya dihapus dari folder sementara kolomnya masih terisi,
+gambarnya gagal dimuat di halaman tulisan, jadi kosongkan juga kolom itu.
 
 ## Kalau lebih suka mengedit file langsung
 
@@ -148,6 +144,27 @@ jadi pembaca bisa mengikuti perkembangan tiap bulan.
 
 Caranya di halaman `/journals/kelola`: klik tombol **Buat tulisan baru** di atas
 formulir, isi kolomnya, ganti Judul + Slug + Tanggal, lalu **Simpan**.
+
+## Menautkan tulisan ke halaman proyek
+
+Kalau sebuah tulisan membahas salah satu proyek di beranda, hubungannya ditulis di
+**`src/data/projects.ts`** — bukan di `data/journals.json`:
+
+```ts
+relatedJournals: ["magang-airnav-bulan-1"],
+```
+
+Satu baris itu bekerja dua arah: di halaman proyek muncul blok **Related
+writing** yang menuju tulisannya, dan di halaman tulisan muncul blok **Related
+project** yang menuju proyeknya. Ditulis sekali, dibaca dua arah — jadi halaman
+`/journals/kelola` tidak perlu tahu-menahu soal proyek.
+
+## Feed RSS
+
+Pembaca feed (Feedly dan sejenisnya) bisa berlangganan di
+`<alamat-situs>/journals/feed.xml`. Isinya diambil dari tulisan yang sudah
+terbit, jadi tulisan baru langsung ikut tanpa diatur lagi. Tautannya juga
+dipasang otomatis di `<head>` halaman jurnal.
 
 ## Catatan
 

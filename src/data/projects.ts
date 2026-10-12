@@ -19,6 +19,12 @@
  *                  broken image, not a build error.
  *  - Newest entries first: the project with the most recent `period` goes at
  *    the top of the array. All entries render in one grid, in this order.
+ *  - `relatedJournals`: slug tulisan jurnal yang membahas proyek ini. Hubungan
+ *    dibaca dua arah dari file ini — halaman proyek menampilkan tulisannya, dan
+ *    halaman tulisan menampilkan proyeknya (lihat `projectsForJournal`), jadi
+ *    cukup ditulis di sini sekali.
+ *  - `category`: jadi tombol filter di section Projects (dan label di kartu).
+ *    Nilai yang boleh dipakai ada di type `Project["category"]` di bawah.
  * ---------------------------------------------------------------
  */
 
@@ -38,6 +44,7 @@ export type Project = {
   category:
     | "Data & Web"
     | "Data Visualization"
+    | "Machine Learning"
     | "Research"
     | "Web Development";
   summary: string;
@@ -55,6 +62,8 @@ export type Project = {
    * taken down. Omit when the demo link works normally.
    */
   deploymentNote?: string;
+  /** Slug tulisan jurnal yang membahas proyek ini (lihat catatan di header). */
+  relatedJournals?: string[];
   screenshots: Screenshot[];
 };
 
@@ -98,9 +107,10 @@ export const projects: Project[] = [
       "Offline page assets — fonts, map libraries and map style kept in the repo",
     ],
     github: "https://github.com/tifaniyy/dashboard-emisi-web",
-    demo: null,
+    demo: "https://dashboard-emisi-web.vercel.app/login",
     deploymentNote:
       "This is the internship project at AirNav Indonesia, so the dashboard is run locally/internal and the repository holds the source code. Setup instructions are in the repository README.",
+    relatedJournals: ["magang-airnav-bulan-1"],
     screenshots: [
       {
         src: "/projects/emisi-beranda.png",
@@ -117,7 +127,8 @@ export const projects: Project[] = [
       {
         src: "/projects/emisi-admin.png",
         alt: "Admin area: new user approval table and the airport data table",
-        caption: "Admin area — user approval, Excel/CSV upload and airport data",
+        caption:
+          "Admin area — user approval, Excel/CSV upload and airport data",
       },
     ],
   },
@@ -284,7 +295,7 @@ export const projects: Project[] = [
     subtitle: "Classification of images with machine learning",
     year: "2024",
     period: "Sep 2024 – Oct 2024",
-    category: "Data Visualization",
+    category: "Machine Learning",
     summary:
       "Machine learning project classifying hand gesture images into three categories: Rock, Paper, and Scissors.",
     description:
@@ -306,7 +317,7 @@ export const projects: Project[] = [
       "Performance & prediction accuracy evaluation",
       "Prediction workflow from input images",
     ],
-    github: null,
+    github: "https://github.com/tifaniyy/rock_scissors_paper",
     demo: null,
     screenshots: [
       {
@@ -317,3 +328,13 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+/** Proyek yang membahas tulisan jurnal tertentu (dipakai halaman /journals/<slug>). */
+export function projectsForJournal(slug: string): Project[] {
+  return projects.filter((project) => project.relatedJournals?.includes(slug));
+}
+
+/** Satu proyek berdasarkan slug (dipakai halaman /projects/<slug>). */
+export function projectBySlug(slug: string): Project | undefined {
+  return projects.find((project) => project.slug === slug);
+}

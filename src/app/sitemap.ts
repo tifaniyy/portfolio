@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { sortedJournals } from "@/data/journals";
 import { getPublishedJournals } from "@/data/journals.server";
+import { projects } from "@/data/projects";
 import { siteUrl } from "@/lib/site";
 
 /**
@@ -37,5 +38,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...journalRoutes];
+  /* Tiap proyek punya halamannya sendiri — itu alamat yang orang bagikan. */
+  const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
+    url: `${siteUrl}/projects/${project.slug}`,
+    changeFrequency: "yearly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...projectRoutes, ...journalRoutes];
 }

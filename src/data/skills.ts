@@ -19,7 +19,7 @@ export const skillCategories: SkillCategory[] = [
   {
     title: "Data Analysis & Programming",
     description:
-      "Memproses, membersihkan, dan menganalisis data dengan Python, SQL, dan Excel.",
+      "Processing, cleaning, and analysing data with Python, SQL, and Excel.",
     icon: "Terminal",
     accent: "blue",
     skills: [
@@ -35,7 +35,7 @@ export const skillCategories: SkillCategory[] = [
   {
     title: "Data Visualization",
     description:
-      "Mengubah hasil analisis menjadi grafik dan dashboard yang mudah dibaca.",
+      "Turning analysis results into charts and dashboards that are easy to read.",
     icon: "BarChart3",
     accent: "violet",
     skills: [
@@ -48,14 +48,14 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: "Machine Learning",
-    description: "Menerapkan algoritma klasifikasi dan clustering pada data nyata.",
+    description: "Applying classification and clustering algorithms to real data.",
     icon: "BrainCircuit",
     accent: "emerald",
     skills: ["Scikit-learn", "K-Means Clustering", "Classification", "Model Evaluation"],
   },
   {
     title: "Web Development",
-    description: "Membangun antarmuka web yang responsif dan mudah digunakan.",
+    description: "Building responsive web interfaces that are easy to use.",
     icon: "Code2",
     accent: "amber",
     skills: ["Flask", "HTML", "CSS", "Bootstrap", "PHP", "Responsive Design"],

@@ -31,7 +31,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
       onClick={() => onOpen(project)}
       className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/30 hover:shadow-lift"
     >
-      {/* Cover / screenshot */}
+      {/* Cover / screenshot — tanpa tangkapan layar kartunya tetap punya sampul */}
       <div className="relative aspect-16/10 w-full overflow-hidden border-b border-border bg-slate-100">
         {cover ? (
           <Image
@@ -42,7 +42,20 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
             unoptimized={cover.src.endsWith(".svg")}
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
-        ) : null}
+        ) : (
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              backgroundImage:
+                "linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 62%, var(--color-accent) 100%)",
+            }}
+          >
+            <span className="text-5xl font-bold leading-none text-white/90">
+              {project.title.trim().charAt(0).toUpperCase()}
+            </span>
+          </span>
+        )}
 
         <span className="absolute left-3 top-3 rounded-lg border border-border/70 bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-secondary backdrop-blur-sm">
           {project.category}
@@ -91,7 +104,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
               onOpen(project);
             }}
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent underline-offset-4 transition-colors hover:text-blue-700 hover:underline"
-            aria-label={`Lihat detail project ${project.title}`}
+            aria-label={`View details for ${project.title}`}
           >
             View Details
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -109,7 +122,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(event) => event.stopPropagation()}
-                aria-label={`Live demo project ${project.title} (buka di tab baru)`}
+                aria-label={`Open the live demo of ${project.title} in a new tab`}
                 className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
               >
                 <Play className="h-3.5 w-3.5" aria-hidden="true" />
@@ -121,7 +134,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(event) => event.stopPropagation()}
-                aria-label={`Lihat source code project ${project.title} di GitHub (buka di tab baru)`}
+                aria-label={`View the source code of ${project.title} on GitHub (opens in a new tab)`}
                 className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
               >
                 <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
@@ -136,7 +149,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(event) => event.stopPropagation()}
-                  aria-label={`Repository GitHub project ${project.title} (buka di tab baru)`}
+                  aria-label={`GitHub repository for ${project.title} (opens in a new tab)`}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-2 text-xs font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
                 >
                   <GithubIcon className="h-3.5 w-3.5" aria-hidden="true" />
@@ -150,8 +163,8 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
                   }}
                   aria-label={
                     copied
-                      ? "URL repository tersalin"
-                      : `Salin URL repository project ${project.title}`
+                      ? "Repository URL copied"
+                      : `Copy the repository URL of ${project.title}`
                   }
                   className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-2 text-xs font-semibold text-muted transition-colors hover:border-accent/40 hover:text-accent"
                 >
@@ -160,16 +173,16 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
                   ) : (
                     <Copy className="h-3.5 w-3.5" aria-hidden="true" />
                   )}
-                  {copied ? "Tersalin" : "Salin URL"}
+                  {copied ? "Copied" : "Copy URL"}
                 </button>
               </>
             ) : (
               <span
-                title="Repository belum tersedia"
+                title="Repository not available yet"
                 className="inline-flex cursor-not-allowed items-center gap-1.5 rounded-lg border border-dashed border-border bg-background px-3 py-2 text-xs font-semibold text-muted"
               >
                 <GithubIcon className="h-3.5 w-3.5" aria-hidden="true" />
-                Repo belum tersedia
+                Repository not available yet
               </span>
             )}
           </div>

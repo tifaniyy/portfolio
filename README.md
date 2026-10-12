@@ -87,8 +87,22 @@ portfolio/
    │  └─ projects.ts             ← projects (description, problem, solution, …)
    └─ lib/
       ├─ utils.ts                ← `cn()` class-merge helper
+      ├─ nav.tsx                 ← satu definisi tautan nav (dipakai Navbar)
       └─ site.ts                 ← satu sumber URL situs (sitemap, canonical, OG)
 ```
+
+**Alamat halaman (routes).** Semua halaman yang hidup di situs ini:
+
+| Route | Isi |
+| --- | --- |
+| `/` | Beranda — semua section + JSON-LD |
+| `/projects/<slug>` | Halaman detail proyek (6 halaman, dari `src/data/projects.ts`) |
+| `/journals` | Daftar tulisan jurnal |
+| `/journals/browse` | Daftar + filter label/pencarian/arsip |
+| `/journals/<slug>` | Satu tulisan jurnal |
+| `/journals/feed.xml` | RSS tulisan jurnal (untuk pembaca feed) |
+| `/journals/kelola` | Editor tulisan (tidak ditautkan, `noindex`) |
+| `/sitemap.xml`, `/robots.txt` | Dari `src/app/sitemap.ts` & `robots.ts` |
 
 ## 5. Files to edit for your own content
 
@@ -97,11 +111,13 @@ portfolio/
 | Name, title, hero text, about paragraphs, summary | `src/data/profile.ts` |
 | About stat cards | `src/data/profile.ts` → `stats` |
 | Education entries | `src/data/profile.ts` → `education` |
-| Navbar / footer menu items | `src/data/profile.ts` → `navLinks` |
+| Navbar menu items | `src/data/profile.ts` → `navLinks` |
 | Skills per category | `src/data/skills.ts` |
 | Experience timeline | `src/data/experience.ts` |
 | Tulisan jurnal | halaman **`/journals/kelola`** di komputer → `data/journals.json` di-commit & push — lihat `PANDUAN-JURNAL.md` |
-| Projects (all fields + links + screenshots) | `src/data/projects.ts` |
+| Projects (all fields + links + screenshots) | `src/data/projects.ts` — tiap proyek otomatis dapat halaman sendiri di `/projects/<slug>` dan masuk `/sitemap.xml` |
+| Kategori proyek (= tombol filter di section Projects) | `src/data/projects.ts` → `category` |
+| Menautkan proyek ke tulisan jurnal | `src/data/projects.ts` → `relatedJournals` (hubungan dibaca dua arah: halaman proyek menaut tulisan, halaman tulisan menaut proyek) |
 | Your real CV | replace `public/cv.pdf` |
 | Real screenshots | replace the files in `public/projects/` |
 | Site URL (canonical + OG) | `.env.local` → `NEXT_PUBLIC_SITE_URL` |

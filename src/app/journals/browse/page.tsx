@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, FileText, Search } from "lucide-react";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";
-import { JournalThumb } from "@/components/blog/JournalThumb";
 import {
   archiveLabelOf,
   browseHref,
@@ -17,6 +16,7 @@ import {
   sortedJournals,
 } from "@/data/journals";
 import { getPublishedJournals } from "@/data/journals.server";
+import { journalFeedAlternate } from "@/lib/site";
 
 const PER_PAGE = 5;
 
@@ -60,7 +60,7 @@ export async function generateMetadata({
   return {
     title: "All Articles",
     description: "All journal articles by Tifani Yunitami, filterable by tag.",
-    alternates: { canonical: "/journals/browse" },
+    alternates: { canonical: "/journals/browse", ...journalFeedAlternate },
   };
 }
 
@@ -162,40 +162,29 @@ export default async function JournalsBrowsePage({
                 return (
                   <li key={journal.slug}>
                     <article className="overflow-hidden rounded-2xl border border-border bg-white shadow-soft transition-all duration-300 hover:border-accent/30 hover:shadow-lift">
-                      <div className="flex flex-col sm:flex-row">
-                        <Link
-                          href={`/journals/${journal.slug}`}
-                          className="relative block aspect-16/10 shrink-0 overflow-hidden border-b border-border bg-slate-100 sm:aspect-auto sm:w-52 sm:border-b-0 sm:border-r"
-                        >
-                          <JournalThumb
-                            cover={journal.cover}
-                            title={journal.title}
-                            slug={journal.slug}
-                            variant="grid"
-                            sizes="(min-width: 640px) 208px, 100vw"
-                          />
-                        </Link>
-
-                        <div className="min-w-0 flex-1 p-5">
-                          <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
-                            <span className="font-semibold text-accent">
-                              #{position}
+                      <div className="p-5">
+                        <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
+                          <span className="font-semibold text-accent">
+                            #{position}
+                          </span>
+                          {journal.type ? (
+                            <span className="rounded-lg border border-border bg-background px-2 py-0.5 font-semibold">
+                              {journal.type}
                             </span>
-                            {journal.type ? (
-                              <span className="rounded-lg border border-border bg-background px-2 py-0.5 font-semibold">
-                                {journal.type}
-                              </span>
-                            ) : null}
-                            {iso ? (
-                              <time dateTime={iso}>{date}</time>
-                            ) : (
-                              journal.year
-                            )}
-                            <span>· {archiveLabelOf(journal)}</span>
-                            {minutes ? <span>· {minutes} menit</span> : null}
+                          ) : null}
+                          {iso ? (
+                            <time dateTime={iso}>{date}</time>
+                          ) : (
+                            journal.year
+                          )}
+                          <span>· {archiveLabelOf(journal)}</span>
+                          {minutes ? <span>· {minutes} min read</span> : null}
                           </div>
 
-                          <h3 className="mt-2 text-base font-semibold leading-snug text-primary sm:text-lg">
+                          <h3
+                            lang="id"
+                            className="mt-2 text-base font-semibold leading-snug text-primary sm:text-lg"
+                          >
                             <Link
                               href={`/journals/${journal.slug}`}
                               className="transition-colors hover:text-accent"
@@ -209,7 +198,10 @@ export default async function JournalsBrowsePage({
                           </p>
 
                           {excerpt ? (
-                            <p className="mt-2 text-sm leading-relaxed text-muted">
+                            <p
+                              lang="id"
+                              className="mt-2 text-sm leading-relaxed text-muted"
+                            >
                               {excerpt}
                             </p>
                           ) : null}
@@ -246,7 +238,6 @@ export default async function JournalsBrowsePage({
                             ) : null}
                           </div>
                         </div>
-                      </div>
                     </article>
                   </li>
                 );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { BookOpen } from "lucide-react";
 import { profile } from "@/data/profile";
+import { journalFeedAlternate } from "@/lib/site";
 
 export const metadata: Metadata = {
   /*
@@ -12,7 +13,10 @@ export const metadata: Metadata = {
    */
   description:
     "Journal blog Tifani Yunitami — Research notes, data analysis, visualization, and web development.",
-  alternates: { canonical: "/journals" },
+  alternates: {
+    canonical: "/journals",
+    ...journalFeedAlternate,
+  },
 };
 
 /**

@@ -63,7 +63,10 @@ export async function Journals() {
                         {date ?? journal.year}
                       </span>
                     </div>
-                    <h3 className="mt-3 text-base font-semibold leading-snug text-primary transition-colors group-hover:text-accent sm:text-lg">
+                    <h3
+                      lang="id"
+                      className="mt-3 text-base font-semibold leading-snug text-primary transition-colors group-hover:text-accent sm:text-lg"
+                    >
                       {journal.title}
                     </h3>
                     <p className="mt-2 text-sm text-muted">
@@ -73,7 +76,10 @@ export async function Journals() {
                       {journal.venue}
                     </p>
                     {journal.abstract ? (
-                      <p className="mt-4 text-sm leading-relaxed text-muted">
+                      <p
+                        lang="id"
+                        className="mt-4 text-sm leading-relaxed text-muted"
+                      >
                         {journal.abstract}
                       </p>
                     ) : null}

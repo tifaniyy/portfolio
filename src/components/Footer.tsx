@@ -1,5 +1,11 @@
 import { profile } from "@/data/profile";
 
+/**
+ * Footer situs — cukup satu baris hak cipta.
+ *
+ * Sengaja tanpa kolom navigasi/kontak: menunya sudah ada di Navbar, dan
+ * mengulangnya di bawah hanya menambah tautan kedua ke tujuan yang sama.
+ */
 export function Footer() {
   const year = new Date().getFullYear();
 

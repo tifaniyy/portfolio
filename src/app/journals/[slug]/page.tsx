@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Calendar, FileText, Link2 } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Calendar, FileText, Link2 } from "lucide-react";
 import { JournalMarkdown } from "@/components/JournalMarkdown";
 import { formatDate, isPublished, readingMinutes } from "@/data/journals";
 import { getAllJournals, getPublishedJournals } from "@/data/journals.server";
+import { projectsForJournal } from "@/data/projects";
+import { journalFeedAlternate } from "@/lib/site";
 
 type PageParams = { slug: string };
 
@@ -38,7 +40,7 @@ export async function generateMetadata({
   return {
     title: journal.title,
     description: journal.abstract,
-    alternates: { canonical: `/journals/${journal.slug}` },
+    alternates: { canonical: `/journals/${journal.slug}`, ...journalFeedAlternate },
     openGraph: {
       type: "article",
       title: journal.title,
@@ -61,6 +63,8 @@ export default async function JournalDetailPage({
 
   const date = formatDate(journal.date);
   const minutes = readingMinutes(journal.content);
+  /* Proyek yang membahas tulisan ini — hubungannya ditulis di src/data/projects.ts. */
+  const relatedProjects = projectsForJournal(journal.slug);
 
   return (
     <article className="section-padding bg-background">
@@ -90,7 +94,10 @@ export default async function JournalDetailPage({
           ) : null}
         </div>
 
-        <h1 className="mt-4 text-2xl font-bold leading-tight tracking-tight text-primary sm:text-3xl">
+        <h1
+          lang="id"
+          className="mt-4 text-2xl font-bold leading-tight tracking-tight text-primary sm:text-3xl"
+        >
           {journal.title}
         </h1>
         <p className="mt-3 text-sm text-muted">{journal.authors.join(", ")}</p>
@@ -147,13 +154,45 @@ export default async function JournalDetailPage({
         ) : null}
 
         {journal.content ? (
-          <div className="mt-8">
+          /* Isi tulisan ditulis dalam bahasa Indonesia; chrome situs berbahasa
+             Inggris, jadi bahasanya ditandai di sini supaya pembaca layar tidak
+             melafalkan kata Indonesia dengan pelafalan Inggris. */
+          <div className="mt-8" lang="id">
             <JournalMarkdown content={journal.content} />
           </div>
         ) : journal.abstract ? (
-          <p className="mt-8 text-base leading-relaxed text-muted">
+          <p className="mt-8 text-base leading-relaxed text-muted" lang="id">
             {journal.abstract}
           </p>
+        ) : null}
+
+        {relatedProjects.length > 0 ? (
+          <section className="mt-10">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-primary">
+              Related project
+            </h2>
+            <ul className="mt-3 space-y-3">
+              {relatedProjects.map((project) => (
+                <li key={project.slug}>
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="group block rounded-xl border border-border bg-white p-4 transition-colors hover:border-accent/40"
+                  >
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors group-hover:text-accent">
+                      {project.title}
+                      <ArrowUpRight
+                        className="h-4 w-4 shrink-0"
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span className="mt-1 block text-xs text-muted">
+                      {project.category} · {project.period}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
         ) : null}
 
         {journal.tags && journal.tags.length > 0 ? (

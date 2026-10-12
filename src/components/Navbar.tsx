@@ -1,73 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { MouseEvent as ReactMouseEvent, ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { BookOpen, Menu, X } from "lucide-react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navLinks, profile } from "@/data/profile";
+import {
+  buildNavLinks,
+  JOURNALS_HREF,
+  JOURNALS_LABEL,
+  NavItemLink,
+} from "@/lib/nav";
+import type { NavLink } from "@/lib/nav";
 import { cn } from "@/lib/utils";
-
-type NavLink = { label: string; href: string };
-
-/** The nav entry that owns the standalone /journals blog route. */
-const JOURNALS_LABEL = "Journals";
-
-/**
- * A nav entry that renders as next/link when it targets a real route
- * (prefetched, instant transition) and as a plain <a> when it is a bare
- * "#section" anchor — the browser's own jump-to-anchor must keep working,
- * and a detached link inside the collapsing mobile menu does not complete
- * fragment navigation.
- */
-function NavItemLink({
-  link,
-  active,
-  className,
-  onClick,
-  children,
-}: {
-  link: NavLink;
-  active: boolean;
-  className: string;
-  onClick?: (event: ReactMouseEvent<HTMLAnchorElement>) => void;
-  children: ReactNode;
-}) {
-  const shared = {
-    href: link.href,
-    "aria-current": active ? ("true" as const) : undefined,
-    className,
-    onClick,
-  };
-
-  return link.href.startsWith("/") ? (
-    <Link {...shared}>{children}</Link>
-  ) : (
-    <a {...shared}>{children}</a>
-  );
-}
-
-/**
- * `navLinks` holds in-page section anchors only (#home, #about, …, #contact).
- * Those work as-is on the home page, but from a sub-page such as /journals a
- * bare "#about" resolves against the current URL and does nothing — so on a
- * sub-page they become "/#about".
- *
- * "Journals" is intentionally absent from `navLinks`: it is a real route
- * (/journals) rendered as the top-right action button, so listing it here too
- * would show it twice.
- */
-function buildNavLinks(pathname: string): NavLink[] {
-  const isHome = pathname === "/";
-
-  if (isHome) return navLinks.map(({ label, href }) => ({ label, href }));
-
-  return navLinks.map(({ label, href }) => ({
-    label,
-    href: href.startsWith("#") ? `/${href}` : href,
-  }));
-}
 
 export function Navbar() {
   const pathname = usePathname();
@@ -242,7 +187,7 @@ export function Navbar() {
             (The CV download still lives in the hero — `profile.cvUrl`.)
           */}
           <NavItemLink
-            link={{ label: JOURNALS_LABEL, href: "/journals" }}
+            link={{ label: JOURNALS_LABEL, href: JOURNALS_HREF }}
             active={journalsActive}
             className={cn(
               "hidden items-center gap-1.5 rounded-lg border border-border bg-white/80 px-3 py-2 text-xs font-semibold shadow-soft transition-colors hover:border-accent/40 hover:text-accent sm:inline-flex",
@@ -302,7 +247,7 @@ export function Navbar() {
               ))}
               <li className="pt-2">
                 <NavItemLink
-                  link={{ label: JOURNALS_LABEL, href: "/journals" }}
+                  link={{ label: JOURNALS_LABEL, href: JOURNALS_HREF }}
                   active={journalsActive}
                   onClick={() => setMobileOpen(false)}
                   className="flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"

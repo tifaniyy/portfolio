@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "motion/react";
-import { Code2, Play, X } from "lucide-react";
+import { ArrowUpRight, Code2, Play, X } from "lucide-react";
 import { GithubIcon } from "./icons";
 import type { Project } from "@/data/projects";
 
@@ -84,7 +85,7 @@ export function ProjectModal({
                       className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
                     >
                       <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
-                      View Source di GitHub
+                      View Source on GitHub
                     </a>
                   ) : null}
 
@@ -107,7 +108,7 @@ export function ProjectModal({
                 </div>
 
                 <div className="mt-7 space-y-6">
-                  <Block title="Deskripsi">
+                  <Block title="Overview">
                     <p className="text-sm leading-relaxed text-muted">
                       {project.description}
                     </p>
@@ -187,6 +188,20 @@ export function ProjectModal({
                       ))}
                     </div>
                   </Block>
+                </div>
+
+                {/* Jalur ke halaman /projects/<slug> — alamat yang bisa dibagikan. */}
+                <div className="mt-7 border-t border-border pt-5">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
+                  >
+                    Open the full project page
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                  <p className="mt-1 text-xs text-muted">
+                    A shareable link with the same details.
+                  </p>
                 </div>
               </motion.div>
             </Dialog.Content>

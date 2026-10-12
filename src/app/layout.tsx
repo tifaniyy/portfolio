@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { BackToTop } from "@/components/BackToTop";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     title: "Tifani Yunitami | Informatics Graduate & Data Analyst",
     description:
       "Portfolio of Tifani Yunitami, an Informatics graduate interested in data analysis, data visualization, Python, SQL, and web development.",
-    locale: "id_ID",
+    locale: "en_US",
     images: [
       {
         /*
@@ -99,17 +100,18 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="id" className={`${jakarta.variable} scroll-smooth`}>
+    <html lang="en" className={`${jakarta.variable} scroll-smooth`}>
       <body className="min-h-dvh bg-background font-sans text-foreground antialiased">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
         >
-          Lewati ke konten utama
+          Skip to main content
         </a>
         <Navbar />
         <main id="main-content">{children}</main>
         <Footer />
+        <BackToTop />
         {/*
           The scroll-reveal wrappers ship `opacity: 0` inline (that is what
           Motion animates from), so without JavaScript the whole page would

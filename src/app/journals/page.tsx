@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, FileText, Link2 } from "lucide-react";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";
-import { JournalThumb } from "@/components/blog/JournalThumb";
 import {
   archiveLabelOf,
   browseHref,
@@ -15,12 +14,13 @@ import {
   wordCount,
 } from "@/data/journals";
 import { getPublishedJournals } from "@/data/journals.server";
+import { journalFeedAlternate } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "List of Articles",
   description:
     "All journal articles and blog posts by Tifani Yunitami — research, data analysis, visualization, and web development.",
-  alternates: { canonical: "/journals" },
+  alternates: { canonical: "/journals", ...journalFeedAlternate },
 };
 
 const PER_PAGE = 5;
@@ -81,125 +81,115 @@ export default async function JournalsIndexPage() {
                     key={journal.slug}
                     className="overflow-hidden rounded-2xl border border-border bg-white shadow-soft transition-all duration-300 hover:border-accent/30 hover:shadow-lift"
                   >
-                    <div className="flex flex-col sm:flex-row">
-                      {/* Sampul: gambar dari field `cover`, atau sampul bawaan */}
-                      <Link
-                        href={`/journals/${journal.slug}`}
-                        className="relative block aspect-16/10 shrink-0 overflow-hidden border-b border-border bg-slate-100 sm:aspect-auto sm:w-56 sm:border-b-0 sm:border-r"
-                      >
-                        <JournalThumb
-                          cover={journal.cover}
-                          title={journal.title}
-                          slug={journal.slug}
-                          sizes="(min-width: 640px) 224px, 100vw"
-                        />
-                      </Link>
-
-                      {/* Isi postingan */}
-                      <div className="min-w-0 flex-1 p-5 sm:p-6">
-                        <div className="flex flex-wrap items-center gap-2">
-                          {journal.type ? (
-                            <span className="inline-flex items-center rounded-lg border border-border bg-background px-2.5 py-1 text-xs font-semibold text-muted">
-                              {journal.type}
-                            </span>
-                          ) : null}
-                          <span className="inline-flex items-center gap-1.5 text-xs text-muted">
-                            {iso ? (
-                              <time dateTime={iso}>{date}</time>
-                            ) : (
-                              journal.year
-                            )}
+                    <div className="p-5 sm:p-6">
+                      <div className="flex flex-wrap items-center gap-2">
+                        {journal.type ? (
+                          <span className="inline-flex items-center rounded-lg border border-border bg-background px-2.5 py-1 text-xs font-semibold text-muted">
+                            {journal.type}
                           </span>
+                        ) : null}
+                        <span className="inline-flex items-center gap-1.5 text-xs text-muted">
+                          {iso ? (
+                            <time dateTime={iso}>{date}</time>
+                          ) : (
+                            journal.year
+                          )}
+                        </span>
+                        <span className="text-xs text-muted">
+                          · {archiveLabelOf(journal)}
+                        </span>
+                        {minutes ? (
                           <span className="text-xs text-muted">
-                            · {archiveLabelOf(journal)}
+                            · {minutes} min read
                           </span>
-                          {minutes ? (
-                            <span className="text-xs text-muted">
-                              · {minutes} min read
-                            </span>
-                          ) : null}
-                        </div>
-
-                        <h3 className="mt-3 text-lg font-semibold leading-snug text-primary sm:text-xl">
-                          <Link
-                            href={`/journals/${journal.slug}`}
-                            className="transition-colors hover:text-accent"
-                          >
-                            {journal.title}
-                          </Link>
-                        </h3>
-
-                        <p className="mt-1.5 text-sm text-muted">
-                          {journal.authors.join(", ")}
-                        </p>
-                        <p className="mt-0.5 text-sm font-medium text-accent">
-                          {journal.venue}
-                        </p>
-
-                        {excerpt ? (
-                          <p className="mt-3 text-sm leading-relaxed text-muted">
-                            {excerpt}
-                          </p>
                         ) : null}
-
-                        {journal.tags && journal.tags.length > 0 ? (
-                          <ul className="mt-3 flex flex-wrap gap-2">
-                            {journal.tags.map((tag) => (
-                              <li key={tag}>
-                                <Link
-                                  href={browseHref({ tag })}
-                                  className="rounded-lg bg-background px-2.5 py-1 text-xs font-medium text-secondary ring-1 ring-border transition-colors hover:text-accent"
-                                >
-                                  #{tag}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : null}
-
-                        <div className="mt-4 flex flex-wrap items-center gap-3">
-                          <Link
-                            href={`/journals/${journal.slug}`}
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
-                          >
-                            Read more →
-                          </Link>
-                          {words > 0 ? (
-                            <span className="text-xs text-muted">
-                              {words.toLocaleString("id-ID")} words
-                            </span>
-                          ) : null}
-                          {journal.pdf ? (
-                            <a
-                              href={journal.pdf}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary transition-colors hover:text-accent"
-                            >
-                              <FileText
-                                className="h-3.5 w-3.5"
-                                aria-hidden="true"
-                              />
-                              PDF
-                            </a>
-                          ) : null}
-                          {journal.doi ? (
-                            <a
-                              href={`https://doi.org/${journal.doi}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary transition-colors hover:text-accent"
-                            >
-                              <Link2
-                                className="h-3.5 w-3.5"
-                                aria-hidden="true"
-                              />
-                              DOI
-                            </a>
-                          ) : null}
-                        </div>
                       </div>
-                    </div>
+
+                      <h3
+                        lang="id"
+                        className="mt-3 text-lg font-semibold leading-snug text-primary sm:text-xl"
+                      >
+                        <Link
+                          href={`/journals/${journal.slug}`}
+                          className="transition-colors hover:text-accent"
+                        >
+                          {journal.title}
+                        </Link>
+                      </h3>
+
+                      <p className="mt-1.5 text-sm text-muted">
+                        {journal.authors.join(", ")}
+                      </p>
+                      <p className="mt-0.5 text-sm font-medium text-accent">
+                        {journal.venue}
+                      </p>
+
+                      {excerpt ? (
+                        <p
+                          lang="id"
+                          className="mt-3 text-sm leading-relaxed text-muted"
+                        >
+                          {excerpt}
+                        </p>
+                      ) : null}
+
+                      {journal.tags && journal.tags.length > 0 ? (
+                        <ul className="mt-3 flex flex-wrap gap-2">
+                          {journal.tags.map((tag) => (
+                            <li key={tag}>
+                              <Link
+                                href={browseHref({ tag })}
+                                className="rounded-lg bg-background px-2.5 py-1 text-xs font-medium text-secondary ring-1 ring-border transition-colors hover:text-accent"
+                              >
+                                #{tag}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+
+                      <div className="mt-4 flex flex-wrap items-center gap-3">
+                        <Link
+                          href={`/journals/${journal.slug}`}
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
+                        >
+                          Read more →
+                        </Link>
+                        {words > 0 ? (
+                          <span className="text-xs text-muted">
+                            {words.toLocaleString("id-ID")} words
+                          </span>
+                        ) : null}
+                        {journal.pdf ? (
+                          <a
+                            href={journal.pdf}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary transition-colors hover:text-accent"
+                          >
+                            <FileText
+                              className="h-3.5 w-3.5"
+                              aria-hidden="true"
+                            />
+                            PDF
+                          </a>
+                        ) : null}
+                        {journal.doi ? (
+                          <a
+                            href={`https://doi.org/${journal.doi}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-secondary transition-colors hover:text-accent"
+                          >
+                            <Link2
+                              className="h-3.5 w-3.5"
+                              aria-hidden="true"
+                            />
+                            DOI
+                          </a>
+                        ) : null}
+                      </div>
+                      </div>
                   </article>
                 );
               })}

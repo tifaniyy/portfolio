@@ -60,7 +60,11 @@ export function sortedJournals(entries: Journal[]): Journal[] {
   return [...entries].sort((a, b) => sortKey(b) - sortKey(a));
 }
 
-const MONTHS_ID = [
+/**
+ * Nama bulan Inggris — situs ini memakai bahasa Inggris untuk chrome dan
+ * metadata, jadi tanggal tulisan juga ditulis dalam bahasa Inggris.
+ */
+const MONTHS_EN = [
   "January",
   "February",
   "March",
@@ -76,7 +80,7 @@ const MONTHS_ID = [
 ];
 
 /**
- * Format "2026-03-14" -> "14 Maret 2026".
+ * Format "2026-03-14" -> "14 March 2026".
  * Sengaja tidak memakai `toLocaleDateString` supaya hasilnya identik di server
  * dan di browser (menghindari hydration mismatch) tanpa bergantung data ICU.
  */
@@ -84,7 +88,7 @@ export function formatDate(date?: string): string | null {
   if (!date) return null;
   const [year, month, day] = date.split("-").map(Number);
   if (!year || !month || !day || month < 1 || month > 12) return date;
-  return `${day} ${MONTHS_ID[month - 1]} ${year}`;
+  return `${day} ${MONTHS_EN[month - 1]} ${year}`;
 }
 
 /** Perkiraan waktu baca dalam menit (asumsi 200 kata/menit). */
@@ -164,7 +168,7 @@ export function archiveLabelOf(journal: Journal): string {
   const [yearPart, monthPart] = (journal.date ?? "").split("-");
   const monthName =
     Number(monthPart) >= 1 && Number(monthPart) <= 12
-      ? MONTHS_ID[Number(monthPart) - 1]
+      ? MONTHS_EN[Number(monthPart) - 1]
       : null;
   return monthName && yearPart ? `${monthName} ${yearPart}` : journal.year;
 }
