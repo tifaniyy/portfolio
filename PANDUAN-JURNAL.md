@@ -54,7 +54,7 @@ perlu izin menyimpan apa pun — tulisan jadi bagian dari kode yang kamu push.
 | Ringkasan | 1–3 kalimat yang muncul di daftar tulisan |
 | Isi tulisan | isi lengkapnya (format di bawah) |
 | Link PDF / DOI / Link sumber | opsional |
-| Gambar sampul | opsional, taruh file di `public/journals/` |
+| Gambar sampul | opsional — lihat bagian "Menambahkan gambar sampul" di bawah |
 
 ## Format isi tulisan
 
@@ -70,6 +70,32 @@ perlu izin menyimpan apa pun — tulisan jadi bagian dari kode yang kamu push.
 Tidak ada tabel, gambar di dalam isi, atau HTML mentah. Untuk gambar pakai
 kolom **Gambar sampul**; untuk lampiran taruh PDF di `public/journals/` lalu isi
 **Link PDF** dengan `/journals/namafile.pdf`.
+
+## Menambahkan gambar sampul (opsional)
+
+Kartu tulisan di `/journals` dan `/journals/browse` selalu punya kotak sampul di
+sebelah kiri. Isinya diambil dari kolom **Gambar sampul**. Kalau kolom itu
+dikosongkan, kartu memakai **sampul bawaan**: kotak gradasi biru–navy berisi
+huruf awal judulnya. Warna gradasinya dipilih otomatis dari slug, jadi berbeda
+antar tulisan dan tidak berubah-ubah setiap kali halaman dibuka.
+
+Kalau ingin gambar sendiri (tangkapan layar dashboard, foto kegiatan magang):
+
+1. Siapkan gambar rasio **16:10**, misalnya **1120 × 700 px**. Rasio lain tetap
+   bisa dipakai, tetapi pinggirnya dipotong agar memenuhi kotak — letakkan bagian
+   pentingnya di tengah. Format `.png` atau `.jpg`, sebaiknya di bawah 300 KB.
+2. Simpan di folder `public/journals/`, misal `public/journals/magang-bulan-1.png`.
+3. Isi kolom **Gambar sampul** di halaman `/journals/kelola` dengan alamat
+   berkasnya dari folder `public`: `/journals/magang-bulan-1.png`
+   (awali garis miring, tanpa menulis `public`).
+4. Kirim ke GitHub seperti biasa: `git add public/journals data/journals.json`,
+   lalu `commit` dan `push`. Gambar harus ikut di-commit, kalau tidak kartunya
+   kosong di situs online.
+
+Nama berkas bebas, tetapi usahakan sama dengan slug tulisannya supaya mudah
+dicari. Kalau gambarnya dihapus dari folder sementara kolom Gambar sampul masih
+terisi, kartunya tampil kosong — jadi kosongkan juga kolom itu saat menghapus
+gambarnya.
 
 ## Kalau lebih suka mengedit file langsung
 

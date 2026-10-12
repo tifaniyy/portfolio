@@ -1,5 +1,23 @@
 [
   {
+    "slug": "pengalaman-pertama-menggunakan-hermes-agent",
+    "title": "Pengalaman Pertama Menggunakan Hermes Agent",
+    "authors": [
+      "Tifani Yunitami"
+    ],
+    "venue": "Catatan Pribadi",
+    "year": "2026",
+    "date": "2026-10-12",
+    "type": "Catatan",
+    "abstract": "Catatan pertama kali mencoba Hermes Agent: dari satu perintah test untuk memastikan alatnya benar-benar terhubung dengan project, memperbaiki tampilan dashboard carbon emission, sampai membangun website portfolio ini dari sebuah brief. Ditulis sebagai pengalaman belajar.",
+    "tags": [
+      "Hermes Agent",
+      "AI",
+      "Workflow"
+    ],
+    "content": "Saya mulai mencoba Hermes Agent pada akhir September 2026. Sebelumnya saya lebih sering menggunakan AI lewat chat, jadi kalau ingin memperbaiki coding saya harus copy-paste kode terlebih dahulu. Berbeda dengan Hermes, saya bisa langsung menggunakannya di dalam folder project untuk membaca file, menjalankan perintah, dan mengecek hasilnya.\n\n## Percobaan pertama dengan test\n\nPertama kali saya hanya mengetik test karena ingin memastikan apakah Hermes benar-benar terhubung dengan project saya. Setelah itu saya mencoba meminta bantuan untuk memperbaiki tampilan dashboard carbon emission yang sedang saya kerjakan.\n\n## Pekerjaan yang lebih besar: website portfolio ini\n\nSetelah beberapa kali mencoba, saya mulai menggunakan Hermes untuk pekerjaan yang lebih besar, termasuk membuat website portfolio ini. Saya cukup memberikan brief mengenai tampilan, halaman, dan fitur yang saya inginkan, lalu Hermes membantu mengerjakannya langsung di project.\n\n## Pelajaran tentang instruksi\n\nDari pengalaman ini saya belajar bahwa cara memberikan instruksi sangat berpengaruh. Semakin jelas saya menjelaskan apa yang saya inginkan, semakin sesuai hasilnya. Tapi saya juga tetap harus mengecek hasilnya sendiri karena tidak semua yang dibuat langsung benar.\n\n## Catatan untuk yang masih belajar\n\nBuat saya yang masih belajar, Hermes cukup membantu karena saya bisa langsung mencoba sesuatu tanpa harus selalu tahu semuanya dari awal. Saya tetap mengerjakan dan memahami project-nya, tetapi proses mencoba dan memperbaiki jadi terasa lebih cepat."
+  },
+  {
     "slug": "magang-airnav-bulan-1",
     "title": "Jurnal Kegiatan Magang di AirNav Indonesia — Bulan Pertama",
     "authors": ["Tifani Yunitami"],

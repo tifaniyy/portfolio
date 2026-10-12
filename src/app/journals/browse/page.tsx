@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import {
-  BookOpen,
-  ChevronLeft,
-  ChevronRight,
-  FileText,
-  Search,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, FileText, Search } from "lucide-react";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";
+import { JournalThumb } from "@/components/blog/JournalThumb";
 import {
   archiveLabelOf,
   browseHref,
@@ -173,22 +167,13 @@ export default async function JournalsBrowsePage({
                           href={`/journals/${journal.slug}`}
                           className="relative block aspect-16/10 shrink-0 overflow-hidden border-b border-border bg-slate-100 sm:aspect-auto sm:w-52 sm:border-b-0 sm:border-r"
                         >
-                          {journal.cover ? (
-                            <Image
-                              src={journal.cover}
-                              alt={`Sampul — ${journal.title}`}
-                              fill
-                              sizes="(min-width: 640px) 208px, 100vw"
-                              className="object-cover"
-                            />
-                          ) : (
-                            <span className="flex h-full min-h-28 w-full items-center justify-center">
-                              <BookOpen
-                                className="h-7 w-7 text-slate-300"
-                                aria-hidden="true"
-                              />
-                            </span>
-                          )}
+                          <JournalThumb
+                            cover={journal.cover}
+                            title={journal.title}
+                            slug={journal.slug}
+                            variant="grid"
+                            sizes="(min-width: 640px) 208px, 100vw"
+                          />
                         </Link>
 
                         <div className="min-w-0 flex-1 p-5">

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { BookOpen, FileText, Link2 } from "lucide-react";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";
+import { JournalThumb } from "@/components/blog/JournalThumb";
 import {
   archiveLabelOf,
   browseHref,
@@ -82,27 +82,17 @@ export default async function JournalsIndexPage() {
                     className="overflow-hidden rounded-2xl border border-border bg-white shadow-soft transition-all duration-300 hover:border-accent/30 hover:shadow-lift"
                   >
                     <div className="flex flex-col sm:flex-row">
-                      {/* Thumbnail */}
+                      {/* Sampul: gambar dari field `cover`, atau sampul bawaan */}
                       <Link
                         href={`/journals/${journal.slug}`}
                         className="relative block aspect-16/10 shrink-0 overflow-hidden border-b border-border bg-slate-100 sm:aspect-auto sm:w-56 sm:border-b-0 sm:border-r"
                       >
-                        {journal.cover ? (
-                          <Image
-                            src={journal.cover}
-                            alt={`Sampul — ${journal.title}`}
-                            fill
-                            sizes="(min-width: 640px) 224px, 100vw"
-                            className="object-cover transition-transform duration-500 hover:scale-[1.03]"
-                          />
-                        ) : (
-                          <span className="flex h-full min-h-32 w-full items-center justify-center">
-                            <BookOpen
-                              className="h-8 w-8 text-slate-300"
-                              aria-hidden="true"
-                            />
-                          </span>
-                        )}
+                        <JournalThumb
+                          cover={journal.cover}
+                          title={journal.title}
+                          slug={journal.slug}
+                          sizes="(min-width: 640px) 224px, 100vw"
+                        />
                       </Link>
 
                       {/* Isi postingan */}
