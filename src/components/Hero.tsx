@@ -134,7 +134,7 @@ export function Hero({ className }: HeroProps) {
                     {profile.name}
                   </p>
                   <p className="text-xs text-muted">
-                    S1 Informatika · Universitas Gunadarma
+                    S1 Informatics · Gunadarma University
                   </p>
                 </div>
               </div>

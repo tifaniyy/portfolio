@@ -106,14 +106,14 @@ export function About() {
                 <article className="flex h-full flex-col rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-lift">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
-                      <h4 className="text-sm font-semibold leading-snug text-primary">
+                      <h4 className="text-base font-semibold leading-snug text-primary sm:text-lg">
                         {item.organization}
                       </h4>
-                      <p className="mt-1 text-xs font-medium text-accent">
+                      <p className="mt-1 text-sm font-medium text-accent">
                         {item.role}
                       </p>
                     </div>
-                    <span className="inline-flex shrink-0 items-center rounded-lg border border-border bg-white px-2.5 py-1 text-[11px] font-semibold text-muted">
+                    <span className="inline-flex shrink-0 items-center rounded-lg border border-border bg-white px-2.5 py-1 text-xs font-semibold text-muted">
                       {item.period}
                     </span>
                   </div>
@@ -124,11 +124,11 @@ export function About() {
                     {item.points.map((point) => (
                       <li
                         key={point}
-                        className="flex items-start gap-2 text-xs leading-relaxed text-muted"
+                        className="flex items-start gap-2 text-sm leading-relaxed text-muted"
                       >
                         <span
                           aria-hidden="true"
-                          className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                         />
                         {point}
                       </li>
