@@ -122,7 +122,7 @@ export default async function JournalsBrowsePage({
             </div>
             <Link
               href="/journals"
-              className="text-sm font-semibold text-accent hover:underline"
+              className="tap text-sm font-semibold text-accent hover:underline"
             >
               ← List Latest
             </Link>
@@ -209,7 +209,7 @@ export default async function JournalsBrowsePage({
                           <div className="mt-3 flex flex-wrap items-center gap-3">
                             <Link
                               href={`/journals/${journal.slug}`}
-                              className="text-sm font-semibold text-accent hover:underline"
+                              className="tap text-sm font-semibold text-accent hover:underline"
                             >
                               Read →
                             </Link>
@@ -217,7 +217,7 @@ export default async function JournalsBrowsePage({
                               <Link
                                 key={tag}
                                 href={browseHref({ tag })}
-                                className="text-xs font-medium text-secondary transition-colors hover:text-accent"
+                                className="tap text-xs font-medium text-secondary transition-colors hover:text-accent"
                               >
                                 #{tag}
                               </Link>

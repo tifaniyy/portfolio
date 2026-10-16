@@ -103,7 +103,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
               event.stopPropagation();
               onOpen(project);
             }}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent underline-offset-4 transition-colors hover:text-blue-700 hover:underline"
+            className="tap inline-flex items-center gap-1.5 text-sm font-semibold text-accent underline-offset-4 transition-colors hover:text-blue-700 hover:underline"
             aria-label={`View details for ${project.title}`}
           >
             View Details
@@ -123,7 +123,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 onClick={(event) => event.stopPropagation()}
                 aria-label={`Open the live demo of ${project.title} in a new tab`}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
+                className="tap inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
               >
                 <Play className="h-3.5 w-3.5" aria-hidden="true" />
                 Live Demo
@@ -135,7 +135,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 onClick={(event) => event.stopPropagation()}
                 aria-label={`View the source code of ${project.title} on GitHub (opens in a new tab)`}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
+                className="tap inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
               >
                 <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
                 View Source
@@ -150,7 +150,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
                   rel="noopener noreferrer"
                   onClick={(event) => event.stopPropagation()}
                   aria-label={`GitHub repository for ${project.title} (opens in a new tab)`}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-2 text-xs font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
+                  className="tap inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-2 text-xs font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
                 >
                   <GithubIcon className="h-3.5 w-3.5" aria-hidden="true" />
                   GitHub
@@ -166,7 +166,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
                       ? "Repository URL copied"
                       : `Copy the repository URL of ${project.title}`
                   }
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-2 text-xs font-semibold text-muted transition-colors hover:border-accent/40 hover:text-accent"
+                  className="tap inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3 py-2 text-xs font-semibold text-muted transition-colors hover:border-accent/40 hover:text-accent"
                 >
                   {copied ? (
                     <Check className="h-3.5 w-3.5 text-accent" aria-hidden="true" />

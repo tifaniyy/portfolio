@@ -50,7 +50,7 @@ export const education = [
     school: "Gunadarma University",
     location: "Jakarta, Indonesia",
     period: "Sep 2022 – Aug 2026",
-    level: "S1 Informatika",
+    level: "S1 Informatics",
     /** GPA as stated on the CV. */
     grade: "3.86 / 4.00",
     status: "Fresh Graduate",

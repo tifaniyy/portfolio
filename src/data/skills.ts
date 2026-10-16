@@ -3,7 +3,11 @@
  * ---------------------------------------------------------------
  * EDIT THIS FILE to add/remove skills.
  * `icon` values are Lucide React icon names (see src/components/Skills.tsx).
- * `accent` can be: blue | violet | emerald | amber
+ * `accent` can be: blue | violet | emerald | amber | rose
+ *
+ * The "AI Tools & Agents" card is NOT in the CV — added on request to show the
+ * AI assistants and coding agents used in the daily workflow. Keep the list to
+ * tools actually used; it sits next to technical skills, so it must stay honest.
  * ---------------------------------------------------------------
  */
 
@@ -11,7 +15,7 @@ export type SkillCategory = {
   title: string;
   description: string;
   icon: string;
-  accent: "blue" | "violet" | "emerald" | "amber";
+  accent: "blue" | "violet" | "emerald" | "amber" | "rose";
   skills: string[];
 };
 
@@ -59,5 +63,22 @@ export const skillCategories: SkillCategory[] = [
     icon: "Code2",
     accent: "amber",
     skills: ["Flask", "HTML", "CSS", "Bootstrap", "PHP", "Responsive Design"],
+  },
+  {
+    title: "AI Tools & Agents",
+    description:
+      "AI assistants and coding agents I use every day to build, debug, and document.",
+    icon: "Bot",
+    accent: "rose",
+    skills: [
+      "Hermes Agent",
+      "Claude Code",
+      "GitHub Copilot",
+      "Cursor",
+      "ChatGPT",
+      "Gemini",
+      "DeepSeek",
+      "Ollama",
+    ],
   },
 ];

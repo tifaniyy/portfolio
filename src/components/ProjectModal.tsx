@@ -59,7 +59,7 @@ export function ProjectModal({
 
                   <Dialog.Close
                     aria-label="Close project details"
-                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-white text-muted transition-colors hover:border-accent/40 hover:text-accent"
+                    className="tap inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-white text-muted transition-colors hover:border-accent/40 hover:text-accent"
                   >
                     <X className="h-4.5 w-4.5" aria-hidden="true" />
                   </Dialog.Close>
@@ -72,7 +72,7 @@ export function ProjectModal({
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
+                      className="tap inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
                     >
                       <Play className="h-3.5 w-3.5" aria-hidden="true" />
                       Live Demo
@@ -82,7 +82,7 @@ export function ProjectModal({
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
+                      className="tap inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
                     >
                       <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
                       View Source on GitHub
@@ -94,7 +94,7 @@ export function ProjectModal({
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3.5 py-2 text-xs font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
+                      className="tap inline-flex items-center gap-1.5 rounded-lg border border-border bg-white px-3.5 py-2 text-xs font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
                     >
                       <GithubIcon className="h-3.5 w-3.5" aria-hidden="true" />
                       GitHub Repository
@@ -114,18 +114,11 @@ export function ProjectModal({
                     </p>
                   </Block>
 
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <Block title="Problem">
-                      <p className="text-sm leading-relaxed text-muted">
-                        {project.problem}
-                      </p>
-                    </Block>
-                    <Block title="Solution">
-                      <p className="text-sm leading-relaxed text-muted">
-                        {project.solution}
-                      </p>
-                    </Block>
-                  </div>
+                  <Block title="Details">
+                    <p className="text-sm leading-relaxed text-muted">
+                      {project.solution}
+                    </p>
+                  </Block>
 
                   {project.deploymentNote ? (
                     <p className="rounded-xl border border-dashed border-border bg-background px-4 py-3 text-xs leading-relaxed text-muted">
@@ -194,7 +187,7 @@ export function ProjectModal({
                 <div className="mt-7 border-t border-border pt-5">
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
+                    className="tap inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
                   >
                     Open the full project page
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

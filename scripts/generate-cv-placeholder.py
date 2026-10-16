@@ -17,7 +17,7 @@ LINES = [
     ("This file is a placeholder shipped with the portfolio template.", 10, "F1"),
     ("Replace public/cv.pdf with your real CV (same file name).", 10, "F1"),
     ("", 10, "F1"),
-    ("Universitas Gunadarma - S1 Informatika", 10, "F1"),
+    ("Gunadarma University - S1 Informatics", 10, "F1"),
     ("GitHub: https://github.com/tifaniyy", 10, "F1"),
 ]
 

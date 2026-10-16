@@ -1,5 +1,6 @@
 import {
   BarChart3,
+  Bot,
   BrainCircuit,
   Code2,
   Terminal,
@@ -16,6 +17,7 @@ const iconMap: Record<string, LucideIcon> = {
   Code2,
   Wrench,
   BrainCircuit,
+  Bot,
 };
 
 /** Accent tints keep the cards distinct without adding more colours. */
@@ -36,6 +38,10 @@ const accentMap: Record<string, { chip: string; icon: string }> = {
     chip: "bg-white border-border text-secondary hover:border-amber-300 hover:text-amber-700",
     icon: "bg-amber-50 text-amber-600",
   },
+  rose: {
+    chip: "bg-white border-border text-secondary hover:border-rose-300 hover:text-rose-700",
+    icon: "bg-rose-50 text-rose-600",
+  },
 };
 
 export function Skills() {
@@ -49,10 +55,10 @@ export function Skills() {
         <SectionHeading
           eyebrow="02 — Skills"
           title="Skills & Tools"
-          description="The skills I use on a daily basis to process data, create visualisations and develop websites."
+          description="The skills and AI tools I use on a daily basis to process data, create visualisations and develop websites."
         />
 
-        <RevealStagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealStagger className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category) => {
             const Icon = iconMap[category.icon] ?? Terminal;
             const tint = accentMap[category.accent] ?? accentMap.blue;

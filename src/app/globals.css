@@ -105,6 +105,21 @@
   }
 }
 
+/* ------------------------------------------------------------------
+   Touch targets.
+   Chips, tags and small text-link controls are sized for a mouse pointer.
+   On a phone the same control has to be reachable with a thumb, so below
+   640px anything marked `tap` grows to a 44px hit area and centres its
+   content. The desktop rendering is left untouched.
+------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .tap {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem; /* 44px */
+  }
+}
+
 /* Subtle dotted grid — used once, behind the hero. */
 .bg-dot-grid {
   background-image: radial-gradient(

@@ -139,7 +139,7 @@ export default async function JournalsIndexPage() {
                             <li key={tag}>
                               <Link
                                 href={browseHref({ tag })}
-                                className="rounded-lg bg-background px-2.5 py-1 text-xs font-medium text-secondary ring-1 ring-border transition-colors hover:text-accent"
+                                className="tap rounded-lg bg-background px-2.5 py-1 text-xs font-medium text-secondary ring-1 ring-border transition-colors hover:text-accent"
                               >
                                 #{tag}
                               </Link>
@@ -151,7 +151,7 @@ export default async function JournalsIndexPage() {
                       <div className="mt-4 flex flex-wrap items-center gap-3">
                         <Link
                           href={`/journals/${journal.slug}`}
-                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
+                          className="tap inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline"
                         >
                           Read more →
                         </Link>

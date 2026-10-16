@@ -140,7 +140,7 @@ export function Navbar() {
         <NavItemLink
           link={{ label: profile.name, href: isHome ? "#home" : "/" }}
           active={false}
-          className="flex items-center gap-2.5 text-sm font-bold tracking-tight text-primary"
+          className="tap flex items-center gap-2.5 text-sm font-bold tracking-tight text-primary"
         >
           <span
             aria-hidden="true"
@@ -204,7 +204,7 @@ export function Navbar() {
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-white/80 text-primary shadow-soft transition-colors hover:text-accent md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-white/80 text-primary shadow-soft transition-colors hover:text-accent max-sm:h-11 max-sm:w-11 md:hidden"
           >
             {mobileOpen ? (
               <X className="h-5 w-5" aria-hidden="true" />

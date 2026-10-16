@@ -25,6 +25,13 @@
  *    cukup ditulis di sini sekali.
  *  - `category`: jadi tombol filter di section Projects (dan label di kartu).
  *    Nilai yang boleh dipakai ada di type `Project["category"]` di bawah.
+ *  - Screenshot proyek AirNav DISAMARKAN (blur radius 16) karena memuat data
+ *    internal perusahaan, dan NAMANYA diberi akhiran `-masked` supaya optimizer
+ *    gambar Next memakai URL baru — kalau nama lama dipertahankan, cache gambar
+ *    yang lama (versi tajam) masih bisa tersaji. Aslinya ada di riwayat git:
+ *    `git checkout -- public/projects/emisi-beranda.png public/projects/emisi-analisis.png public/projects/emisi-admin.png`
+ *    Kalau gambar diganti, blur ulang + bersihkan `.next/cache` sebelum commit.
+ *    Screenshot proyek lain tidak disamarkan: datanya publik (UMP) atau mockup.
  * ---------------------------------------------------------------
  */
 
@@ -107,28 +114,28 @@ export const projects: Project[] = [
       "Offline page assets — fonts, map libraries and map style kept in the repo",
     ],
     github: "https://github.com/tifaniyy/dashboard-emisi-web",
-    demo: "https://dashboard-emisi-web.vercel.app/login",
+    demo: null,
     deploymentNote:
       "This is the internship project at AirNav Indonesia, so the dashboard is run locally/internal and the repository holds the source code. Setup instructions are in the repository README.",
     relatedJournals: ["magang-airnav-bulan-1"],
     screenshots: [
       {
-        src: "/projects/emisi-beranda.png",
-        alt: "Carbon emission dashboard: airport and route selection, CO₂ calculator and the route map",
+        src: "/projects/emisi-beranda-masked.png",
+        alt: "Blurred screenshot of the carbon emission dashboard: airport and route selection, CO₂ calculator and the route map",
         caption:
-          "Main dashboard — route selection, CO₂ calculator and route map",
+          "Main dashboard — route selection, CO₂ calculator and route map (data masked)",
       },
       {
-        src: "/projects/emisi-analisis.png",
-        alt: "CO₂ calculation for the selected route with the monthly bar chart and saving summary",
+        src: "/projects/emisi-analisis-masked.png",
+        alt: "Blurred screenshot of the CO₂ calculation for the selected route with the monthly bar chart and saving summary",
         caption:
-          "Calculation result — monthly CO₂ for the selected route and period",
+          "Calculation result — monthly CO₂ for the selected route and period (data masked)",
       },
       {
-        src: "/projects/emisi-admin.png",
-        alt: "Admin area: new user approval table and the airport data table",
+        src: "/projects/emisi-admin-masked.png",
+        alt: "Blurred screenshot of the admin area: new user approval table and the airport data table",
         caption:
-          "Admin area — user approval, Excel/CSV upload and airport data",
+          "Admin area — user approval, Excel/CSV upload and airport data (data masked)",
       },
     ],
   },

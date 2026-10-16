@@ -67,7 +67,7 @@ export function Projects() {
                 onClick={() => setFilter(category.label)}
                 aria-pressed={active}
                 className={cn(
-                  "inline-flex items-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-medium transition-colors",
+                  "tap inline-flex items-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-medium transition-colors",
                   active
                     ? "border-accent bg-accent text-white"
                     : "border-border bg-white text-secondary hover:border-accent/40 hover:text-accent",
@@ -108,7 +108,7 @@ export function Projects() {
             href="https://github.com/tifaniyy"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-accent underline-offset-4 hover:underline"
+            className="inline-block py-2 font-semibold text-accent underline-offset-4 hover:underline"
           >
             github.com/tifaniyy
           </a>

@@ -71,7 +71,7 @@ export default async function JournalDetailPage({
       <div className="section-shell max-w-3xl">
         <Link
           href="/journals"
-          className="inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-accent"
+          className="tap inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-accent"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           All Articles
@@ -200,7 +200,7 @@ export default async function JournalDetailPage({
             {journal.tags.map((tag) => (
               <li
                 key={tag}
-                className="rounded-lg bg-white px-2.5 py-1 text-xs font-medium text-secondary ring-1 ring-border"
+                className="tap rounded-lg bg-white px-2.5 py-1 text-xs font-medium text-secondary ring-1 ring-border"
               >
                 {tag}
               </li>

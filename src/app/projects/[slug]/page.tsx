@@ -89,7 +89,7 @@ export default async function ProjectDetailPage({
       <div className="section-shell max-w-3xl">
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-accent"
+          className="tap inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-accent"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           All Projects
@@ -138,7 +138,7 @@ export default async function ProjectDetailPage({
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
+              className="tap inline-flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
             >
               <GithubIcon className="h-4 w-4" />
               View Source
@@ -156,7 +156,7 @@ export default async function ProjectDetailPage({
           {project.screenshots.length > 0 ? (
             <a
               href="#screenshots"
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
+              className="tap inline-flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:border-accent/40 hover:text-accent"
             >
               <FileText className="h-4 w-4" aria-hidden="true" />
               Screenshots
@@ -171,18 +171,11 @@ export default async function ProjectDetailPage({
             </p>
           </Block>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            <Block title="Problem">
-              <p className="text-sm leading-relaxed text-muted">
-                {project.problem}
-              </p>
-            </Block>
-            <Block title="Solution">
-              <p className="text-sm leading-relaxed text-muted">
-                {project.solution}
-              </p>
-            </Block>
-          </div>
+          <Block title="Details">
+            <p className="text-sm leading-relaxed text-muted">
+              {project.solution}
+            </p>
+          </Block>
 
           {project.deploymentNote ? (
             <p className="rounded-xl border border-dashed border-border bg-white px-4 py-3 text-xs leading-relaxed text-muted">
@@ -286,13 +279,13 @@ export default async function ProjectDetailPage({
         >
           <Link
             href="/#projects"
-            className="text-sm font-semibold text-muted transition-colors hover:text-accent"
+            className="tap text-sm font-semibold text-muted transition-colors hover:text-accent"
           >
             ← All Projects
           </Link>
           <Link
             href={`/projects/${next.slug}`}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-accent"
+            className="tap inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-accent"
           >
             Next: {next.title.length > 42 ? `${next.title.slice(0, 42)}…` : next.title}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />

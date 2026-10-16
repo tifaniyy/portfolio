@@ -34,7 +34,7 @@ export async function Journals() {
             />
             <Link
               href="/journals"
-              className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-white px-4 py-2 text-sm font-semibold text-primary shadow-soft transition-colors hover:border-accent/40 hover:text-accent"
+              className="tap inline-flex items-center gap-1.5 rounded-xl border border-border bg-white px-4 py-2 text-sm font-semibold text-primary shadow-soft transition-colors hover:border-accent/40 hover:text-accent"
             >
               <BookOpen className="h-4 w-4" aria-hidden="true" />
               View all articles
@@ -83,7 +83,7 @@ export async function Journals() {
                         {journal.abstract}
                       </p>
                     ) : null}
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+                    <span className="tap mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
                       Read more
                       <span aria-hidden="true">→</span>
                     </span>
