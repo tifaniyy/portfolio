@@ -117,7 +117,10 @@ export const projects: Project[] = [
     demo: null,
     deploymentNote:
       "This is the internship project at AirNav Indonesia, so the dashboard is run locally/internal and the repository holds the source code. Setup instructions are in the repository README.",
-    relatedJournals: ["magang-airnav-bulan-1"],
+    relatedJournals: [
+      "magang-airnav-bulan-1",
+      "menghitung-emisi-karbon-pesawat-terbang",
+    ],
     screenshots: [
       {
         src: "/projects/emisi-beranda-masked.png",
