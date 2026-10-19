@@ -55,7 +55,23 @@ export const experiences: ExperienceItem[] = [
     location: "Kota Tangerang, Indonesia",
     description:
       "Internship at AirNav Indonesia, the state-owned air navigation service provider, in the Information Technology division.",
-    activities: [],
+    activities: [
+      {
+        title: "Carbon emission dashboard (Flask)",
+        description:
+          "Built a Flask dashboard that turns airport, route and daily-flight data into CO₂ and fuel-cost savings per period — 241 Indonesian airports and 66 route records loaded from Excel/CSV.",
+      },
+      {
+        title: "Server-side CO₂ and cost calculation",
+        description:
+          "Moved the emission calculation server-side with SQLAlchemy (route saving in NM, flight frequency, fuel factor) and presented the result as a Leaflet route map plus a monthly TW I–IV bar chart.",
+      },
+      {
+        title: "Admin area and data import",
+        description:
+          "Built the admin area: Excel/CSV import, airport and route management, and new-account approval by an administrator.",
+      },
+    ],
   },
   {
     company: "PT Telekomunikasi Indonesia (Persero) Tbk",

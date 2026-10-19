@@ -23,6 +23,9 @@
  *    dibaca dua arah dari file ini — halaman proyek menampilkan tulisannya, dan
  *    halaman tulisan menampilkan proyeknya (lihat `projectsForJournal`), jadi
  *    cukup ditulis di sini sekali.
+ *  - Label UI untuk `solution` adalah "Details", bukan "Solution".
+ *    Field `problem` sengaja TIDAK ada: section proyek hanya menampilkan
+ *    rincian keterangan proyek, tanpa bagian masalah (permintaan pemilik).
  *  - `category`: jadi tombol filter di section Projects (dan label di kartu).
  *    Nilai yang boleh dipakai ada di type `Project["category"]` di bawah.
  *  - Screenshot proyek AirNav DISAMARKAN (blur radius 16) karena memuat data
@@ -56,10 +59,15 @@ export type Project = {
     | "Web Development";
   summary: string;
   description: string;
-  problem: string;
   solution: string;
   tech: string[];
   features: string[];
+  /**
+   * Angka hasil terukur per proyek — dirender sebagai blok "Results".
+   * Hanya angka yang bisa diverifikasi dari repo/dataset aslinya; kalau
+   * belum ada angka yang sah, biarkan kosong daripada mengarang metrik.
+   */
+  results?: string[];
   /** Real repository URL, or null. */
   github: string | null;
   /** Real deployment URL, or null while it is still a placeholder. */
@@ -86,10 +94,7 @@ export const projects: Project[] = [
     summary:
       "Web-based dashboard that calculates and visualises the CO₂ emissions saved by shortening flight routes across Indonesia, built for the Information Technology Division of AirNav Indonesia.",
     description:
-      "Built during the internship at AirNav Indonesia (Perum LPPNPI), the state-owned air navigation service provider, in the Information Technology division. The application stores Indonesian airports, route savings and daily flight counts in a database, then computes the reduced CO₂ emissions and fuel cost from those inputs. Airports, routes and uploads are maintained through an admin area with Excel/CSV import.",
-    problem:
-      "Shorter flight routes cut fuel burn and CO₂ emissions, but the saving is not visible: the airport, route and daily-flight tables are separate, and the emission figure for a given period has to be worked out by hand.",
-    solution:
+      "Built during the internship at AirNav Indonesia (Perum LPPNPI), the state-owned air navigation service provider, in the Information Technology division. The application stores Indonesian airports, route savings and daily flight counts in a database, then computes the reduced CO₂ emissions and fuel cost from those inputs. Airports, routes and uploads are maintained through an admin area with Excel/CSV import.",    solution:
       "Building a Flask web application: a relational database holds airports (241 Indonesian airports seeded from an OurAirports extract), route savings and daily flights, the CO₂ and cost calculation runs on the server data, and the results are shown as an interactive dashboard — a Leaflet map of the route on top of OpenFreeMap vector tiles plus a per-month bar chart. Data entry is handled through an admin area that accepts Excel/CSV uploads and manages airport and route records.",
     tech: [
       "Python",
@@ -112,6 +117,11 @@ export const projects: Project[] = [
       "Admin area: Excel/CSV upload, airport and route management",
       "Login with admin approval for new accounts",
       "Offline page assets — fonts, map libraries and map style kept in the repo",
+    ],
+    results: [
+      "241 Indonesian airports and 66 route records held in the database and used for every calculation.",
+      "CO₂ and fuel-cost savings computed per route and per period (TW I–IV or full year), replacing manual spreadsheet work.",
+      "Excel/CSV import for airports and routes, plus admin approval for new accounts.",
     ],
     github: "https://github.com/tifaniyy/dashboard-emisi-web",
     demo: null,
@@ -153,10 +163,7 @@ export const projects: Project[] = [
     summary:
       "Web-based dashboard for visualising Indonesian provincial minimum wage trends from 1997–2026 using K-Means clustering.",
     description:
-      "Preprocessed and analyzed Provincial Minimum Wage (UMP) data in Indonesia covering 1997–2026. Implemented K-Means clustering using Scikit-learn to group provinces based on minimum wage characteristics. Created data visualizations using Pandas, Matplotlib, and GeoPandas to illustrate wage trends and clustering results. Developed a web based data visualization application using Flask to present analytical results through an interactive interface.",
-    problem:
-      "The data on Indonesia’s minimum wage (UMP) covers the period 1997–2026 for all provinces in the form of a long table. This format is difficult to scan quickly, meaning that wage increase trends, the provinces with the highest wages, and the grouping of provinces by wage characteristics are not immediately apparent.",
-    solution:
+      "Preprocessed and analyzed Provincial Minimum Wage (UMP) data in Indonesia covering 1997–2026. Implemented K-Means clustering using Scikit-learn to group provinces based on minimum wage characteristics. Created data visualizations using Pandas, Matplotlib, and GeoPandas to illustrate wage trends and clustering results. Developed a web based data visualization application using Flask to present analytical results through an interactive interface.",    solution:
       "Building a Flask-based visualisation application: UMP data is processed using Pandas, clustered using K-Means (Scikit-learn), and then visualised using Matplotlib and GeoPandas to produce trend graphs, clustering results and maps. The application is then deployed so that it can be accessed online.",
     tech: [
       "Python",
@@ -176,6 +183,11 @@ export const projects: Project[] = [
       "Visualisation of UMP distribution (GeoPandas)",
       "Interactive web interface",
       "Complete source code + dataset on GitHub",
+    ],
+    results: [
+      "984 UMP records covering 38 provinces from 1997 to 2026, cleaned and clustered.",
+      "K-Means groups the 38 provinces by wage level, so similar provinces can be compared directly.",
+      "Trend and clustering results visualised with Matplotlib and GeoPandas inside a Flask app.",
     ],
     github: "https://github.com/tifaniyy/ump-flask",
     demo: null,
@@ -210,10 +222,7 @@ export const projects: Project[] = [
     summary:
       "Served as a Software Designer for the Oldmarketjkt web based e-commerce project.",
     description:
-      "Served as a Software Designer for the Oldmarketjkt web based e-commerce project. Designed software requirements, system structure, and user interfaces to support application development.",
-    problem:
-      "The e-commerce second-hand shop project requires a clear design framework before moving on to the development stage: the system requirements, application structure and user interface have not yet been defined, which risks major changes having to be made whilst the project is in progress.",
-    solution:
+      "Served as a Software Designer for the Oldmarketjkt web based e-commerce project. Designed software requirements, system structure, and user interfaces to support application development.",    solution:
       "Acting as a Software Designer: defining software requirements, designing the system architecture, and designing the user interface to serve as a guide for the development team.",
     tech: ["Software Design", "UI/UX Design", "Figma", "System Design"],
     features: [
@@ -221,6 +230,10 @@ export const projects: Project[] = [
       "System structure design",
       "User interface design",
       "Development reference documentation",
+    ],
+    results: [
+      "4 design deliverables: software requirements specification, system structure, user interface design, and a development reference document.",
+      "The requirements and UI design were the baseline the development team built the store from.",
     ],
     github: null,
     demo: null,
@@ -243,10 +256,7 @@ export const projects: Project[] = [
     summary:
       "Web-based Streamlit dashboard presenting Indonesian provincial minimum wage insights in an interactive, user-friendly format.",
     description:
-      "Performed data preprocessing and analysis of Indonesian Provincial Minimum Wage (UMP) data using Python and Pandas. Created line and bar chart visualizations using Matplotlib to analyze UMP trends across provinces from 1997–2025. Developed a web based dashboard using Streamlit to present data insights in an interactive and user friendly format.",
-    problem:
-      "The analysis of the UMP trend for 1997–2025 is only available in the form of non-interactive processed data, making it difficult for non-technical users to explore the trends by province independently.",
-    solution:
+      "Performed data preprocessing and analysis of Indonesian Provincial Minimum Wage (UMP) data using Python and Pandas. Created line and bar chart visualizations using Matplotlib to analyze UMP trends across provinces from 1997–2025. Developed a web based dashboard using Streamlit to present data insights in an interactive and user friendly format.",    solution:
       "Building a Streamlit dashboard: data is cleaned and analysed using Pandas, visualised as line charts and bar charts using Matplotlib, and then presented via an interactive and user-friendly web interface.",
     tech: ["Python", "Pandas", "Matplotlib", "Streamlit", "Data Cleaning"],
     features: [
@@ -254,6 +264,11 @@ export const projects: Project[] = [
       "Line chart of UMP trends per province (1997–2025)",
       "Bar chart of comparisons between provinces",
       "Interactive web dashboard with Streamlit",
+    ],
+    results: [
+      "946 cleaned UMP records across 34 provinces, 1997–2025.",
+      "Interactive line and bar charts let visitors compare provinces and follow wage trends by year.",
+      "Published on Streamlit Community Cloud, so the dashboard can be opened and used directly.",
     ],
     github: "https://github.com/tifaniyy/ump-dashboard",
     demo: "https://ump-dashboard.streamlit.app/",
@@ -275,10 +290,7 @@ export const projects: Project[] = [
     summary:
       "Web-based online shoes store developed locally using PHP, SQL and Bootstrap, focused on navigation flow and accessibility.",
     description:
-      "Designed the website navigation structure to improve user flow and accessibility. Designed and implemented a responsive navigation bar using Bootstrap. Created wireframes to define the website layout and user interface structure. Built an interactive prototype to demonstrate user flows and interface interactions.",
-    problem:
-      "Website navigation for the online shoe store needs to be easier to understand: user flow is unclear, and the design is not responsive across different screen sizes.",
-    solution:
+      "Designed the website navigation structure to improve user flow and accessibility. Designed and implemented a responsive navigation bar using Bootstrap. Created wireframes to define the website layout and user interface structure. Built an interactive prototype to demonstrate user flows and interface interactions.",    solution:
       "Designing the navigation structure to improve user flow and accessibility, creating wireframes as layout references, building a responsive navigation bar with Bootstrap, and developing an interactive prototype to demonstrate user journeys and interface interactions.",
     tech: ["PHP", "SQL", "Bootstrap", "HTML", "CSS", "Figma"],
     features: [
@@ -287,6 +299,10 @@ export const projects: Project[] = [
       "Layout and interface structure wireframes",
       "Interactive user flow prototype",
       "Local development with PHP and SQL",
+    ],
+    results: [
+      "17 PHP pages covering the storefront and the admin area (product and category management).",
+      "Responsive navigation built with Bootstrap, backed by wireframes and an interactive flow prototype.",
     ],
     github: "https://github.com/tifaniyy/website_tokosepatu",
     demo: null,
@@ -309,10 +325,7 @@ export const projects: Project[] = [
     summary:
       "Machine learning project classifying hand gesture images into three categories: Rock, Paper, and Scissors.",
     description:
-      "Prepared and preprocessed hand gesture image data for machine learning classification. Trained a machine learning model to classify hand gestures into three categories: Rock, Paper, and Scissors. Performed model evaluation to assess classification performance and prediction accuracy. Developed a classification workflow for predicting hand gestures from input images.",
-    problem:
-      "Hand gesture images need to be automatically recognized into three classes (Rock, Paper, Scissors), and the trained model must be measurable in terms of prediction accuracy.",
-    solution:
+      "Prepared and preprocessed hand gesture image data for machine learning classification. Trained a machine learning model to classify hand gestures into three categories: Rock, Paper, and Scissors. Performed model evaluation to assess classification performance and prediction accuracy. Developed a classification workflow for predicting hand gestures from input images.",    solution:
       "Preparing and preprocessing hand gesture image data for machine learning classification. Training a machine learning model to classify hand gestures into three categories: Rock, Paper, and Scissors. Performing model evaluation to assess classification performance and prediction accuracy. Developing a classification workflow for predicting hand gestures from input images.",
     tech: [
       "Python",
@@ -326,6 +339,10 @@ export const projects: Project[] = [
       "Training of 3-class classification model",
       "Performance & prediction accuracy evaluation",
       "Prediction workflow from input images",
+    ],
+    results: [
+      "97.15% validation accuracy on 874 held-out images (3 classes: rock, paper, scissors).",
+      "Model trained on 1,314 images, preprocessed to 150×150 px, and stopped automatically once accuracy passed 97%.",
     ],
     github: "https://github.com/tifaniyy/rock_scissors_paper",
     demo: null,

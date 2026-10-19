@@ -1,5 +1,9 @@
 /**
- * Skills data — taken from the "Training, Skills, & Tools" section of the CV.
+ * Skills data — taken from the "Training, Skills, & Tools" section of the CV,
+ * plus the stack this portfolio is itself built with: Next.js, React, Tailwind
+ * CSS and Git/GitHub. Those four are listed because the site is the working
+ * proof (and so a recruiter reading the page sees the stack they are looking
+ * at), not because a course certificate says so.
  * ---------------------------------------------------------------
  * EDIT THIS FILE to add/remove skills.
  * `icon` values are Lucide React icon names (see src/components/Skills.tsx).
@@ -59,10 +63,22 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: "Web Development",
-    description: "Building responsive web interfaces that are easy to use.",
+    description:
+      "Building responsive interfaces with Next.js, React and Tailwind, as well as Flask and PHP.",
     icon: "Code2",
     accent: "amber",
-    skills: ["Flask", "HTML", "CSS", "Bootstrap", "PHP", "Responsive Design"],
+    skills: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Flask",
+      "PHP",
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "Responsive Design",
+      "Git & GitHub",
+    ],
   },
   {
     title: "AI Tools & Agents",

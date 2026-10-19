@@ -120,6 +120,25 @@ export function ProjectModal({
                     </p>
                   </Block>
 
+                  {project.results?.length ? (
+                    <Block title="Results">
+                      <ul className="space-y-2 rounded-xl border border-border bg-background p-4 sm:p-5">
+                        {project.results.map((result) => (
+                          <li
+                            key={result}
+                            className="flex items-start gap-2 text-sm leading-relaxed text-muted"
+                          >
+                            <span
+                              aria-hidden="true"
+                              className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                            />
+                            <span>{result}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </Block>
+                  ) : null}
+
                   {project.deploymentNote ? (
                     <p className="rounded-xl border border-dashed border-border bg-background px-4 py-3 text-xs leading-relaxed text-muted">
                       <strong className="font-semibold text-secondary">
