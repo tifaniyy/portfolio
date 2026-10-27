@@ -90,11 +90,9 @@ export const skillCategories: SkillCategory[] = [
       "Hermes Agent",
       "Claude Code",
       "GitHub Copilot",
-      "Cursor",
       "ChatGPT",
       "Gemini",
       "DeepSeek",
-      "Ollama",
     ],
   },
 ];

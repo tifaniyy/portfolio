@@ -1,5 +1,24 @@
 [
   {
+    "slug": "how-to-fix-your-laptop-if-it-cannot-read-your-hard-disk",
+    "title": "How to fix your laptop if it cannot read your hard disk",
+    "authors": [
+      "Tifani Yunitami"
+    ],
+    "venue": "Catatan Teknis",
+    "year": "2026",
+    "date": "2026-10-21",
+    "type": "Artikel",
+    "abstract": "A laptop that cannot read its hard disk is not always a dead hard disk. A short order of checks, from the BIOS and a loose connector to Disk Management, before you format anything.",
+    "tags": [
+      "Hardware",
+      "Troubleshooting",
+      "Storage",
+      "Laptop"
+    ],
+    "content": "A laptop that cannot read its hard disk usually shows one of two problems. The laptop may fail to start and display a message such as \"No Bootable Device\" or \"Hard Disk Not Found\". Another possibility is that the laptop starts normally, but the hard disk does not appear in File Explorer.\n\nBefore trying to fix the problem, it is important to find out whether the problem comes from the hard disk, the connection, or the laptop system.\n\n## 1. Check Whether the Hard Disk Is Detected\n\nThe first step is to restart the laptop and open the BIOS or UEFI settings. The method to enter the BIOS can be different depending on the laptop brand, usually by pressing F2, F10, Delete, or Esc during startup.\n\nLook for information about the storage device. If the hard disk or SSD appears with its name and storage capacity, it means the laptop can still detect the device.\n\nIf the hard disk does not appear at all, the problem may be related to the connection or the hard disk itself.\n\n## 2. Check the Hard Disk Connection\n\nIf the laptop has a removable hard disk or SSD, check whether it is properly connected.\n\nFor laptops using a SATA hard disk, make sure the connector is properly attached. For an M.2 SSD, make sure the SSD is installed correctly and secured with its screw.\n\nIf the laptop has recently been dropped, repaired, or upgraded, a loose connection can sometimes cause the storage device to disappear.\n\n## 3. Check the Hard Disk on Another Computer\n\nAnother simple way to identify the problem is to connect the hard disk to another computer using a suitable USB adapter or enclosure.\n\nIf the hard disk can be detected on another computer, the problem may be with the laptop's connector or system.\n\nIf it cannot be detected on another computer either, the hard disk or SSD may have a hardware problem.\n\n## 4. Check Disk Management\n\nIf the hard disk is detected by the laptop but does not appear in File Explorer, open Disk Management in Windows.\n\nThe drive may appear without a drive letter or may be shown as unallocated.\n\nDo not immediately format the drive, especially if it contains important files. Formatting can make it more difficult to recover existing data.\n\nTry checking whether the drive can be assigned a new drive letter first.\n\n## 5. If the Laptop Cannot Boot\n\nIf the hard disk is detected but Windows cannot start, the problem may be related to the Windows startup system.\n\nFirst, check the boot settings in BIOS/UEFI and make sure the correct hard disk is selected as the primary boot device.\n\nIf Windows still cannot start, use the Windows Recovery Environment or a Windows installation USB to access the available repair options.\n\n## 6. Protect Important Data\n\nIf the hard disk makes unusual sounds, frequently disappears, or shows errors, avoid repeatedly turning the laptop on and off.\n\nIf the hard disk still contains important files, such as documents, assignments, or work files, it is better to back up the data as soon as possible.\n\nFor a severely damaged hard disk, professional data recovery may be necessary.\n\n## 7. Prevent the Problem From Happening Again\n\nTo prevent hard disk problems in the future:\n\n- Always keep a backup of important files.\n- Avoid moving the laptop roughly while it is running.\n- Make sure the hard disk or SSD is installed securely.\n- Shut down the laptop properly.\n- Check the condition of the storage device periodically.\n\n## Conclusion\n\nA hard disk that cannot be read does not always mean that the hard disk is completely damaged. The problem can come from a loose connection, incorrect settings, or Windows not recognizing the drive.\n\nBy checking the BIOS, the physical connection, another computer, and Disk Management, the cause of the problem can usually be identified before taking more complicated steps."
+  },
+  {
     "slug": "menghitung-emisi-karbon-pesawat-terbang",
     "title": "Menghitung Emisi Karbon Pesawat Terbang di Indonesia: Rumus, Penghematan, dan Visualisasi Data",
     "authors": [
