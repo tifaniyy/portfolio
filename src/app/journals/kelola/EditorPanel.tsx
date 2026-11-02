@@ -28,6 +28,7 @@ const EMPTY: Draft = {
   year: String(new Date().getFullYear()),
   date: "",
   type: "Catatan",
+  lang: "id",
   abstract: "",
   content: "",
   tags: "",
@@ -47,6 +48,7 @@ function toDraft(journal: Journal): Draft {
     year: journal.year,
     date: journal.date ?? "",
     type: journal.type ?? "",
+    lang: journal.lang ?? "id",
     abstract: journal.abstract ?? "",
     content: journal.content ?? "",
     tags: (journal.tags ?? []).join(", "),
@@ -284,6 +286,23 @@ export function EditorPanel({ initial }: { initial: Journal[] }) {
                     className={inputClass}
                     placeholder="Data Analysis, Python"
                   />
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div>
+                  <label htmlFor="lang" className={labelClass}>
+                    Bahasa isi
+                  </label>
+                  <select
+                    id="lang"
+                    value={draft.lang ?? "id"}
+                    onChange={(event) => update("lang", event.target.value)}
+                    className={inputClass}
+                  >
+                    <option value="id">Indonesia</option>
+                    <option value="en">Inggris</option>
+                  </select>
                 </div>
               </div>
 

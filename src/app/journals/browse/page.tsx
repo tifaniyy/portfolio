@@ -10,6 +10,7 @@ import {
   formatDate,
   journalDateTime,
   journalExcerpt,
+  journalLang,
   paginate,
   readingMinutes,
   searchJournals,
@@ -182,7 +183,7 @@ export default async function JournalsBrowsePage({
                           </div>
 
                           <h3
-                            lang="id"
+                            lang={journalLang(journal)}
                             className="mt-2 text-base font-semibold leading-snug text-primary sm:text-lg"
                           >
                             <Link
@@ -199,7 +200,7 @@ export default async function JournalsBrowsePage({
 
                           {excerpt ? (
                             <p
-                              lang="id"
+                              lang={journalLang(journal)}
                               className="mt-2 text-sm leading-relaxed text-muted"
                             >
                               {excerpt}

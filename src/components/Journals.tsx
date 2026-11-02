@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
-import { sortedJournals, formatDate } from "@/data/journals";
+import { sortedJournals, formatDate, journalLang } from "@/data/journals";
 import { getPublishedJournals } from "@/data/journals.server";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal, RevealItem, RevealStagger } from "./Reveal";
@@ -64,7 +64,7 @@ export async function Journals() {
                       </span>
                     </div>
                     <h3
-                      lang="id"
+                      lang={journalLang(journal)}
                       className="mt-3 text-base font-semibold leading-snug text-primary transition-colors group-hover:text-accent sm:text-lg"
                     >
                       {journal.title}
@@ -77,7 +77,7 @@ export async function Journals() {
                     </p>
                     {journal.abstract ? (
                       <p
-                        lang="id"
+                        lang={journalLang(journal)}
                         className="mt-4 text-sm leading-relaxed text-muted"
                       >
                         {journal.abstract}

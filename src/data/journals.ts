@@ -30,6 +30,14 @@ export type Journal = {
   abstract?: string;
   /** Isi tulisan. Lihat cara menulisnya di src/components/JournalMarkdown.tsx. */
   content?: string;
+  /**
+   * Bahasa isi tulisan: "id" (bawaan) atau "en".
+   *
+   * Dipakai untuk atribut `lang` pada judul dan isi, supaya pembaca layar
+   * melafalkan teks Indonesia dengan pelafalan Indonesia, dan teks Inggris
+   * dengan pelafalan Inggris.
+   */
+  lang?: "id" | "en";
   /** Link PDF — lokal (letakkan di public/journals/) atau URL penuh. */
   pdf?: string;
   /** DOI, tulis angkanya saja (tanpa https://doi.org/). */
@@ -44,6 +52,14 @@ export type Journal = {
 /** Tulisan tanpa tanggal = draf; belum tampil untuk pengunjung. */
 export function isPublished(journal: Journal): boolean {
   return Boolean(journal.date && journal.date.trim());
+}
+
+/**
+ * Bahasa isi tulisan, untuk atribut `lang`. Bawaan "id" supaya tulisan lama
+ * (yang belum punya field `lang`) tetap benar tanpa perlu diubah satu per satu.
+ */
+export function journalLang(journal: Journal): "id" | "en" {
+  return journal.lang === "en" ? "en" : "id";
 }
 
 function sortKey(journal: Journal): number {

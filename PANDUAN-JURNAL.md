@@ -50,6 +50,7 @@ perlu izin menyimpan apa pun — tulisan jadi bagian dari kode yang kamu push.
 | Tanggal publikasi | **penentu terbit/draf** |
 | Venue / asal tulisan | mis. "Catatan Pribadi" atau nama jurnal |
 | Tahun, Jenis | "2026", "Catatan" / "Journal" |
+| Bahasa isi | **Indonesia** (bawaan) atau **Inggris**. Kalau isinya bahasa Inggris, pilih Inggris — atribut `lang` di judul dan isi ikut menyesuaikan supaya pembaca layar memakai pelafalan yang benar |
 | Label | dipisah koma, jadi tombol filter (mis. `Data Analysis, Python`) |
 | Ringkasan | 1–3 kalimat yang muncul di daftar tulisan |
 | Isi tulisan | isi lengkapnya (format di bawah) |

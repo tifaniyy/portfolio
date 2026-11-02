@@ -24,6 +24,8 @@ export type JournalInput = {
   year: string;
   date?: string;
   type?: string;
+  /** "id" atau "en" — bahasa isi tulisan (bawaan "id"). */
+  lang?: string;
   abstract?: string;
   content?: string;
   tags?: string;
@@ -59,6 +61,7 @@ function toJournal(input: JournalInput, slug: string): Journal {
     year: optional(input.year) ?? String(new Date().getFullYear()),
     date: optional(input.date),
     type: optional(input.type),
+    lang: input.lang === "en" ? "en" : undefined,
     abstract: optional(input.abstract),
     content: optional(input.content),
     tags: (input.tags ?? "")

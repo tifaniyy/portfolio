@@ -128,6 +128,7 @@ export const projects: Project[] = [
     deploymentNote:
       "This is the internship project at AirNav Indonesia, so the dashboard is run locally/internal and the repository holds the source code. Setup instructions are in the repository README.",
     relatedJournals: [
+      "jurnal-mingguan-flightradar24-premium",
       "magang-airnav-bulan-1",
       "menghitung-emisi-karbon-pesawat-terbang",
     ],

@@ -8,6 +8,7 @@ import {
   formatDate,
   journalDateTime,
   journalExcerpt,
+  journalLang,
   paginate,
   readingMinutes,
   sortedJournals,
@@ -106,7 +107,7 @@ export default async function JournalsIndexPage() {
                       </div>
 
                       <h3
-                        lang="id"
+                        lang={journalLang(journal)}
                         className="mt-3 text-lg font-semibold leading-snug text-primary sm:text-xl"
                       >
                         <Link
@@ -126,7 +127,7 @@ export default async function JournalsIndexPage() {
 
                       {excerpt ? (
                         <p
-                          lang="id"
+                          lang={journalLang(journal)}
                           className="mt-3 text-sm leading-relaxed text-muted"
                         >
                           {excerpt}

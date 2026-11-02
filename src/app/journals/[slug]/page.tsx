@@ -4,7 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Calendar, FileText, Link2 } from "lucide-react";
 import { JournalMarkdown } from "@/components/JournalMarkdown";
-import { formatDate, isPublished, readingMinutes } from "@/data/journals";
+import { formatDate, isPublished, journalLang, readingMinutes } from "@/data/journals";
 import { getAllJournals, getPublishedJournals } from "@/data/journals.server";
 import { projectsForJournal } from "@/data/projects";
 import { journalFeedAlternate } from "@/lib/site";
@@ -95,7 +95,7 @@ export default async function JournalDetailPage({
         </div>
 
         <h1
-          lang="id"
+          lang={journalLang(journal)}
           className="mt-4 text-2xl font-bold leading-tight tracking-tight text-primary sm:text-3xl"
         >
           {journal.title}
@@ -154,14 +154,16 @@ export default async function JournalDetailPage({
         ) : null}
 
         {journal.content ? (
-          /* Isi tulisan ditulis dalam bahasa Indonesia; chrome situs berbahasa
-             Inggris, jadi bahasanya ditandai di sini supaya pembaca layar tidak
-             melafalkan kata Indonesia dengan pelafalan Inggris. */
-          <div className="mt-8" lang="id">
+          /* Bahasa isi ditandai per tulisan (`lang` di data jurnal) supaya
+             pembaca layar memakai pelafalan yang benar untuk tiap tulisan. */
+          <div className="mt-8" lang={journalLang(journal)}>
             <JournalMarkdown content={journal.content} />
           </div>
         ) : journal.abstract ? (
-          <p className="mt-8 text-base leading-relaxed text-muted" lang="id">
+          <p
+            className="mt-8 text-base leading-relaxed text-muted"
+            lang={journalLang(journal)}
+          >
             {journal.abstract}
           </p>
         ) : null}
