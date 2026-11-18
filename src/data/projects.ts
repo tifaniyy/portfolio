@@ -28,12 +28,15 @@
  *    rincian keterangan proyek, tanpa bagian masalah (permintaan pemilik).
  *  - `category`: jadi tombol filter di section Projects (dan label di kartu).
  *    Nilai yang boleh dipakai ada di type `Project["category"]` di bawah.
- *  - Screenshot proyek AirNav DISAMARKAN (blur radius 16) karena memuat data
- *    internal perusahaan, dan NAMANYA diberi akhiran `-masked` supaya optimizer
- *    gambar Next memakai URL baru — kalau nama lama dipertahankan, cache gambar
- *    yang lama (versi tajam) masih bisa tersaji. Aslinya ada di riwayat git:
+ *  - Screenshot proyek AirNav DISAMARKAN karena memuat data internal
+ *    perusahaan: `emisi-*` di-blur penuh (radius 16), sedangkan `sword-*-nuxt`
+ *    hanya bagian datanya (judul/metadata dokumen diberi `filter: blur()`
+ *    sebelum dijepret lewat CDP, kerangka UI tetap tajam). Namanya sengaja
+ *    berbeda dari versi lama — optimizer gambar Next menyimpan hasil per URL,
+ *    jadi mengganti nama berkas adalah cara termurah memastikan versi baru
+ *    yang tersaji. Aslinya ada di riwayat git:
  *    `git checkout -- public/projects/emisi-beranda.png public/projects/emisi-analisis.png public/projects/emisi-admin.png`
- *    Kalau gambar diganti, blur ulang + bersihkan `.next/cache` sebelum commit.
+ *    Kalau gambar diganti, samarkan ulang + bersihkan `.next/cache` sebelum commit.
  *    Screenshot proyek lain tidak disamarkan: datanya publik (UMP) atau mockup.
  * ---------------------------------------------------------------
  */
@@ -83,6 +86,68 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "sword-document-portal-airnav",
+    title: "SWORD — Document Management & Search Portal",
+    subtitle: "Nuxt portal for a 4,801-document catalog",
+    organization: "AirNav Indonesia (Perum LPPNPI)",
+    year: "2026",
+    period: "Oct 2026 – now",
+    category: "Web Development",
+    summary:
+      "SWORD (Standard Now Online on Record & Document) is AirNav Indonesia's document system for regulations, standards, SOPs and manuals. I built its portal: a catalog of 4,801 documents with server-side search and filters, per-role access to the files, and an admin area for the document lifecycle.",
+    description:
+      "SWORD keeps every regulation, standard, SOP and manual that Perum LPPNPI (AirNav Indonesia) works from. The portal is a Nuxt 4 application: Prisma over PostgreSQL holds the metadata of 4,801 documents in 227 categories, the PDFs stay in S3-compatible object storage, and the interface is built with Tailwind on top of the AirNav design system. The data is real — imported from the division's metadata spreadsheet and matched one to one against the files in storage — so every screen was built against 4,800 rows rather than sample data. Beyond the public catalog the portal carries the surrounding workflow: document submission with approval, a gallery, suggestions, notifications, an admin area with eight roles, and an ANITA assistant that answers questions from the catalog.",
+    solution:
+      "Everything that touches 4,801 rows happens on the server. Search, category facets, validity and sorting are query parameters resolved in the database, twelve documents per page, so the browser never receives the whole catalog. Anonymous visitors see the metadata only; the file preview stays locked and the cards show a blocked thumbnail. Signed-in users with the right access stream the PDF through a server route — storage credentials never reach the browser, and large files still open because the route supports range requests. Access itself is a single source of truth: eight roles over eighteen permissions, checked in the API handlers and in the admin navigation instead of being hidden in the UI. The rest of the flow follows the same pattern: submissions are queued and decided with an audit trail, gallery uploads are stored and published after review, and every document write updates the category paths inside one transaction.",
+    results: [
+      "4,801 documents in 227 categories, imported from the division's metadata spreadsheet",
+      "513 regulations in the filtered catalog view, 12 documents per page",
+      "8 user roles across 18 permissions, enforced in the API layer",
+    ],
+    tech: [
+      "Nuxt 4",
+      "Vue",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "AirNav Design System",
+      "S3-compatible storage",
+    ],
+    features: [
+      "Catalog of 4,801 documents in 227 categories, with server-side search, facets, validity and sorting",
+      "Document detail page with metadata, category path and validity status",
+      "Files locked for anonymous visitors and streamed from object storage for signed-in users with access",
+      "Document submission with a review queue, decision dialog and activity log",
+      "Gallery with upload, review and publish flow; suggestion box with replies",
+      "Admin area for documents, categories, users, approvals and activity — 8 roles over 18 permissions",
+      "ANITA: a chat assistant that answers questions from the document catalog",
+    ],
+    github: null,
+    demo: null,
+    deploymentNote:
+      "This is an AirNav Indonesia internal portal, so there is no public demo and the repository is not published. The screenshots are captures of the portal running locally against the real database; document titles and metadata are blurred, the interface around them is not.",
+    screenshots: [
+      {
+        src: "/projects/sword-beranda-nuxt.png",
+        alt: "SWORD home page: white navbar, navy hero with a radar illustration and a document search card",
+        caption: "Home — hero, document search and type suggestions",
+      },
+      {
+        src: "/projects/sword-katalog-nuxt.png",
+        alt: "SWORD regulations catalog: search bar, filter panel and document cards with blocked thumbnails (document data masked)",
+        caption:
+          "Regulations & standards — search, filter panel and document cards (document data masked)",
+      },
+      {
+        src: "/projects/sword-dokumen-nuxt.png",
+        alt: "SWORD document detail page with a locked preview panel and a metadata card (document data masked)",
+        caption:
+          "Document detail — locked preview for visitors, metadata beside it (document data masked)",
+      },
+    ],
+  },
   {
     slug: "airnav-dashboard-emisi",
     title: "Air Traffic Carbon Emission Dashboard",
